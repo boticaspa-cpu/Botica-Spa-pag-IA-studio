@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Booking": {
+      "title": "Booking",
+      "description": "A massage appointment booking.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "duration": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string", "format": "email" },
+        "customerPhone": { "type": "string" },
+        "address": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["serviceId", "date", "time", "customerName", "customerEmail", "customerPhone", "address"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "A massage service offered by the spa.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "durations": { "type": "array", "items": { "type": "string" } },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["name", "description", "price", "durations"]
+    }
+  },
+  "firestore": {
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Collection of massage bookings."
+    },
+    "/services/{serviceId}": {
+      "schema": "Service",
+      "description": "Collection of available services."
+    }
+  }
+}
