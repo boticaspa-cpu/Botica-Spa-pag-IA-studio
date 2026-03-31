@@ -7,25 +7,12 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { cn } from '../lib/utils';
 import { useLanguage } from '../LanguageContext';
 
-export const BookingSystem = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: boolean, onClose: () => void, initialServiceId?: string | null }) => {
   const { t, language } = useLanguage();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(initialServiceId ? 2 : 1);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    serviceId: '',
-    serviceName: '',
-    duration: '',
-    price: 0,
-    date: new Date(),
-    time: '',
-    customerName: '',
-    customerEmail: '',
-    customerPhone: '',
-    address: '',
-    notes: ''
-  });
-
+  
   const SERVICES = [
     { 
       id: 'relaxing', 
@@ -53,6 +40,22 @@ export const BookingSystem = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
     },
   ];
 
+  const initialService = initialServiceId ? SERVICES.find(s => s.id === initialServiceId) : null;
+
+  const [formData, setFormData] = useState({
+    serviceId: initialService?.id || '',
+    serviceName: initialService?.name || '',
+    duration: initialService ? Object.keys(initialService.prices)[0] : '',
+    price: initialService ? Object.values(initialService.prices)[0] : 0,
+    date: new Date(),
+    time: '',
+    customerName: '',
+    customerEmail: '',
+    customerPhone: '',
+    address: '',
+    notes: ''
+  });
+
   const TIME_SLOTS = [
     '09:00 AM', '10:30 AM', '12:00 PM', '01:30 PM', '03:00 PM', '04:30 PM', '06:00 PM', '07:30 PM'
   ];
@@ -63,13 +66,39 @@ export const BookingSystem = ({ isOpen, onClose }: { isOpen: boolean, onClose: (
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      await addDoc(collection(db, 'bookings'), {
+      const bookingData = {
         ...formData,
         date: format(formData.date, 'yyyy-MM-dd'),
         status: 'pending',
         createdAt: serverTimestamp(),
         language: language
-      });
+      };
+      
+      await addDoc(collection(db, 'bookings'), bookingData);
+
+      // Send confirmation email via backend API
+      try {
+        await fetch('/api/send-confirmation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            customerEmail: formData.customerEmail,
+            customerName: formData.customerName,
+            serviceName: formData.serviceName,
+            date: format(formData.date, language === 'en' ? 'MMMM do, yyyy' : 'd MMMM, yyyy'),
+            time: formData.time,
+            address: formData.address,
+            price: formData.price,
+            language: language
+          }),
+        });
+      } catch (emailError) {
+        // Log email error but don't fail the whole booking process
+        console.error("Error sending confirmation email:", emailError);
+      }
+
       setSuccess(true);
     } catch (error) {
       console.error("Error creating booking:", error);

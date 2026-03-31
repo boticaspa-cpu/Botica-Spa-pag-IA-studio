@@ -17,22 +17,33 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
   return (
     <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background with Parallax and Overlay */}
-      <motion.div style={{ y: videoY }} className="absolute inset-0 z-0">
+      <motion.div 
+        style={{ y: videoY }} 
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1.25 }}
+        transition={{ 
+          duration: 20, 
+          repeat: Infinity, 
+          repeatType: "reverse", 
+          ease: "linear" 
+        }}
+      >
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover scale-110"
-          style={{ filter: 'brightness(0.6) contrast(1.1)' }}
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.5) contrast(1.05)' }}
         >
           <source 
-            src="https://cdn.pixabay.com/video/2021/09/07/87723-601955561_large.mp4" 
+            src="https://cdn.pixabay.com/video/2023/10/19/185641-876115984_large.mp4" 
             type="video/mp4" 
           />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/60 backdrop-blur-[0.5px]" />
       </motion.div>
 
       <motion.div 
@@ -48,12 +59,12 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
             initial={{ opacity: 0, letterSpacing: "0.2em" }}
             animate={{ opacity: 1, letterSpacing: "0.5em" }}
             transition={{ duration: 1.5, delay: 0.2 }}
-            className="text-white/80 uppercase text-xs mb-10 block font-sans font-medium"
+            className="text-white/80 uppercase text-[10px] mb-12 block font-sans font-medium"
           >
             Botica Spa • Playa del Carmen
           </motion.span>
           
-          <h1 className="text-6xl md:text-8xl lg:text-9xl text-white font-serif font-light leading-[1] mb-10 tracking-tight">
+          <h1 className="text-7xl md:text-9xl lg:text-[10rem] text-white font-serif font-light leading-[0.9] mb-12 tracking-tight">
             {t.hero.title} <br />
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -69,24 +80,24 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.8 }}
-            className="text-lg md:text-2xl text-white/80 font-sans font-light mb-16 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-white/70 font-sans font-light mb-16 max-w-2xl mx-auto leading-relaxed"
           >
             {t.hero.subtitle}
           </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
             <motion.button 
               whileHover={{ scale: 1.05, backgroundColor: "#ffffff" }}
               whileTap={{ scale: 0.98 }}
               onClick={onBookNow}
-              className="px-14 py-7 bg-white text-black transition-all duration-500 rounded-full text-xs uppercase tracking-[0.3em] font-bold shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+              className="px-16 py-7 bg-white text-black transition-all duration-500 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
             >
               {t.hero.ctaBook}
             </motion.button>
             <motion.a 
               href="#services"
               whileHover={{ x: 8 }}
-              className="text-white border-b border-white/20 hover:border-white transition-all duration-500 pb-2 text-xs uppercase tracking-[0.4em] font-medium"
+              className="text-white border-b border-white/20 hover:border-white transition-all duration-500 pb-2 text-[10px] uppercase tracking-[0.4em] font-medium"
             >
               {t.hero.ctaServices}
             </motion.a>

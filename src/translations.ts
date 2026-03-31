@@ -11,46 +11,82 @@ export const translations = {
     hero: {
       title: 'The Art of In-Home',
       titleItalic: 'Relaxation',
-      subtitle: 'Premium massage services delivered to your doorstep in Playa del Carmen.',
+      subtitle: 'Premium wellness rituals delivered to your private sanctuary in Playa del Carmen. Experience the spa, redefined.',
       ctaBook: 'Book Your Session',
-      ctaServices: 'View Treatments',
+      ctaServices: 'Explore Rituals',
       scroll: 'Scroll',
     },
     about: {
-      badge: 'The Botica Way',
-      title: 'Wellness without',
-      titleItalic: 'compromise.',
-      description: 'At Botica Spa, we believe that true relaxation shouldn\'t require a commute. We bring the sanctuary to you, transforming your private space into a world-class spa environment.',
-      feature1Title: 'Certified Therapists',
-      feature1Desc: 'Every member of our team is highly trained and certified in multiple modalities.',
-      feature2Title: 'Premium Products',
-      feature2Desc: 'We use only organic, locally sourced oils and aromatherapy blends.',
-      feature3Title: 'Total Convenience',
-      feature3Desc: 'Book in seconds and let us handle everything from tables to music.',
+      badge: 'The Botica Philosophy',
+      title: 'Your Private Sanctuary,',
+      titleItalic: 'Reimagined.',
+      description: 'At Botica Spa, we believe that true relaxation shouldn\'t require a commute. We transform your hotel, villa, or Airbnb into a world-class spa environment, allowing you to surrender to serenity without ever leaving your doorstep.',
+      feature1Title: 'Elite Therapists',
+      feature1Desc: 'A hand-picked team of certified experts dedicated to the art of healing and professional care.',
+      feature2Title: 'Organic Elements',
+      feature2Desc: 'We exclusively use premium, locally sourced organic oils and bespoke aromatherapy blends.',
+      feature3Title: 'Seamless Experience',
+      feature3Desc: 'From professional massage tables to curated soundscapes, we handle every detail of your escape.',
     },
     services: {
-      badge: 'Our Treatments',
+      badge: 'The Rituals',
       title: 'Curated Wellness',
-      select: 'Select Treatment',
+      select: 'Select Ritual',
+      viewDetails: 'View Details',
       from: 'From',
+      duration: 'Duration',
+      minutes: 'min',
+      includes: 'Includes',
+      benefits: 'Benefits',
       items: {
         relaxing: {
-          name: 'Relaxing Massage',
-          desc: 'A gentle, flowing treatment designed to release stress and promote deep relaxation.',
+          name: 'Signature Relaxation',
+          desc: 'A gentle, rhythmic journey designed to dissolve stress and restore inner harmony.',
+          details: 'Our signature treatment uses long, flowing strokes to calm the nervous system. Perfect for jet lag recovery or simply unwinding after a day in the sun.',
+          price60: 1800,
+          price90: 2400,
+          price120: 3000,
+          benefitsList: ['Reduces stress and anxiety', 'Improves circulation', 'Promotes better sleep'],
+          includesList: ['Professional massage table', 'Organic aromatherapy oils', 'Relaxing soundscape']
         },
         deepTissue: {
-          name: 'Deep Tissue',
-          desc: 'Intense pressure targeting chronic muscle tension and knots for physical recovery.',
+          name: 'Deep Tissue Recovery',
+          desc: 'Targeted, intense pressure to release chronic tension and revitalize tired muscles.',
+          details: 'A therapeutic massage that focuses on realigning deeper layers of muscles and connective tissue. Ideal for chronic aches and contracted areas.',
+          price60: 2100,
+          price90: 2700,
+          price120: 3300,
+          benefitsList: ['Relieves chronic muscle pain', 'Improves posture', 'Breaks up scar tissue'],
+          includesList: ['Professional massage table', 'Therapeutic grade oils', 'Muscle relief balm']
         },
         personalized: {
-          name: 'Personalized Therapy',
-          desc: 'A bespoke treatment combining various techniques to address your specific needs.',
+          name: 'Bespoke Therapy',
+          desc: 'A custom-tailored treatment designed specifically for your body\'s unique needs.',
+          details: 'Your therapist will consult with you to create a unique blend of techniques, focusing exactly where you need it most.',
+          price60: 2000,
+          price90: 2600,
+          price120: 3200,
+          benefitsList: ['Customized to your needs', 'Addresses specific problem areas', 'Total body balance'],
+          includesList: ['Professional massage table', 'Choice of aromatherapy', 'Personalized consultation']
         },
         fourHands: {
-          name: 'Four Hands Bliss',
-          desc: 'Two therapists working in perfect harmony to double the relaxation and therapeutic benefits.',
+          name: 'Four-Hands Bliss',
+          desc: 'The ultimate indulgence: two therapists working in perfect synchronicity for total immersion.',
+          details: 'A unique experience where two therapists work together in a choreographed sequence, making it impossible for the brain to track, leading to a state of total surrender.',
+          price60: 3500,
+          price90: 4200,
+          benefitsList: ['Double the relaxation', 'Ultimate sensory experience', 'Deepest state of meditation'],
+          includesList: ['Two professional therapists', 'Premium organic oils', 'Enhanced soundscape']
         },
       },
+    },
+    social: {
+      instagram: 'https://instagram.com/boticaspa',
+      facebook: 'https://facebook.com/boticaspa',
+      whatsapp: 'https://wa.me/529841234567',
+      phone: '+52 984 123 4567',
+      email: 'hola@boticaspa.com',
+      location: 'Playa del Carmen, MX'
     },
     gallery: {
       badge: 'Visual Sanctuary',
@@ -59,21 +95,23 @@ export const translations = {
     testimonials: {
       badge: 'Guest Experiences',
       title: 'What Our Clients Say',
+      googleMapsLink: 'https://maps.app.goo.gl/sAJLAuedymWf3uBu5',
+      viewOnGoogle: 'View on Google Maps',
       items: [
         {
-          text: "The most professional in-home service I've ever experienced. They turned my living room into a five-star spa in minutes.",
-          author: "Sarah J.",
-          location: "Playacar"
+          text: "Absolutely incredible experience. The therapist arrived on time, was extremely professional, and the massage was one of the best I've ever had. Highly recommend Botica Spa!",
+          author: "Jessica Thompson",
+          location: "Google Review"
         },
         {
-          text: "Perfect for after a long flight. The deep tissue massage was exactly what I needed. Highly recommended!",
-          author: "Michael R.",
-          location: "Mayakoba"
+          text: "Perfect service for our vacation. We booked a couples massage and it was so relaxing. They bring everything needed. 5 stars!",
+          author: "David Miller",
+          location: "Google Review"
         },
         {
-          text: "Incredible attention to detail. From the music to the organic oils, everything was perfect.",
-          author: "Elena M.",
-          location: "Aldea Zama"
+          text: "The attention to detail is amazing. The oils smell divine and the pressure was perfect. Best in-home spa in Playa.",
+          author: "Sofia Rodriguez",
+          location: "Google Review"
         }
       ]
     },
@@ -128,46 +166,82 @@ export const translations = {
     hero: {
       title: 'El Arte de la',
       titleItalic: 'Relajación',
-      subtitle: 'Servicios de masaje premium a domicilio en Playa del Carmen.',
+      subtitle: 'Rituales de bienestar premium en la comodidad de tu espacio privado. El spa, redefinido en Playa del Carmen.',
       ctaBook: 'Reserva tu sesión',
-      ctaServices: 'Ver Tratamientos',
+      ctaServices: 'Explorar Rituales',
       scroll: 'Deslizar',
     },
     about: {
-      badge: 'El Estilo Botica',
-      title: 'Bienestar sin',
-      titleItalic: 'compromisos.',
-      description: 'En Botica Spa, creemos que la verdadera relajación no debería requerir un viaje. Llevamos el santuario a ti, transformando tu espacio privado en un entorno de spa de clase mundial.',
-      feature1Title: 'Terapeutas Certificados',
-      feature1Desc: 'Cada miembro de nuestro equipo está altamente capacitado y certificado en múltiples modalidades.',
-      feature2Title: 'Productos Premium',
-      feature2Desc: 'Utilizamos solo aceites orgánicos de origen local y mezclas de aromaterapia.',
-      feature3Title: 'Total Comodidad',
-      feature3Desc: 'Reserva en segundos y déjanos encargarnos de todo, desde las mesas hasta la música.',
+      badge: 'La Filosofía Botica',
+      title: 'Tu Santuario Privado,',
+      titleItalic: 'Reimaginado.',
+      description: 'En Botica Spa, creemos que la verdadera relajación no debería requerir un viaje. Transformamos tu hotel, villa o Airbnb en un entorno de spa de clase mundial, permitiéndote rendirte a la serenidad sin salir de casa.',
+      feature1Title: 'Terapeutas de Élite',
+      feature1Desc: 'Un equipo seleccionado de expertos certificados dedicados al arte de la sanación y el cuidado profesional.',
+      feature2Title: 'Elementos Orgánicos',
+      feature2Desc: 'Utilizamos exclusivamente aceites orgánicos premium de origen local y mezclas de aromaterapia personalizadas.',
+      feature3Title: 'Experiencia Fluida',
+      feature3Desc: 'Desde mesas de masaje profesionales hasta paisajes sonoros curados, nos encargamos de cada detalle de tu escape.',
     },
     services: {
-      badge: 'Nuestros Tratamientos',
+      badge: 'Los Rituales',
       title: 'Bienestar Curado',
-      select: 'Seleccionar Tratamiento',
+      select: 'Seleccionar Ritual',
+      viewDetails: 'Ver Detalles',
       from: 'Desde',
+      duration: 'Duración',
+      minutes: 'min',
+      includes: 'Incluye',
+      benefits: 'Beneficios',
       items: {
         relaxing: {
-          name: 'Masaje Relajante',
-          desc: 'Un tratamiento suave y fluido diseñado para liberar el estrés y promover una relajación profunda.',
+          name: 'Signature Relaxation',
+          desc: 'Un viaje suave y rítmico diseñado para disolver el estrés y restaurar la armonía interior.',
+          details: 'Nuestro tratamiento insignia utiliza movimientos largos y fluidos para calmar el sistema nervioso. Perfecto para recuperarse del jet lag o simplemente desconectar después de un día bajo el sol.',
+          price60: 1800,
+          price90: 2400,
+          price120: 3000,
+          benefitsList: ['Reduce el estrés y la ansiedad', 'Mejora la circulación', 'Promotes un mejor sueño'],
+          includesList: ['Mesa de masaje profesional', 'Aceites de aromaterapia orgánicos', 'Paisaje sonoro relajante']
         },
         deepTissue: {
-          name: 'Tejido Profundo',
-          desc: 'Presión intensa dirigida a la tensión muscular crónica y nudos para la recuperación física.',
+          name: 'Deep Tissue Recovery',
+          desc: 'Presión intensa y localizada para liberar la tensión crónica y revitalizar los músculos cansados.',
+          details: 'Un masaje terapéutico que se enfoca en realinear las capas más profundas de los músculos y el tejido conectivo. Ideal para dolores crónicos y áreas contraídas.',
+          price60: 2100,
+          price90: 2700,
+          price120: 3300,
+          benefitsList: ['Alivia el dolor muscular crónico', 'Mejora la postura', 'Descompone el tejido cicatricial'],
+          includesList: ['Mesa de masaje profesional', 'Aceites de grado terapéutico', 'Bálsamo para alivio muscular']
         },
         personalized: {
-          name: 'Terapia Personalizada',
-          desc: 'Un tratamiento a medida que combina varias técnicas para abordar tus necesidades específicas.',
+          name: 'Bespoke Therapy',
+          desc: 'Un tratamiento a medida diseñado específicamente para las necesidades únicas de tu cuerpo.',
+          details: 'Su terapeuta consultará con usted para crear una combinación única de técnicas, enfocándose exactamente donde más lo necesita.',
+          price60: 2000,
+          price90: 2600,
+          price120: 3200,
+          benefitsList: ['Personalizado según sus necesidades', 'Aborda áreas problemáticas específicas', 'Equilibrio corporal total'],
+          includesList: ['Mesa de masaje profesional', 'Elección de aromaterapia', 'Consulta personalizada']
         },
         fourHands: {
-          name: 'Dicha a Cuatro Manos',
-          desc: 'Dos terapeutas trabajando en perfecta armonía para duplicar la relajación y los beneficios terapéuticos.',
+          name: 'Four-Hands Bliss',
+          desc: 'La máxima indulgencia: dos terapeutas trabajando en perfecta sincronía para una inmersión total.',
+          details: 'Una experiencia única donde dos terapeutas trabajan juntos en una secuencia coreografiada, haciendo imposible que el cerebro siga el ritmo, lo que lleva a un estado de entrega total.',
+          price60: 3500,
+          price90: 4200,
+          benefitsList: ['Doble relajación', 'Máxima experiencia sensorial', 'Estado de meditación más profundo'],
+          includesList: ['Dos terapeutas profesionales', 'Aceites orgánicos premium', 'Paisaje sonoro mejorado']
         },
       },
+    },
+    social: {
+      instagram: 'https://instagram.com/boticaspa',
+      facebook: 'https://facebook.com/boticaspa',
+      whatsapp: 'https://wa.me/529841234567',
+      phone: '+52 984 123 4567',
+      email: 'hola@boticaspa.com',
+      location: 'Playa del Carmen, MX'
     },
     gallery: {
       badge: 'Santuario Visual',
@@ -176,21 +250,23 @@ export const translations = {
     testimonials: {
       badge: 'Experiencias de Huéspedes',
       title: 'Lo que dicen nuestros clientes',
+      googleMapsLink: 'https://maps.app.goo.gl/sAJLAuedymWf3uBu5',
+      viewOnGoogle: 'Ver en Google Maps',
       items: [
         {
-          text: "El servicio a domicilio más profesional que he experimentado. Convirtieron mi sala en un spa de cinco estrellas en minutos.",
-          author: "Sarah J.",
-          location: "Playacar"
+          text: "Experiencia absolutamente increíble. La terapeuta llegó a tiempo, fue extremadamente profesional y el masaje fue uno de los mejores que he tenido. ¡Recomiendo ampliamente Botica Spa!",
+          author: "Jessica Thompson",
+          location: "Reseña de Google"
         },
         {
-          text: "Perfecto después de un vuelo largo. El masaje de tejido profundo fue exactamente lo que necesitaba. ¡Muy recomendado!",
-          author: "Michael R.",
-          location: "Mayakoba"
+          text: "Servicio perfecto para nuestras vacaciones. Reservamos un masaje en pareja y fue muy relajante. Traen todo lo necesario. ¡5 estrellas!",
+          author: "David Miller",
+          location: "Reseña de Google"
         },
         {
-          text: "Increíble atención al detalle. Desde la música hasta los aceites orgánicos, todo fue perfecto.",
-          author: "Elena M.",
-          location: "Aldea Zama"
+          text: "La atención al detalle es asombrosa. Los aceites huelen divino y la presión fue perfecta. El mejor spa a domicilio en Playa.",
+          author: "Sofia Rodriguez",
+          location: "Reseña de Google"
         }
       ]
     },

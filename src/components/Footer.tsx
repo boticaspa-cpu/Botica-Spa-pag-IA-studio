@@ -55,7 +55,7 @@ export const Footer = () => {
             <h4 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.contact}</h4>
             <ul className="space-y-4 text-sm text-gray-500">
               <li>Playa del Carmen, MX</li>
-              <li>+52 (984) 000 0000</li>
+              <li>+52 (984) 123 4567</li>
               <li>hola@boticaspa.com</li>
             </ul>
           </div>
