@@ -18,47 +18,69 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
       id: 'botica', 
       name: t.services.items.botica.name, 
       description: t.services.items.botica.desc,
-      prices: { '60 min': 2200, '90 min': 2900, '120 min': 3600 }
+      prices: { 
+        '60 min': t.services.items.botica.price60, 
+        '90 min': t.services.items.botica.price90, 
+        '120 min': t.services.items.botica.price120 
+      }
     },
     { 
       id: 'fourHands', 
       name: t.services.items.fourHands.name, 
       description: t.services.items.fourHands.desc,
-      prices: { '60 min': 3800, '90 min': 5200 }
+      prices: { 
+        '60 min': t.services.items.fourHands.price60, 
+        '90 min': t.services.items.fourHands.price90 
+      }
     },
     { 
       id: 'deepTissue', 
       name: t.services.items.deepTissue.name, 
       description: t.services.items.deepTissue.desc,
-      prices: { '60 min': 2100, '90 min': 2800, '120 min': 3500 }
+      prices: { 
+        '60 min': t.services.items.deepTissue.price60, 
+        '90 min': t.services.items.deepTissue.price90, 
+        '120 min': t.services.items.deepTissue.price120 
+      }
     },
     { 
       id: 'relaxing', 
       name: t.services.items.relaxing.name, 
       description: t.services.items.relaxing.desc,
-      prices: { '60 min': 1800, '90 min': 2400, '120 min': 3000 }
+      prices: { 
+        '60 min': t.services.items.relaxing.price60, 
+        '90 min': t.services.items.relaxing.price90, 
+        '120 min': t.services.items.relaxing.price120 
+      }
     },
     { 
       id: 'personalized', 
       name: t.services.items.personalized.name, 
       description: t.services.items.personalized.desc,
-      prices: { '60 min': 2000, '90 min': 2700, '120 min': 3400 }
+      prices: { 
+        '60 min': t.services.items.personalized.price60, 
+        '90 min': t.services.items.personalized.price90, 
+        '120 min': t.services.items.personalized.price120 
+      }
     },
     { 
       id: 'facial', 
       name: t.services.items.facial.name, 
       description: t.services.items.facial.desc,
-      prices: { '60 min': 1800, '90 min': 2400 }
+      prices: { 
+        '60 min': t.services.items.facial.price60, 
+        '90 min': t.services.items.facial.price90 
+      }
     },
   ];
 
   const initialService = initialServiceId ? SERVICES.find(s => s.id === initialServiceId) : null;
 
   const [formData, setFormData] = useState({
-    serviceId: initialService?.id || '',
-    serviceName: initialService?.name || '',
-    duration: initialService ? Object.keys(initialService.prices)[0] : '',
-    price: initialService ? Object.values(initialService.prices)[0] : 0,
+    serviceId: '',
+    serviceName: '',
+    duration: '',
+    price: 0,
     date: new Date(),
     time: '',
     customerName: '',
@@ -67,6 +89,37 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
     address: '',
     notes: ''
   });
+
+  React.useEffect(() => {
+    if (isOpen) {
+      if (initialServiceId) {
+        const service = SERVICES.find(s => s.id === initialServiceId);
+        if (service) {
+          setFormData(prev => ({
+            ...prev,
+            serviceId: service.id,
+            serviceName: service.name,
+            duration: Object.keys(service.prices)[0],
+            price: Object.values(service.prices)[0] as number,
+            date: new Date(),
+            time: '',
+          }));
+          setStep(2);
+        }
+      } else {
+        setFormData(prev => ({
+          ...prev,
+          serviceId: '',
+          serviceName: '',
+          duration: '',
+          price: 0,
+          date: new Date(),
+          time: '',
+        }));
+        setStep(1);
+      }
+    }
+  }, [isOpen, initialServiceId, language]);
 
   const TIME_SLOTS = [
     '09:00 AM', '10:30 AM', '12:00 PM', '01:30 PM', '03:00 PM', '04:30 PM', '06:00 PM', '07:30 PM'
@@ -141,9 +194,9 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
         <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-[#F9F8F6]">
           <div className="flex items-center gap-4">
             <img 
-              src="input_file_0.png" 
+              src="input_file_20.png" 
               alt="Logo" 
-              className="w-10 h-10 object-contain"
+              className="w-12 h-12 object-contain"
               referrerPolicy="no-referrer"
             />
             <div>
@@ -171,7 +224,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                 <p className="text-gray-600 mb-8">{t.booking.successDesc}</p>
                 <button 
                   onClick={onClose}
-                  className="px-8 py-3 bg-black text-white rounded-full uppercase tracking-widest text-sm"
+                  className="px-8 py-3 bg-brand text-white rounded-full uppercase tracking-widest text-sm"
                 >
                   {t.booking.close}
                 </button>
@@ -189,7 +242,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           key={service.id}
                           className={cn(
                             "p-6 text-left border rounded-2xl transition-all duration-300",
-                            formData.serviceId === service.id ? "border-black bg-black/5" : "border-gray-200"
+                            formData.serviceId === service.id ? "border-brand bg-brand/5" : "border-gray-200"
                           )}
                         >
                           <div className="mb-4">
@@ -216,11 +269,11 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                                 className={cn(
                                   "px-4 py-2 rounded-full border text-sm transition-all",
                                   formData.serviceId === service.id && formData.duration === duration
-                                    ? "bg-black border-black text-white"
-                                    : "border-gray-200 hover:border-black"
+                                    ? "bg-brand border-brand text-white"
+                                    : "border-gray-200 hover:border-brand"
                                 )}
                               >
-                                {duration} • ${price}
+                                {duration} • ${price.toLocaleString(undefined, { minimumFractionDigits: price % 1 !== 0 ? 2 : 0 })} {t.services.currency}
                               </button>
                             ))}
                           </div>
@@ -248,7 +301,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                               onClick={() => setFormData({ ...formData, date })}
                               className={cn(
                                 "flex-shrink-0 w-20 h-24 rounded-2xl flex flex-col items-center justify-center transition-all",
-                                isSelected ? "bg-black text-white" : "bg-gray-50 hover:bg-gray-100"
+                                isSelected ? "bg-brand text-white" : "bg-gray-50 hover:bg-gray-100"
                               )}
                             >
                               <span className="text-xs uppercase opacity-60 mb-1">{format(date, 'EEE')}</span>
@@ -268,7 +321,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                             onClick={() => setFormData({ ...formData, time })}
                             className={cn(
                               "py-3 rounded-xl border text-sm transition-all",
-                              formData.time === time ? "bg-black border-black text-white" : "border-gray-200 hover:border-gray-400"
+                              formData.time === time ? "bg-brand border-brand text-white" : "border-gray-200 hover:border-gray-400"
                             )}
                           >
                             {time}
@@ -284,7 +337,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       <button 
                         disabled={!formData.time}
                         onClick={handleNext}
-                        className="px-8 py-3 bg-black text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
                       >
                         {t.booking.continue}
                       </button>
@@ -306,7 +359,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                             required
                             value={formData.customerName}
                             onChange={e => setFormData({ ...formData, customerName: e.target.value })}
-                            className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-black transition-all"
+                            className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
                             placeholder="Juan Pérez"
                           />
                         </div>
@@ -317,7 +370,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                             required
                             value={formData.customerEmail}
                             onChange={e => setFormData({ ...formData, customerEmail: e.target.value })}
-                            className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-black transition-all"
+                            className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
                             placeholder="juan@ejemplo.com"
                           />
                         </div>
@@ -329,7 +382,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           required
                           value={formData.customerPhone}
                           onChange={e => setFormData({ ...formData, customerPhone: e.target.value })}
-                          className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-black transition-all"
+                          className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
                           placeholder="+52 ..."
                         />
                       </div>
@@ -339,7 +392,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           required
                           value={formData.address}
                           onChange={e => setFormData({ ...formData, address: e.target.value })}
-                          className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-black transition-all h-24 resize-none"
+                          className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all h-24 resize-none"
                           placeholder={t.booking.addressPlaceholder}
                         />
                       </div>
@@ -352,7 +405,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       <button 
                         disabled={!formData.customerName || !formData.customerEmail || !formData.customerPhone || !formData.address}
                         onClick={handleNext}
-                        className="px-8 py-3 bg-black text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
                       >
                         {t.booking.review}
                       </button>
@@ -369,7 +422,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">{t.nav.treatments}</p>
                           <p className="font-medium">{formData.serviceName} ({formData.duration})</p>
                         </div>
-                        <p className="font-serif text-xl">${formData.price} MXN</p>
+                        <p className="font-serif text-xl">${formData.price.toLocaleString(undefined, { minimumFractionDigits: formData.price % 1 !== 0 ? 2 : 0 })} {t.services.currency}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-4 border-b border-gray-200 pb-4">
                         <div>
@@ -398,7 +451,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       <button 
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="px-12 py-4 bg-black text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-all disabled:opacity-50"
+                        className="px-12 py-4 bg-brand text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-all disabled:opacity-50"
                       >
                         {loading ? t.booking.processing : t.booking.confirm}
                       </button>

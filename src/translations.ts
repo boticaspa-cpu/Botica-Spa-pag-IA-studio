@@ -39,13 +39,14 @@ export const translations = {
       minutes: 'min',
       includes: 'Includes',
       benefits: 'Benefits',
+      currency: 'USD',
       items: {
         facial: {
           name: 'Revitalizing Facial',
           desc: 'A refreshing treatment to restore your skin\'s natural glow and vitality.',
           details: 'Our facial treatments use organic, locally sourced ingredients to cleanse, exfoliate, and hydrate your skin, leaving you looking radiant and refreshed.',
-          price60: 1800,
-          price90: 2400,
+          price60: 112.5,
+          price90: 150,
           benefitsList: ['Deep cleansing', 'Improved skin texture', 'Radiant complexion'],
           includesList: ['Organic skincare products', 'Facial massage', 'Hydrating mask']
         },
@@ -53,9 +54,9 @@ export const translations = {
           name: 'Relaxing Massage',
           desc: 'A gentle, rhythmic journey designed to dissolve stress and restore inner harmony.',
           details: 'A classic relaxation massage using long, flowing strokes to calm the nervous system and promote deep relaxation.',
-          price60: 1800,
-          price90: 2400,
-          price120: 3000,
+          price60: 112.5,
+          price90: 150,
+          price120: 187.5,
           benefitsList: ['Reduces stress and anxiety', 'Improves circulation', 'Promotes better sleep'],
           includesList: ['Professional massage table', 'Organic aromatherapy oils', 'Relaxing soundscape']
         },
@@ -63,9 +64,9 @@ export const translations = {
           name: 'Deep Tissue Massage',
           desc: 'Targeted, intense pressure to release chronic tension and revitalize tired muscles.',
           details: 'A therapeutic massage that focuses on realigning deeper layers of muscles and connective tissue. Ideal for chronic aches and contracted areas.',
-          price60: 2100,
-          price90: 2700,
-          price120: 3300,
+          price60: 131.25,
+          price90: 168.75,
+          price120: 206.25,
           benefitsList: ['Relieves chronic muscle pain', 'Improves posture', 'Breaks up scar tissue'],
           includesList: ['Professional massage table', 'Therapeutic grade oils', 'Muscle relief balm']
         },
@@ -73,9 +74,9 @@ export const translations = {
           name: 'Botica Signature',
           desc: 'Our exclusive signature ritual combining multiple techniques for the ultimate escape.',
           details: 'The Botica Signature is our most popular treatment, blending Swedish, Deep Tissue, and Aromatherapy into one seamless, transformative experience.',
-          price60: 2200,
-          price90: 2800,
-          price120: 3400,
+          price60: 137.5,
+          price90: 175,
+          price120: 212.5,
           benefitsList: ['Total body restoration', 'Mental clarity', 'Exclusive technique blend'],
           includesList: ['Premium organic oils', 'Hot stone accents', 'Personalized consultation']
         },
@@ -83,9 +84,9 @@ export const translations = {
           name: 'Personalized Massage',
           desc: 'A custom-tailored treatment designed specifically for your body\'s unique needs.',
           details: 'Your therapist will consult with you to create a unique blend of techniques, focusing exactly where you need it most.',
-          price60: 2000,
-          price90: 2600,
-          price120: 3200,
+          price60: 125,
+          price90: 162.5,
+          price120: 200,
           benefitsList: ['Customized to your needs', 'Addresses specific problem areas', 'Total body balance'],
           includesList: ['Professional massage table', 'Choice of aromatherapy', 'Personalized consultation']
         },
@@ -93,8 +94,8 @@ export const translations = {
           name: 'Four-Hands Massage',
           desc: 'The ultimate indulgence: two therapists working in perfect synchronicity for total immersion.',
           details: 'A unique experience where two therapists work together in a choreographed sequence, making it impossible for the brain to track, leading to a state of total surrender.',
-          price60: 3800,
-          price90: 4800,
+          price60: 237.5,
+          price90: 300,
           benefitsList: ['Double the relaxation', 'Ultimate sensory experience', 'Deepest state of meditation'],
           includesList: ['Two professional therapists', 'Premium organic oils', 'Enhanced soundscape']
         },
@@ -105,7 +106,7 @@ export const translations = {
       title: 'Monthly Special',
       description: 'Experience the ultimate luxury with a companion or treat yourself twice.',
       offer: '2 Four-Hands Massages',
-      price: '$7,000',
+      price: '$437.50',
       cta: 'Claim Offer',
     },
     social: {
@@ -235,6 +236,49 @@ export const translations = {
             
             Our Deep Tissue and Botica Signature rituals are perfect for post-travel recovery.
           `
+        },
+        {
+          id: 'top-villas-playa',
+          title: 'Top 5 Villas in Playa del Carmen for an In-Home Spa Day',
+          excerpt: 'Planning a luxury retreat? These villas provide the perfect backdrop for our premium wellness rituals.',
+          date: 'March 1, 2026',
+          image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80',
+          content: `
+            Playa del Carmen is home to some of the most stunning villas in the world. 
+            If you're staying in one of these private sanctuaries, you already have half of the spa experience ready. 
+            We've curated a list of our favorite villas that offer the space, privacy, and ambiance needed for a truly transformative in-home spa day.
+            
+            From beachfront estates to jungle-shrouded retreats, discover where to book your next wellness escape.
+          `
+        },
+        {
+          id: 'post-beach-skincare',
+          title: 'The Benefits of Post-Beach Skin Care: Our Revitalizing Facial',
+          excerpt: 'Sun, sand, and salt can be harsh on your skin. Learn how our organic facial treatments restore hydration and glow.',
+          date: 'February 25, 2026',
+          image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?auto=format&fit=crop&q=80',
+          content: `
+            A day at the beach is wonderful for the soul, but it can be taxing for your skin. 
+            The combination of UV rays, salt water, and sand can lead to dehydration and irritation. 
+            Our Revitalizing Facial is specifically designed to counteract these effects using local, organic ingredients that soothe and replenish.
+            
+            Discover the science behind our skincare rituals and why a post-beach facial is a must for any tropical vacation.
+          `
+        },
+        {
+          id: 'airbnb-spa-prep',
+          title: 'How to Prepare Your Airbnb for a Professional Massage Session',
+          excerpt: 'A few simple steps can turn any room into a world-class spa. Here is our guide to preparing your space.',
+          date: 'February 20, 2026',
+          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80',
+          content: `
+            We bring everything needed for your session, but a little preparation on your end can elevate the experience. 
+            From clearing a small space for the table to adjusting the temperature, these tips ensure you get the most out of your ritual.
+            
+            1. Space: We need about 2x3 meters of clear floor space.
+            2. Temperature: Set it slightly warmer than usual, as your body temperature drops during relaxation.
+            3. Lighting: Dim the lights or close the curtains to signal your brain it's time to rest.
+          `
         }
       ]
     }
@@ -276,6 +320,7 @@ export const translations = {
       minutes: 'min',
       includes: 'Incluye',
       benefits: 'Beneficios',
+      currency: 'MXN',
       items: {
         facial: {
           name: 'Facial Revitalizante',
@@ -342,7 +387,7 @@ export const translations = {
       title: 'Especial del Mes',
       description: 'Experimenta el lujo máximo con un acompañante o consiéntete dos veces.',
       offer: '2 Masajes a Cuatro Manos',
-      price: '$7,000',
+      price: '$7,000 MXN',
       cta: 'Reclamar Oferta',
     },
     social: {
@@ -471,6 +516,49 @@ export const translations = {
             Una sesión de masaje focalizada al llegar puede ayudar a reiniciar tu reloj interno y liberar la tensión en el cuello, la espalda y las piernas.
             
             Nuestros rituales Deep Tissue y Botica Signature son perfectos para la recuperación post-viaje.
+          `
+        },
+        {
+          id: 'top-villas-playa',
+          title: 'Las 5 Mejores Villas en Playa del Carmen para un Día de Spa en Casa',
+          excerpt: '¿Planeas un retiro de lujo? Estas villas ofrecen el escenario perfecto para nuestros rituales de bienestar premium.',
+          date: '1 de Marzo, 2026',
+          image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80',
+          content: `
+            Playa del Carmen alberga algunas de las villas más impresionantes del mundo. 
+            Si te hospedas en uno de estos santuarios privados, ya tienes la mitad de la experiencia de spa lista. 
+            Hemos seleccionado una lista de nuestras villas favoritas que ofrecen el espacio, la privacidad y el ambiente necesarios para un día de spa en casa verdaderamente transformador.
+            
+            Desde propiedades frente al mar hasta retiros envueltos en la selva, descubre dónde reservar tu próximo escape de bienestar.
+          `
+        },
+        {
+          id: 'post-beach-skincare',
+          title: 'Los Beneficios del Cuidado de la Piel Post-Playa: Nuestro Facial Revitalizante',
+          excerpt: 'El sol, la arena y la sal pueden ser duros con tu piel. Aprende cómo nuestros tratamientos faciales orgánicos restauran la hidratación y el brillo.',
+          date: '25 de Febrero, 2026',
+          image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?auto=format&fit=crop&q=80',
+          content: `
+            Un día en la playa es maravilloso para el alma, pero puede ser agotador para la piel. 
+            La combinación de rayos UV, agua salada y arena puede provocar deshidratación e irritación. 
+            Nuestro Facial Revitalizante está diseñado específicamente para contrarrestar estos efectos utilizando ingredientes orgánicos locales que calman y reponen.
+            
+            Descubre la ciencia detrás de nuestros rituales de cuidado de la piel y por qué un facial post-playa es imprescindible para cualquier vacación tropical.
+          `
+        },
+        {
+          id: 'airbnb-spa-prep',
+          title: 'Cómo Preparar tu Airbnb para una Sesión de Masaje Profesional',
+          excerpt: 'Unos simples pasos pueden convertir cualquier habitación en un spa de clase mundial. Aquí tienes nuestra guía para preparar tu espacio.',
+          date: '20 de Febrero, 2026',
+          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80',
+          content: `
+            Nosotros traemos todo lo necesario para tu sesión, pero un poco de preparación por tu parte puede elevar la experiencia. 
+            Desde despejar un pequeño espacio para la mesa hasta ajustar la temperatura, estos consejos aseguran que aproveches al máximo tu ritual.
+            
+            1. Espacio: Necesitamos unos 2x3 metros de espacio libre en el suelo.
+            2. Temperatura: Ajústala un poco más cálida de lo habitual, ya que la temperatura corporal baja durante la relajación.
+            3. Iluminación: Atenúa las luces o cierra las cortinas para indicarle a tu cerebro que es hora de descansar.
           `
         }
       ]

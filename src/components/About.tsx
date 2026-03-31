@@ -39,7 +39,7 @@ export const About = () => {
         >
           <div className="flex items-center gap-3">
             <img 
-              src="input_file_0.png" 
+              src="input_file_20.png" 
               alt="Logo" 
               className="w-6 h-6 object-contain"
               referrerPolicy="no-referrer"
@@ -55,8 +55,8 @@ export const About = () => {
           </p>
           <div className="space-y-6">
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                <span className="text-sm font-serif">01</span>
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-brand/20">
+                <span className="text-sm font-serif text-brand">01</span>
               </div>
               <div>
                 <h4 className="font-medium mb-1">{t.about.feature1Title}</h4>
@@ -64,8 +64,8 @@ export const About = () => {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                <span className="text-sm font-serif">02</span>
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-brand/20">
+                <span className="text-sm font-serif text-brand">02</span>
               </div>
               <div>
                 <h4 className="font-medium mb-1">{t.about.feature2Title}</h4>
@@ -73,8 +73,8 @@ export const About = () => {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                <span className="text-sm font-serif">03</span>
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-brand/20">
+                <span className="text-sm font-serif text-brand">03</span>
               </div>
               <div>
                 <h4 className="font-medium mb-1">{t.about.feature3Title}</h4>

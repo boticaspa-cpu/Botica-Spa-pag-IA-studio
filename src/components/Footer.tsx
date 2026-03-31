@@ -12,12 +12,12 @@ export const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <img 
-                src="input_file_0.png" 
+                src="input_file_20.png" 
                 alt="Botica Spa Logo" 
-                className="w-8 h-8 object-contain"
+                className="w-10 h-10 object-contain"
                 referrerPolicy="no-referrer"
               />
-              <h2 className="text-3xl font-serif">Botica Spa</h2>
+              <h2 className="text-3xl font-sans font-bold tracking-tight">Botica Spa</h2>
             </div>
             <p className="text-gray-500 max-w-sm leading-relaxed mb-8">
               {t.footer.desc}
@@ -27,8 +27,8 @@ export const Footer = () => {
                 href={t.social.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
                 aria-label="Instagram"
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand transition-all"
               >
                 <Instagram size={18} />
               </a>
@@ -36,8 +36,8 @@ export const Footer = () => {
                 href={t.social.facebook} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all"
                 aria-label="Facebook"
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand transition-all"
               >
                 <Facebook size={18} />
               </a>

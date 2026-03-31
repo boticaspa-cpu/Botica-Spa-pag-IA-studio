@@ -29,7 +29,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
         <section className="py-12 bg-[#F5F2ED] text-center">
           <Link 
             to="/treatments"
-            className="inline-flex items-center gap-3 text-[#5A5A40] font-bold uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all group"
+            className="inline-flex items-center gap-3 text-brand font-bold uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all group"
           >
             {language === 'en' ? 'View Full Treatment Menu' : 'Ver Menú Completo de Tratamientos'}
             <ArrowRight className="w-4 h-4" />

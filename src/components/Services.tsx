@@ -40,7 +40,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
     <section id="services" className="py-24 md:py-32 bg-[#F5F2ED] relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#E5E5E5] rounded-full blur-[100px] opacity-30 -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#5A5A40] rounded-full blur-[100px] opacity-10 translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand rounded-full blur-[100px] opacity-10 translate-y-1/2 -translate-x-1/2" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mb-16 md:mb-24">
@@ -50,8 +50,8 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
             viewport={{ once: true }}
             className="flex items-center gap-3 mb-4"
           >
-            <Sparkles className="w-5 h-5 text-[#5A5A40]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#5A5A40] font-bold">
+            <Sparkles className="w-5 h-5 text-brand" />
+            <span className="text-xs uppercase tracking-[0.3em] text-brand font-bold">
               {t.services.badge}
             </span>
           </motion.div>
@@ -102,7 +102,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                           {t.services.from}
                         </span>
                         <span className="text-2xl md:text-3xl font-serif text-white">
-                          ${service.price}
+                          ${service.price.toLocaleString(undefined, { minimumFractionDigits: service.price % 1 !== 0 ? 2 : 0 })} {t.services.currency}
                         </span>
                       </div>
                     </div>
@@ -110,7 +110,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                     <div className="flex gap-4">
                       <button
                         onClick={() => onSelectTreatment(service.id)}
-                        className="flex-1 py-4 bg-white text-[#1A1A1A] rounded-2xl flex items-center justify-center gap-2 hover:bg-[#5A5A40] hover:text-white transition-all duration-300 font-semibold tracking-wide"
+                        className="flex-1 py-4 bg-white text-[#1A1A1A] rounded-2xl flex items-center justify-center gap-2 hover:bg-brand hover:text-white transition-all duration-300 font-semibold tracking-wide"
                       >
                         {t.services.viewDetails}
                         <Plus className="w-4 h-4" />

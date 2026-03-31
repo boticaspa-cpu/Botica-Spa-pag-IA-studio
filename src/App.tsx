@@ -78,13 +78,13 @@ function AppContent() {
       )}>
         <Link to="/" className="flex items-center gap-3">
           <img 
-            src="input_file_0.png" 
+            src="input_file_20.png" 
             alt="Botica Spa Logo" 
-            className="w-10 h-10 object-contain"
+            className="w-12 h-12 object-contain"
             referrerPolicy="no-referrer"
           />
           <div className={cn(
-            "font-serif text-2xl tracking-tight transition-colors",
+            "font-sans text-2xl font-bold tracking-tight transition-colors",
             location.pathname === '/' ? "text-white" : "text-[#1A1A1A]"
           )}>Botica Spa</div>
         </Link>
@@ -94,15 +94,15 @@ function AppContent() {
         )}>
           <Link to="/treatments" className={cn(
             "hover:text-white transition-colors",
-            location.pathname !== '/' && "hover:text-[#5A5A40]"
+            location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.treatments}</Link>
           <Link to="/blog" className={cn(
             "hover:text-white transition-colors",
-            location.pathname !== '/' && "hover:text-[#5A5A40]"
+            location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.blog}</Link>
           <a href="/#about" className={cn(
             "hover:text-white transition-colors",
-            location.pathname !== '/' && "hover:text-[#5A5A40]"
+            location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.about}</a>
           
           {/* Language Switcher */}
@@ -110,7 +110,7 @@ function AppContent() {
             onClick={toggleLanguage}
             className={cn(
               "flex items-center gap-2 transition-colors group",
-              location.pathname === '/' ? "hover:text-white" : "hover:text-[#5A5A40]"
+              location.pathname === '/' ? "hover:text-white" : "hover:text-brand"
             )}
           >
             <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
@@ -152,9 +152,9 @@ function AppContent() {
             <div className="px-8 py-6 flex justify-between items-center border-b border-gray-100">
               <div className="flex items-center gap-3">
                 <img 
-                  src="input_file_0.png" 
+                  src="input_file_20.png" 
                   alt="Botica Spa Logo" 
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain"
                   referrerPolicy="no-referrer"
                 />
                 <div className="font-serif text-xl tracking-tight text-[#1A1A1A]">Botica Spa</div>
@@ -170,21 +170,21 @@ function AppContent() {
             <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
               <Link 
                 to="/treatments" 
-                className="text-3xl font-serif text-[#1A1A1A] hover:text-[#5A5A40] transition-colors"
+                className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t.nav.treatments}
               </Link>
               <Link 
                 to="/blog" 
-                className="text-3xl font-serif text-[#1A1A1A] hover:text-[#5A5A40] transition-colors"
+                className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t.nav.blog}
               </Link>
               <a 
                 href="/#about" 
-                className="text-3xl font-serif text-[#1A1A1A] hover:text-[#5A5A40] transition-colors"
+                className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t.nav.about}

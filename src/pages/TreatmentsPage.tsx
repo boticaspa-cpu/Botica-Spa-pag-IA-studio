@@ -111,7 +111,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                             {t.services.from}
                           </span>
                           <span className="text-xl md:text-2xl font-serif text-white">
-                            ${service.price}
+                            ${service.price.toLocaleString(undefined, { minimumFractionDigits: service.price % 1 !== 0 ? 2 : 0 })} {t.services.currency}
                           </span>
                         </div>
                         <button
