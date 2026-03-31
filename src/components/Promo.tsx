@@ -1,0 +1,106 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { useLanguage } from '../LanguageContext';
+import { translations } from '../translations';
+import { Sparkles, ArrowRight } from 'lucide-react';
+
+export const Promo: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  return (
+    <section className="py-24 bg-[#1A1A1A] relative overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5A5A40] rounded-full blur-[150px] opacity-20" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#5A5A40] text-white rounded-full text-[10px] uppercase tracking-[0.2em] font-bold mb-8"
+              >
+                <Sparkles className="w-3 h-3" />
+                {t.promo.badge}
+              </motion.div>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight"
+              >
+                {t.promo.title}
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-white/60 text-lg mb-10 font-light leading-relaxed max-w-md"
+              >
+                {t.promo.description}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-col gap-2 mb-12"
+              >
+                <span className="text-white/40 text-xs uppercase tracking-widest">{t.promo.offer}</span>
+                <span className="text-5xl md:text-7xl font-serif text-white">{t.promo.price}</span>
+              </motion.div>
+
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="px-10 py-5 bg-white text-[#1A1A1A] rounded-2xl font-bold uppercase tracking-widest text-xs flex items-center gap-3 hover:bg-[#5A5A40] hover:text-white transition-all duration-300"
+              >
+                {t.promo.cta}
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </div>
+
+            <div className="relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="aspect-square rounded-[2rem] overflow-hidden shadow-2xl"
+              >
+                <img
+                  src="input_file_16.png"
+                  alt="Four Hands Massage Promo"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+              
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="absolute -top-6 -right-6 w-32 h-32 bg-white rounded-full flex flex-col items-center justify-center text-center p-4 shadow-2xl rotate-12"
+              >
+                <span className="text-[#1A1A1A] font-serif text-2xl font-bold leading-none">Best</span>
+                <span className="text-[#5A5A40] text-[10px] uppercase tracking-widest font-bold">Value</span>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

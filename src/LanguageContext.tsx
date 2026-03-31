@@ -5,6 +5,7 @@ import { Language, translations } from './translations';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
   t: any; // Type-safe translations would be better but this is simpler for now
 }
 
@@ -31,10 +32,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('botica_lang', lang);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'es' : 'en');
+  };
+
   const t = translations[language];
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

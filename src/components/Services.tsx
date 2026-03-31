@@ -14,9 +14,15 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
 
   const services = [
     {
-      id: 'relaxing',
+      id: 'botica',
+      image: 'input_file_12.png',
+      price: t.services.items.botica.price60,
+    },
+    {
+      id: 'fourHands',
       image: 'input_file_16.png',
-      price: t.services.items.relaxing.price60,
+      price: t.services.items.fourHands.price60,
+      highlight: true
     },
     {
       id: 'deepTissue',
@@ -24,14 +30,9 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
       price: t.services.items.deepTissue.price60,
     },
     {
-      id: 'personalized',
+      id: 'relaxing',
       image: 'input_file_4.png',
-      price: t.services.items.personalized.price60,
-    },
-    {
-      id: 'fourHands',
-      image: 'input_file_12.png',
-      price: t.services.items.fourHands.price60,
+      price: t.services.items.relaxing.price60,
     },
   ];
 

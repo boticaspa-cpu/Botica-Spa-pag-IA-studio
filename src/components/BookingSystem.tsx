@@ -15,16 +15,28 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
   
   const SERVICES = [
     { 
+      id: 'botica', 
+      name: t.services.items.botica.name, 
+      description: t.services.items.botica.desc,
+      prices: { '60 min': 2200, '90 min': 2900, '120 min': 3600 }
+    },
+    { 
+      id: 'fourHands', 
+      name: t.services.items.fourHands.name, 
+      description: t.services.items.fourHands.desc,
+      prices: { '60 min': 3800, '90 min': 5200 }
+    },
+    { 
+      id: 'deepTissue', 
+      name: t.services.items.deepTissue.name, 
+      description: t.services.items.deepTissue.desc,
+      prices: { '60 min': 2100, '90 min': 2800, '120 min': 3500 }
+    },
+    { 
       id: 'relaxing', 
       name: t.services.items.relaxing.name, 
       description: t.services.items.relaxing.desc,
       prices: { '60 min': 1800, '90 min': 2400, '120 min': 3000 }
-    },
-    { 
-      id: 'deep-tissue', 
-      name: t.services.items.deepTissue.name, 
-      description: t.services.items.deepTissue.desc,
-      prices: { '60 min': 2100, '90 min': 2800, '120 min': 3500 }
     },
     { 
       id: 'personalized', 
@@ -33,10 +45,10 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
       prices: { '60 min': 2000, '90 min': 2700, '120 min': 3400 }
     },
     { 
-      id: 'four-hands', 
-      name: t.services.items.fourHands.name, 
-      description: t.services.items.fourHands.desc,
-      prices: { '60 min': 3500, '90 min': 4800 }
+      id: 'facial', 
+      name: t.services.items.facial.name, 
+      description: t.services.items.facial.desc,
+      prices: { '60 min': 1800, '90 min': 2400 }
     },
   ];
 

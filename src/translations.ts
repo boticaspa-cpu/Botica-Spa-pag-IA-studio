@@ -6,6 +6,7 @@ export const translations = {
     nav: {
       treatments: 'Treatments',
       about: 'About Us',
+      blog: 'Blog',
       bookNow: 'Book Now',
     },
     hero: {
@@ -39,10 +40,19 @@ export const translations = {
       includes: 'Includes',
       benefits: 'Benefits',
       items: {
+        facial: {
+          name: 'Revitalizing Facial',
+          desc: 'A refreshing treatment to restore your skin\'s natural glow and vitality.',
+          details: 'Our facial treatments use organic, locally sourced ingredients to cleanse, exfoliate, and hydrate your skin, leaving you looking radiant and refreshed.',
+          price60: 1800,
+          price90: 2400,
+          benefitsList: ['Deep cleansing', 'Improved skin texture', 'Radiant complexion'],
+          includesList: ['Organic skincare products', 'Facial massage', 'Hydrating mask']
+        },
         relaxing: {
-          name: 'Signature Relaxation',
+          name: 'Relaxing Massage',
           desc: 'A gentle, rhythmic journey designed to dissolve stress and restore inner harmony.',
-          details: 'Our signature treatment uses long, flowing strokes to calm the nervous system. Perfect for jet lag recovery or simply unwinding after a day in the sun.',
+          details: 'A classic relaxation massage using long, flowing strokes to calm the nervous system and promote deep relaxation.',
           price60: 1800,
           price90: 2400,
           price120: 3000,
@@ -50,7 +60,7 @@ export const translations = {
           includesList: ['Professional massage table', 'Organic aromatherapy oils', 'Relaxing soundscape']
         },
         deepTissue: {
-          name: 'Deep Tissue Recovery',
+          name: 'Deep Tissue Massage',
           desc: 'Targeted, intense pressure to release chronic tension and revitalize tired muscles.',
           details: 'A therapeutic massage that focuses on realigning deeper layers of muscles and connective tissue. Ideal for chronic aches and contracted areas.',
           price60: 2100,
@@ -59,8 +69,18 @@ export const translations = {
           benefitsList: ['Relieves chronic muscle pain', 'Improves posture', 'Breaks up scar tissue'],
           includesList: ['Professional massage table', 'Therapeutic grade oils', 'Muscle relief balm']
         },
+        botica: {
+          name: 'Botica Signature',
+          desc: 'Our exclusive signature ritual combining multiple techniques for the ultimate escape.',
+          details: 'The Botica Signature is our most popular treatment, blending Swedish, Deep Tissue, and Aromatherapy into one seamless, transformative experience.',
+          price60: 2200,
+          price90: 2800,
+          price120: 3400,
+          benefitsList: ['Total body restoration', 'Mental clarity', 'Exclusive technique blend'],
+          includesList: ['Premium organic oils', 'Hot stone accents', 'Personalized consultation']
+        },
         personalized: {
-          name: 'Bespoke Therapy',
+          name: 'Personalized Massage',
           desc: 'A custom-tailored treatment designed specifically for your body\'s unique needs.',
           details: 'Your therapist will consult with you to create a unique blend of techniques, focusing exactly where you need it most.',
           price60: 2000,
@@ -70,15 +90,23 @@ export const translations = {
           includesList: ['Professional massage table', 'Choice of aromatherapy', 'Personalized consultation']
         },
         fourHands: {
-          name: 'Four-Hands Bliss',
+          name: 'Four-Hands Massage',
           desc: 'The ultimate indulgence: two therapists working in perfect synchronicity for total immersion.',
           details: 'A unique experience where two therapists work together in a choreographed sequence, making it impossible for the brain to track, leading to a state of total surrender.',
-          price60: 3500,
-          price90: 4200,
+          price60: 3800,
+          price90: 4800,
           benefitsList: ['Double the relaxation', 'Ultimate sensory experience', 'Deepest state of meditation'],
           includesList: ['Two professional therapists', 'Premium organic oils', 'Enhanced soundscape']
         },
       },
+    },
+    promo: {
+      badge: 'Limited Time Offer',
+      title: 'Monthly Special',
+      description: 'Experience the ultimate luxury with a companion or treat yourself twice.',
+      offer: '2 Four-Hands Massages',
+      price: '$7,000',
+      cta: 'Claim Offer',
     },
     social: {
       instagram: 'https://instagram.com/boticaspa',
@@ -125,6 +153,8 @@ export const translations = {
       desc: 'Premium in-home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
       quickLinks: 'Quick Links',
       home: 'Home',
+      treatments: 'Treatments',
+      blog: 'Blog',
       contact: 'Contact',
       rights: 'All rights reserved.',
       privacy: 'Privacy Policy',
@@ -155,12 +185,65 @@ export const translations = {
       processing: 'Processing...',
       termsNote: 'By clicking confirm, you agree to our terms of service. We will contact you to finalize the payment and therapist assignment.',
       error: 'Something went wrong. Please try again.',
+    },
+    blog: {
+      badge: 'Wellness Journal',
+      title: 'Insights & Rituals',
+      readMore: 'Read More',
+      backToBlog: 'Back to Blog',
+      posts: [
+        {
+          id: 'wellness-guide',
+          title: 'The Ultimate Guide to In-Home Wellness in Playa del Carmen',
+          excerpt: 'Discover how to transform your vacation rental into a private sanctuary for the perfect relaxation experience.',
+          date: 'March 15, 2026',
+          image: 'https://images.unsplash.com/photo-1544161515-4ae6ce6db874?auto=format&fit=crop&q=80',
+          content: `
+            Playa del Carmen is a paradise, but the true luxury lies in the moments of stillness you create for yourself. 
+            In this guide, we explore how to maximize your in-home spa experience. 
+            From setting the right lighting to choosing the perfect time of day, learn how to turn your stay into a wellness retreat.
+            
+            1. Create the Atmosphere: Dim the lights and choose a quiet space.
+            2. Hydration is Key: Drink plenty of water before and after your session.
+            3. Disconnect: Turn off your devices to fully immerse in the ritual.
+          `
+        },
+        {
+          id: 'organic-aromatherapy',
+          title: 'Why Organic Aromatherapy is the Secret to Deep Relaxation',
+          excerpt: 'Learn about the local organic oils we use and how they impact your nervous system and overall well-being.',
+          date: 'March 10, 2026',
+          image: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80',
+          content: `
+            At Botica Spa, we exclusively use premium, locally sourced organic oils. 
+            Aromatherapy is more than just a pleasant scent; it's a powerful tool for healing. 
+            Our bespoke blends are designed to target specific needs, from reducing anxiety to boosting energy levels.
+            
+            We use lavender for calming, eucalyptus for revitalizing, and local citrus blends for a refreshing experience.
+          `
+        },
+        {
+          id: 'traveler-recovery',
+          title: 'Massage for Travelers: How to Recover from a Long Flight',
+          excerpt: 'Long flights can take a toll on your body. Discover the best techniques to combat jet lag and muscle stiffness.',
+          date: 'March 5, 2026',
+          image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80',
+          content: `
+            Traveling is exciting, but the journey can be exhausting. 
+            Jet lag and long hours in a plane seat can lead to muscle stiffness and fatigue. 
+            A targeted massage session upon arrival can help reset your internal clock and release tension in your neck, back, and legs.
+            
+            Our Deep Tissue and Botica Signature rituals are perfect for post-travel recovery.
+          `
+        }
+      ]
     }
   },
   es: {
     nav: {
       treatments: 'Tratamientos',
       about: 'Nosotros',
+      blog: 'Blog',
       bookNow: 'Reservar Ahora',
     },
     hero: {
@@ -194,18 +277,27 @@ export const translations = {
       includes: 'Incluye',
       benefits: 'Beneficios',
       items: {
+        facial: {
+          name: 'Facial Revitalizante',
+          desc: 'Un tratamiento refrescante para restaurar el brillo natural y la vitalidad de tu piel.',
+          details: 'Nuestros tratamientos faciales utilizan ingredientes orgánicos de origen local para limpiar, exfoliar e hidratar tu piel, dejándote con un aspecto radiante y renovado.',
+          price60: 1800,
+          price90: 2400,
+          benefitsList: ['Limpieza profunda', 'Mejora la textura de la piel', 'Tez radiante'],
+          includesList: ['Productos orgánicos para el cuidado de la piel', 'Masaje facial', 'Mascarilla hidratante']
+        },
         relaxing: {
-          name: 'Signature Relaxation',
+          name: 'Masaje Relajante',
           desc: 'Un viaje suave y rítmico diseñado para disolver el estrés y restaurar la armonía interior.',
-          details: 'Nuestro tratamiento insignia utiliza movimientos largos y fluidos para calmar el sistema nervioso. Perfecto para recuperarse del jet lag o simplemente desconectar después de un día bajo el sol.',
+          details: 'Un masaje de relajación clásico que utiliza movimientos largos y fluidos para calmar el sistema nervioso y promover una relajación profunda.',
           price60: 1800,
           price90: 2400,
           price120: 3000,
-          benefitsList: ['Reduce el estrés y la ansiedad', 'Mejora la circulación', 'Promotes un mejor sueño'],
+          benefitsList: ['Reduce el estrés y la ansiedad', 'Mejora la circulación', 'Promueve un mejor sueño'],
           includesList: ['Mesa de masaje profesional', 'Aceites de aromaterapia orgánicos', 'Paisaje sonoro relajante']
         },
         deepTissue: {
-          name: 'Deep Tissue Recovery',
+          name: 'Masaje de Tejido Profundo',
           desc: 'Presión intensa y localizada para liberar la tensión crónica y revitalizar los músculos cansados.',
           details: 'Un masaje terapéutico que se enfoca en realinear las capas más profundas de los músculos y el tejido conectivo. Ideal para dolores crónicos y áreas contraídas.',
           price60: 2100,
@@ -214,8 +306,18 @@ export const translations = {
           benefitsList: ['Alivia el dolor muscular crónico', 'Mejora la postura', 'Descompone el tejido cicatricial'],
           includesList: ['Mesa de masaje profesional', 'Aceites de grado terapéutico', 'Bálsamo para alivio muscular']
         },
+        botica: {
+          name: 'Botica Signature',
+          desc: 'Nuestro ritual exclusivo que combina múltiples técnicas para el escape definitivo.',
+          details: 'El Botica Signature es nuestro tratamiento más popular, combinando técnicas suecas, tejido profundo y aromaterapia en una experiencia transformadora y fluida.',
+          price60: 2200,
+          price90: 2800,
+          price120: 3400,
+          benefitsList: ['Restauración total del cuerpo', 'Claridad mental', 'Mezcla de técnicas exclusivas'],
+          includesList: ['Aceites orgánicos premium', 'Acentos de piedras calientes', 'Consulta personalizada']
+        },
         personalized: {
-          name: 'Bespoke Therapy',
+          name: 'Masaje Personalizado',
           desc: 'Un tratamiento a medida diseñado específicamente para las necesidades únicas de tu cuerpo.',
           details: 'Su terapeuta consultará con usted para crear una combinación única de técnicas, enfocándose exactamente donde más lo necesita.',
           price60: 2000,
@@ -225,15 +327,23 @@ export const translations = {
           includesList: ['Mesa de masaje profesional', 'Elección de aromaterapia', 'Consulta personalizada']
         },
         fourHands: {
-          name: 'Four-Hands Bliss',
+          name: 'Masaje a Cuatro Manos',
           desc: 'La máxima indulgencia: dos terapeutas trabajando en perfecta sincronía para una inmersión total.',
           details: 'Una experiencia única donde dos terapeutas trabajan juntos en una secuencia coreografiada, haciendo imposible que el cerebro siga el ritmo, lo que lleva a un estado de entrega total.',
-          price60: 3500,
-          price90: 4200,
+          price60: 3800,
+          price90: 4800,
           benefitsList: ['Doble relajación', 'Máxima experiencia sensorial', 'Estado de meditación más profundo'],
           includesList: ['Dos terapeutas profesionales', 'Aceites orgánicos premium', 'Paisaje sonoro mejorado']
         },
       },
+    },
+    promo: {
+      badge: 'Oferta por Tiempo Limitado',
+      title: 'Especial del Mes',
+      description: 'Experimenta el lujo máximo con un acompañante o consiéntete dos veces.',
+      offer: '2 Masajes a Cuatro Manos',
+      price: '$7,000',
+      cta: 'Reclamar Oferta',
     },
     social: {
       instagram: 'https://instagram.com/boticaspa',
@@ -280,6 +390,8 @@ export const translations = {
       desc: 'Servicios de masaje premium a domicilio en Playa del Carmen. Llevando el santuario de un spa de clase mundial a tu espacio privado.',
       quickLinks: 'Enlaces Rápidos',
       home: 'Inicio',
+      treatments: 'Tratamientos',
+      blog: 'Blog',
       contact: 'Contacto',
       rights: 'Todos los derechos reservados.',
       privacy: 'Política de Privacidad',
@@ -310,6 +422,58 @@ export const translations = {
       processing: 'Procesando...',
       termsNote: 'Al hacer clic en confirmar, aceptas nuestros términos de servicio. Te contactaremos para finalizar el pago y la asignación del terapeuta.',
       error: 'Algo salió mal. Por favor intenta de nuevo.',
+    },
+    blog: {
+      badge: 'Diario de Bienestar',
+      title: 'Ideas y Rituales',
+      readMore: 'Leer Más',
+      backToBlog: 'Volver al Blog',
+      posts: [
+        {
+          id: 'wellness-guide',
+          title: 'La Guía Definitiva de Bienestar en Casa en Playa del Carmen',
+          excerpt: 'Descubre cómo transformar tu alquiler vacacional en un santuario privado para la experiencia de relajación perfecta.',
+          date: '15 de Marzo, 2026',
+          image: 'https://images.unsplash.com/photo-1544161515-4ae6ce6db874?auto=format&fit=crop&q=80',
+          content: `
+            Playa del Carmen es un paraíso, pero el verdadero lujo reside en los momentos de quietud que creas para ti mismo. 
+            En esta guía, exploramos cómo maximizar tu experiencia de spa en casa. 
+            Desde configurar la iluminación adecuada hasta elegir el momento perfecto del día, aprende cómo convertir tu estancia en un retiro de bienestar.
+            
+            1. Crea la Atmósfera: Atenúa las luces y elige un espacio tranquilo.
+            2. La Hidratación es Clave: Bebe mucha agua antes y después de tu sesión.
+            3. Desconéctate: Apaga tus dispositivos para sumergirte por completo en el ritual.
+          `
+        },
+        {
+          id: 'organic-aromatherapy',
+          title: 'Por qué la Aromaterapia Orgánica es el Secreto de la Relajación Profunda',
+          excerpt: 'Conoce los aceites orgánicos locales que utilizamos y cómo impactan en tu sistema nervioso y bienestar general.',
+          date: '10 de Marzo, 2026',
+          image: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80',
+          content: `
+            En Botica Spa, utilizamos exclusivamente aceites orgánicos premium de origen local. 
+            La aromaterapia es más que un aroma agradable; es una poderosa herramienta de sanación. 
+            Nuestras mezclas personalizadas están diseñadas para abordar necesidades específicas, desde reducir la ansiedad hasta aumentar los niveles de energía.
+            
+            Utilizamos lavanda para calmar, eucalipto para revitalizar y mezclas de cítricos locales para una experiencia refrescante.
+          `
+        },
+        {
+          id: 'traveler-recovery',
+          title: 'Masaje para Viajeros: Cómo Recuperarse de un Vuelo Largo',
+          excerpt: 'Los vuelos largos pueden afectar tu cuerpo. Descubre las mejores técnicas para combatir el jet lag y la rigidez muscular.',
+          date: '5 de Marzo, 2026',
+          image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80',
+          content: `
+            Viajar es emocionante, pero el trayecto puede ser agotador. 
+            El jet lag y las largas horas en el asiento de un avión pueden provocar rigidez muscular y fatiga. 
+            Una sesión de masaje focalizada al llegar puede ayudar a reiniciar tu reloj interno y liberar la tensión en el cuello, la espalda y las piernas.
+            
+            Nuestros rituales Deep Tissue y Botica Signature son perfectos para la recuperación post-viaje.
+          `
+        }
+      ]
     }
   }
 };

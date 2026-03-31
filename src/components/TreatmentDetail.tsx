@@ -44,12 +44,14 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden">
               <img
-                src={`https://images.unsplash.com/photo-${
-                  treatmentId === 'relaxing' ? '1544161515-436cead10245' :
-                  treatmentId === 'deepTissue' ? '1519823551278-64ac92734fb1' :
-                  treatmentId === 'personalized' ? '1600334129128-685c5582fd35' :
-                  '1515377905703-c4788e51af15'
-                }?auto=format&fit=crop&q=80&w=1200`}
+                src={
+                  treatmentId === 'relaxing' ? 'input_file_4.png' :
+                  treatmentId === 'deepTissue' ? 'input_file_8.png' :
+                  treatmentId === 'botica' ? 'input_file_12.png' :
+                  treatmentId === 'fourHands' ? 'input_file_16.png' :
+                  treatmentId === 'facial' ? 'input_file_16.png' :
+                  'input_file_4.png'
+                }
                 alt={treatment.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
