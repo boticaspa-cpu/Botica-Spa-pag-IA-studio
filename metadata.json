@@ -1,5 +1,5 @@
 {
   "name": "Botica Spa | In-Home Massage Playa del Carmen",
   "description": "Luxury in-home massage services in Playa del Carmen. We bring the spa to your hotel, Airbnb, or villa. Certified therapists and premium organic products.",
-  "requestFramePermissions": []
+  "requestFramePermissions": ["geolocation"]
 }

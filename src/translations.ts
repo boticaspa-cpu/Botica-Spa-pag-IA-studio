@@ -150,6 +150,14 @@ export const translations = {
       subtitle: 'Experience the sanctuary of Botica Spa in the comfort of your own home.',
       button: 'Book Your Session Now',
     },
+    assistant: {
+      title: 'Botica Assistant',
+      placeholder: 'Ask me about our treatments or beauty tips...',
+      send: 'Send',
+      minimize: 'Minimize',
+      maximize: 'Chat with us',
+      welcome: 'Hello! I am your Botica Spa assistant. How can I help you today?',
+    },
     footer: {
       desc: 'Premium in-home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
       quickLinks: 'Quick Links',
@@ -430,6 +438,14 @@ export const translations = {
       titleItalic: 'relajación total?',
       subtitle: 'Experimenta el santuario de Botica Spa en la comodidad de tu propio hogar.',
       button: 'Reserva tu sesión ahora',
+    },
+    assistant: {
+      title: 'Asistente Botica',
+      placeholder: 'Pregúntame sobre nuestros tratamientos o tips de belleza...',
+      send: 'Enviar',
+      minimize: 'Minimizar',
+      maximize: 'Chatea con nosotros',
+      welcome: '¡Hola! Soy tu asistente de Botica Spa. ¿Cómo puedo ayudarte hoy?',
     },
     footer: {
       desc: 'Servicios de masaje premium a domicilio en Playa del Carmen. Llevando el santuario de un spa de clase mundial a tu espacio privado.',

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
-import { SEO } from '../components/SEO';
 import { ArrowRight, Calendar } from 'lucide-react';
 
 export function Blog() {
@@ -10,11 +9,6 @@ export function Blog() {
 
   return (
     <div className="pt-32 pb-24">
-      <SEO 
-        title={`${t.nav.blog} | Botica Spa`}
-        description={t.blog.title}
-      />
-      
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <motion.span 

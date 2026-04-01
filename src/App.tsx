@@ -7,7 +7,7 @@ import {
   Menu,
   X
 } from 'lucide-react';
-import { Routes, Route, Link, useLocation, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, BrowserRouter as Router, matchPath } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { translations } from './translations';
 import { Hero } from './components/Hero';
@@ -19,6 +19,7 @@ import { Footer } from './components/Footer';
 import { BookingSystem } from './components/BookingSystem';
 import { TreatmentDetail } from './components/TreatmentDetail';
 import { SEO } from './components/SEO';
+import { GeminiAssistant } from './components/GeminiAssistant';
 import { Home } from './pages/Home';
 import { TreatmentsPage } from './pages/TreatmentsPage';
 import { Blog } from './pages/Blog';
@@ -32,6 +33,35 @@ function AppContent() {
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const location = useLocation();
+
+  const getSEOProps = () => {
+    if (location.pathname === '/treatments') {
+      return {
+        title: language === 'en' ? 'Our Treatment Menu | Botica Spa' : 'Nuestro Menú de Tratamientos | Botica Spa',
+        description: language === 'en' ? 'Explore our full range of premium spa rituals including signature massages, deep tissue, and revitalizing facials.' : 'Explora nuestra gama completa de rituales de spa premium, incluyendo masajes exclusivos, tejido profundo y faciales revitalizantes.'
+      };
+    }
+    if (location.pathname === '/blog') {
+      return {
+        title: `${t.nav.blog} | Botica Spa`,
+        description: t.blog.title
+      };
+    }
+    const blogMatch = matchPath('/blog/:id', location.pathname);
+    if (blogMatch) {
+      const id = blogMatch.params.id;
+      const post = t.blog.posts.find((p: any) => p.id === id);
+      if (post) {
+        return {
+          title: `${post.title} | Botica Spa Blog`,
+          description: post.excerpt
+        };
+      }
+    }
+    return null;
+  };
+
+  const seoProps = getSEOProps();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -71,6 +101,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#F9F8F6]">
+      {seoProps && <SEO {...seoProps} />}
       {/* Navigation */}
       <nav className={cn(
         "fixed top-0 left-0 right-0 z-40 px-8 py-6 flex justify-between items-center transition-all duration-500",
@@ -276,6 +307,8 @@ function AppContent() {
         onClose={() => setIsBookingOpen(false)}
         initialServiceId={selectedTreatment}
       />
+      
+      <GeminiAssistant />
     </div>
   );
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
-import { SEO } from '../components/SEO';
 import { ArrowLeft, Calendar, Share2 } from 'lucide-react';
 
 export function BlogPost() {
@@ -17,11 +16,6 @@ export function BlogPost() {
 
   return (
     <div className="pt-32 pb-24">
-      <SEO 
-        title={`${post.title} | Botica Spa Blog`}
-        description={post.excerpt}
-      />
-      
       <div className="max-w-4xl mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

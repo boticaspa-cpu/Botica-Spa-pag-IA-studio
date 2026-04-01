@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { Sparkles, ArrowRight, Plus } from 'lucide-react';
-import { SEO } from '../components/SEO';
 
 interface TreatmentsPageProps {
   onSelectTreatment: (id: string) => void;
@@ -48,10 +47,6 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
 
   return (
     <>
-      <SEO 
-        title={language === 'en' ? 'Our Treatment Menu | Botica Spa' : 'Nuestro Menú de Tratamientos | Botica Spa'}
-        description={language === 'en' ? 'Explore our full range of premium spa rituals including signature massages, deep tissue, and revitalizing facials.' : 'Explora nuestra gama completa de rituales de spa premium, incluyendo masajes exclusivos, tejido profundo y faciales revitalizantes.'}
-      />
       <main className="pt-32 pb-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16 md:mb-24">

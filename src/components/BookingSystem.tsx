@@ -125,6 +125,23 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
     '09:00 AM', '10:30 AM', '12:00 PM', '01:30 PM', '03:00 PM', '04:30 PM', '06:00 PM', '07:30 PM'
   ];
 
+  const isSlotPast = (timeSlot: string, selectedDate: Date) => {
+    if (!isSameDay(selectedDate, new Date())) return false;
+    
+    const [time, period] = timeSlot.split(' ');
+    const [hoursStr, minutesStr] = time.split(':');
+    let hours = parseInt(hoursStr);
+    const minutes = parseInt(minutesStr);
+    
+    if (period === 'PM' && hours !== 12) hours += 12;
+    if (period === 'AM' && hours === 12) hours = 0;
+    
+    const slotDate = new Date(selectedDate);
+    slotDate.setHours(hours, minutes, 0, 0);
+    
+    return slotDate < new Date();
+  };
+
   const handleNext = () => setStep(s => s + 1);
   const handleBack = () => setStep(s => s - 1);
 
@@ -298,7 +315,15 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           return (
                             <button
                               key={i}
-                              onClick={() => setFormData({ ...formData, date })}
+                              onClick={() => {
+                                setFormData(prev => {
+                                  const next = { ...prev, date };
+                                  if (next.time && isSlotPast(next.time, date)) {
+                                    next.time = '';
+                                  }
+                                  return next;
+                                });
+                              }}
                               className={cn(
                                 "flex-shrink-0 w-20 h-24 rounded-2xl flex flex-col items-center justify-center transition-all",
                                 isSelected ? "bg-brand text-white" : "bg-gray-50 hover:bg-gray-100"
@@ -315,18 +340,23 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     <div>
                       <p className="text-sm text-gray-500 mb-4 uppercase tracking-widest">{t.booking.times}</p>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        {TIME_SLOTS.map(time => (
-                          <button
-                            key={time}
-                            onClick={() => setFormData({ ...formData, time })}
-                            className={cn(
-                              "py-3 rounded-xl border text-sm transition-all",
-                              formData.time === time ? "bg-brand border-brand text-white" : "border-gray-200 hover:border-gray-400"
-                            )}
-                          >
-                            {time}
-                          </button>
-                        ))}
+                        {TIME_SLOTS.map(time => {
+                          const isPast = isSlotPast(time, formData.date);
+                          return (
+                            <button
+                              key={time}
+                              disabled={isPast}
+                              onClick={() => setFormData({ ...formData, time })}
+                              className={cn(
+                                "py-3 rounded-xl border text-sm transition-all",
+                                formData.time === time ? "bg-brand border-brand text-white" : "border-gray-200 hover:border-gray-400",
+                                isPast && "opacity-30 cursor-not-allowed bg-gray-50 grayscale"
+                              )}
+                            >
+                              {time}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
 
