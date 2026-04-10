@@ -3,12 +3,18 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { ArrowRight, Calendar } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function Blog() {
   const { t } = useLanguage();
 
   return (
     <div className="pt-32 pb-24">
+      <SEO
+        title="Wellness Blog | Spa Tips & Guides | Botica Spa Riviera Maya"
+        description="Expert tips on in-home wellness, massage therapy, aromatherapy, and spa preparation for your stay in Playa del Carmen, Tulum, and Cancún."
+        url="https://boticaspa.com/blog"
+      />
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <motion.span 

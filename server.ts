@@ -1,8 +1,11 @@
+import 'dotenv/config';
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
+import { GoogleGenAI } from "@google/genai";
+import { MercadoPagoConfig, Preference } from "mercadopago";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -88,6 +91,101 @@ async function startServer() {
     } catch (error) {
       console.error("Error sending email:", error);
       res.status(500).json({ error: "Failed to send email" });
+    }
+  });
+
+  // Mercado Pago Checkout Session
+  app.post("/api/create-checkout-session", async (req, res) => {
+    const { amount, bookingData } = req.body;
+
+    if (!process.env.MP_ACCESS_TOKEN) {
+      return res.status(500).json({ error: "Mercado Pago not configured" });
+    }
+
+    const mpClient = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN });
+    const appUrl = process.env.APP_URL || "http://localhost:3000";
+
+    try {
+      const serviceTitle = bookingData.guests
+        ?.map((g: { serviceName: string; duration: string }) => `${g.serviceName} (${g.duration})`)
+        .join(', ') || 'Botica Spa Service';
+
+      const preference = new Preference(mpClient);
+      const response = await preference.create({
+        body: {
+          items: [
+            {
+              id: bookingData.guests?.[0]?.serviceId || 'spa-service',
+              title: `Botica Spa — ${serviceTitle}`,
+              description: `Depósito 30% · ${bookingData.date} a las ${bookingData.time}`,
+              quantity: 1,
+              unit_price: amount,
+              currency_id: 'MXN',
+            },
+          ],
+          payer: {
+            name: bookingData.customerName,
+            email: bookingData.customerEmail,
+            phone: { number: bookingData.customerPhone },
+          },
+          back_urls: {
+            success: `${appUrl}/booking/success`,
+            failure: `${appUrl}`,
+            pending: `${appUrl}/booking/success`,
+          },
+          auto_return: 'approved',
+          external_reference: JSON.stringify(bookingData),
+          statement_descriptor: 'Botica Spa',
+        },
+      });
+
+      // En producción cambiar sandbox_init_point → init_point
+      const checkoutUrl = response.sandbox_init_point || response.init_point;
+      res.json({ url: checkoutUrl });
+    } catch (error) {
+      console.error("Mercado Pago error:", error);
+      res.status(500).json({ error: "Failed to create checkout session" });
+    }
+  });
+
+  // Gemini chat endpoint
+  app.post("/api/chat", async (req, res) => {
+    const { messages, userMessage, language } = req.body;
+
+    if (!process.env.GEMINI_API_KEY) {
+      return res.status(500).json({ error: "Gemini API key not configured" });
+    }
+
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash-exp",
+        contents: [
+          ...messages.map((m: { role: string; content: string }) => ({
+            role: m.role === 'user' ? 'user' : 'model',
+            parts: [{ text: m.content }],
+          })),
+          { role: 'user', parts: [{ text: userMessage }] },
+        ],
+        config: {
+          systemInstruction: `You are the Botica Spa Assistant, a friendly and knowledgeable beauty and wellness consultant in Playa del Carmen.
+          You help users choose the best treatments at Botica Spa and provide expert advice on skincare and relaxation.
+          The spa is located in Playa del Carmen, MX. We offer in-home massage services.
+          Current language: ${language === 'en' ? 'English' : 'Spanish'}. Please respond in this language.
+          Use Google Search to find beauty tips or local info if needed.
+          Be concise, professional, and welcoming.`,
+          tools: [{ googleSearch: {} }],
+        },
+      });
+
+      res.json({
+        text: response.text,
+        groundingMetadata: response.candidates?.[0]?.groundingMetadata ?? null,
+      });
+    } catch (error) {
+      console.error("Gemini error:", error);
+      res.status(500).json({ error: "Failed to get response from Gemini" });
     }
   });
 

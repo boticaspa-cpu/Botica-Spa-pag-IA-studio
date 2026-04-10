@@ -43,28 +43,33 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
         : 'Rituales de spa de lujo en tu puerta en Playa del Carmen.')} />
       <meta name="twitter:image" content="https://boticaspa.com/og-image.jpg" />
 
+      {/* Canonical */}
+      <link rel="canonical" href={url} />
+
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
+          "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
           "name": "Botica Spa",
           "image": "https://boticaspa.com/logo.png",
           "@id": "https://boticaspa.com",
           "url": "https://boticaspa.com",
           "telephone": t.social.phone,
+          "serviceType": "Mobile Spa / In-Home Massage Service",
+          "areaServed": [
+            { "@type": "City", "name": "Playa del Carmen" },
+            { "@type": "City", "name": "Tulum" },
+            { "@type": "City", "name": "Cancún" },
+            { "@type": "City", "name": "Akumal" },
+            { "@type": "City", "name": "Puerto Morelos" }
+          ],
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Playa del Carmen",
             "addressLocality": "Playa del Carmen",
             "addressRegion": "Quintana Roo",
             "postalCode": "77710",
             "addressCountry": "MX"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 20.6206135,
-            "longitude": -87.0804746
           },
           "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",

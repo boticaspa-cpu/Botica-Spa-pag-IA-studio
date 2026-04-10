@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/fonts\")",
+      "Bash(cp \"/Users/mariawignall/Desktop/BOTICA SPA /Botica spa historico/BOTICA 2025/Fonts botica spa/NimbusSanL-Bol,NimbusSanL-BolIta,NimbusSanL-Reg/NimbusSanL-Reg.woff2\" \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/fonts/\")",
+      "Bash(cp \"/Users/mariawignall/Desktop/BOTICA SPA /Botica spa historico/BOTICA 2025/Fonts botica spa/NimbusSanL-Bol,NimbusSanL-BolIta,NimbusSanL-Reg/NimbusSanL-Bol.woff2\" \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/fonts/\")",
+      "Bash(cp \"/Users/mariawignall/Desktop/BOTICA SPA /Botica spa historico/BOTICA 2025/Fonts botica spa/NimbusSanL-Bol,NimbusSanL-BolIta,NimbusSanL-Reg/NimbusSanL-RegIta.woff2\" \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/fonts/\")",
+      "Bash(cp \"/Users/mariawignall/Desktop/BOTICA SPA /Botica spa historico/BOTICA 2025/Fonts botica spa/NimbusSanL-Bol,NimbusSanL-BolIta,NimbusSanL-Reg/NimbusSanL-BolIta.woff2\" \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/fonts/\")",
+      "Read(//private/tmp/**)",
+      "Bash(ls \"/Users/mariawignall/Desktop/botica spa pag web github/Botica-Spa-pag-IA-studio/public/\"*.jpg)",
+      "Read(//Volumes/MTWS/**)",
+      "Bash(ls \"/Volumes/MTWS/GINA AGASSINI/Botica/fotoshoot 5/\"*.jpg)"
+    ]
+  }
+}

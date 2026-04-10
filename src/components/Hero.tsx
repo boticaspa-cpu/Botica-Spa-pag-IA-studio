@@ -105,16 +105,6 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1.5 }}
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
-      >
-        <span className="text-white/30 text-[9px] uppercase tracking-[0.6em] rotate-90 origin-left translate-x-2 font-medium">{t.hero.scroll}</span>
-        <div className="w-[1px] h-20 bg-gradient-to-b from-white/60 via-white/20 to-transparent" />
-      </motion.div>
     </section>
   );
 };

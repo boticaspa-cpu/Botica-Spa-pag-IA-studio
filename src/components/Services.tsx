@@ -15,23 +15,23 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
   const services = [
     {
       id: 'botica',
-      image: 'input_file_12.png',
+      image: '/masaje-botica.jpg',
       price: t.services.items.botica.price60,
     },
     {
       id: 'fourHands',
-      image: 'input_file_16.png',
+      image: '/masaje-cuatro-manos.jpg',
       price: t.services.items.fourHands.price60,
       highlight: true
     },
     {
       id: 'deepTissue',
-      image: 'input_file_8.png',
+      image: '/masaje-profundo.jpg',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
-      image: 'input_file_4.png',
+      image: '/masaje-relajante.jpg',
       price: t.services.items.relaxing.price60,
     },
   ];
@@ -108,13 +108,6 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                     </div>
 
                     <div className="flex gap-4">
-                      <button
-                        onClick={() => onSelectTreatment(service.id)}
-                        className="flex-1 py-4 bg-white text-[#1A1A1A] rounded-2xl flex items-center justify-center gap-2 hover:bg-brand hover:text-white transition-all duration-300 font-semibold tracking-wide"
-                      >
-                        {t.services.viewDetails}
-                        <Plus className="w-4 h-4" />
-                      </button>
                       <button
                         onClick={() => onSelectTreatment(service.id)}
                         className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"

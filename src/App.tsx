@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  MessageCircle, 
-  ChevronUp, 
-  Globe,
+  MessageCircle,
+  ChevronUp,
   Menu,
   X
 } from 'lucide-react';
-import { Routes, Route, Link, useLocation, BrowserRouter as Router, matchPath } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, BrowserRouter as Router } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { translations } from './translations';
 import { Hero } from './components/Hero';
@@ -24,10 +23,11 @@ import { Home } from './pages/Home';
 import { TreatmentsPage } from './pages/TreatmentsPage';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { PaymentSuccess } from './pages/PaymentSuccess';
 import { cn } from './lib/utils';
 
 function AppContent() {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null);
@@ -35,28 +35,12 @@ function AppContent() {
   const location = useLocation();
 
   const getSEOProps = () => {
-    if (location.pathname === '/treatments') {
+    if (location.pathname === '/') {
       return {
-        title: language === 'en' ? 'Our Treatment Menu | Botica Spa' : 'Nuestro Menú de Tratamientos | Botica Spa',
-        description: language === 'en' ? 'Explore our full range of premium spa rituals including signature massages, deep tissue, and revitalizing facials.' : 'Explora nuestra gama completa de rituales de spa premium, incluyendo masajes exclusivos, tejido profundo y faciales revitalizantes.'
+        title: 'Botica Spa | Mobile Spa & Massage Services in Riviera Maya',
+        description: 'Luxury in-home spa rituals delivered to your villa, hotel, or Airbnb in Playa del Carmen, Tulum, and Cancún. Certified therapists, organic oils, total serenity.',
+        url: 'https://boticaspa.com/'
       };
-    }
-    if (location.pathname === '/blog') {
-      return {
-        title: `${t.nav.blog} | Botica Spa`,
-        description: t.blog.title
-      };
-    }
-    const blogMatch = matchPath('/blog/:id', location.pathname);
-    if (blogMatch) {
-      const id = blogMatch.params.id;
-      const post = t.blog.posts.find((p: any) => p.id === id);
-      if (post) {
-        return {
-          title: `${post.title} | Botica Spa Blog`,
-          description: post.excerpt
-        };
-      }
     }
     return null;
   };
@@ -108,22 +92,18 @@ function AppContent() {
         location.pathname === '/' ? "bg-gradient-to-b from-black/20 to-transparent" : "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100"
       )}>
         <Link to="/" className="flex items-center gap-3">
-          <img 
-            src="input_file_20.png" 
-            alt="Botica Spa Logo" 
-            className="w-12 h-12 object-contain"
+          <img
+            src="/logo.png"
+            alt="Botica Spa Logo"
+            className={cn("w-12 h-12 object-contain transition-all", location.pathname === '/' ? "brightness-0 invert" : "")}
             referrerPolicy="no-referrer"
           />
-          <div className={cn(
-            "font-sans text-2xl font-bold tracking-tight transition-colors",
-            location.pathname === '/' ? "text-white" : "text-[#1A1A1A]"
-          )}>Botica Spa</div>
         </Link>
         <div className={cn(
           "hidden md:flex items-center gap-8 text-xs uppercase tracking-widest transition-colors",
           location.pathname === '/' ? "text-white/80" : "text-[#1A1A1A]/60"
         )}>
-          <Link to="/treatments" className={cn(
+          <Link to="/masajes" className={cn(
             "hover:text-white transition-colors",
             location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.treatments}</Link>
@@ -136,19 +116,7 @@ function AppContent() {
             location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.about}</a>
           
-          {/* Language Switcher */}
-          <button 
-            onClick={toggleLanguage}
-            className={cn(
-              "flex items-center gap-2 transition-colors group",
-              location.pathname === '/' ? "hover:text-white" : "hover:text-brand"
-            )}
-          >
-            <Globe className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-            <span>{language === 'en' ? 'ES' : 'EN'}</span>
-          </button>
-
-          <button 
+          <button
             onClick={() => setIsBookingOpen(true)}
             className={cn(
               "px-6 py-3 rounded-full transition-all font-medium",
@@ -181,15 +149,14 @@ function AppContent() {
             className="fixed inset-0 z-50 bg-white flex flex-col"
           >
             <div className="px-8 py-6 flex justify-between items-center border-b border-gray-100">
-              <div className="flex items-center gap-3">
-                <img 
-                  src="input_file_20.png" 
-                  alt="Botica Spa Logo" 
+              <Link to="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
+                <img
+                  src="/logo.png"
+                  alt="Botica Spa Logo"
                   className="w-10 h-10 object-contain"
                   referrerPolicy="no-referrer"
                 />
-                <div className="font-serif text-xl tracking-tight text-[#1A1A1A]">Botica Spa</div>
-              </div>
+              </Link>
               <button 
                 onClick={() => setIsMenuOpen(false)}
                 className="p-2 text-[#1A1A1A]"
@@ -200,7 +167,7 @@ function AppContent() {
 
             <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
               <Link 
-                to="/treatments" 
+                to="/masajes" 
                 className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -221,17 +188,6 @@ function AppContent() {
                 {t.nav.about}
               </a>
               
-              <button 
-                onClick={() => {
-                  toggleLanguage();
-                  setIsMenuOpen(false);
-                }}
-                className="flex items-center gap-3 text-xl font-serif text-[#1A1A1A]"
-              >
-                <Globe className="w-5 h-5" />
-                <span>{language === 'en' ? 'Español' : 'English'}</span>
-              </button>
-
               <button 
                 onClick={() => {
                   setIsBookingOpen(true);
@@ -257,9 +213,10 @@ function AppContent() {
 
       <Routes>
         <Route path="/" element={<Home onSelectTreatment={handleSelectTreatment} onBookNow={handleBook} />} />
-        <Route path="/treatments" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
+        <Route path="/masajes" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/booking/success" element={<PaymentSuccess />} />
       </Routes>
 
       <Footer />

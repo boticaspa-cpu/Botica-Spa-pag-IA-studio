@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
-import { Sparkles, ArrowRight, Plus } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 interface TreatmentsPageProps {
   onSelectTreatment: (id: string) => void;
@@ -15,38 +16,43 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
   const allServices = [
     {
       id: 'botica',
-      image: 'input_file_12.png',
+      image: '/masaje-botica.jpg',
       price: t.services.items.botica.price60,
     },
     {
       id: 'fourHands',
-      image: 'input_file_16.png',
+      image: '/masaje-cuatro-manos.jpg',
       price: t.services.items.fourHands.price60,
     },
     {
       id: 'deepTissue',
-      image: 'input_file_8.png',
+      image: '/masaje-profundo.jpg',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
-      image: 'input_file_4.png',
+      image: '/masaje-relajante.jpg',
       price: t.services.items.relaxing.price60,
     },
     {
       id: 'personalized',
-      image: 'input_file_12.png',
+      image: '/spa-detalle.jpg',
       price: t.services.items.personalized.price60,
     },
     {
       id: 'facial',
-      image: 'input_file_16.png',
+      image: '/masaje-cuatro-manos.jpg',
       price: t.services.items.facial.price60,
     },
   ];
 
   return (
     <>
+      <SEO
+        title="Spa Treatments & Massage Rituals | Botica Spa Riviera Maya"
+        description="Explore our in-home spa treatments: signature massage, four-hands, deep tissue, relaxing, personalized rituals and revitalizing facials. Delivered to your villa or hotel in Riviera Maya."
+        url="https://boticaspa.com/masajes"
+      />
       <main className="pt-32 pb-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mb-16 md:mb-24">
@@ -117,13 +123,6 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                         </button>
                       </div>
 
-                      <button
-                        onClick={() => onSelectTreatment(service.id)}
-                        className="w-full py-3 bg-white text-[#1A1A1A] rounded-xl flex items-center justify-center gap-2 hover:bg-[#5A5A40] hover:text-white transition-all duration-300 text-xs font-bold tracking-widest uppercase"
-                      >
-                        {t.services.viewDetails}
-                        <Plus className="w-3 h-3" />
-                      </button>
                     </div>
                   </div>
                 </motion.div>

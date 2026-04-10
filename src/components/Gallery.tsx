@@ -3,12 +3,12 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 
 const GALLERY_IMAGES = [
-  'input_file_1.png',
-  'input_file_2.png',
-  'input_file_6.png',
-  'input_file_9.png',
-  'input_file_10.png',
-  'input_file_11.png',
+  '/galeria-1.jpg',
+  '/galeria-2.jpg',
+  '/galeria-3.jpg',
+  '/galeria-4.jpg',
+  '/galeria-5.jpg',
+  '/galeria-6.jpg',
 ];
 
 export const Gallery = () => {

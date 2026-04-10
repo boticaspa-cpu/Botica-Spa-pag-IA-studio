@@ -1,40 +1,21 @@
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 import { Language, translations } from './translations';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-  t: any; // Type-safe translations would be better but this is simpler for now
+  t: any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>('en');
+  const [language] = useState<Language>('en');
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem('botica_lang') as Language;
-    if (savedLang && (savedLang === 'en' || savedLang === 'es')) {
-      setLanguageState(savedLang);
-    } else {
-      // Default to English but check browser language
-      const browserLang = navigator.language.split('-')[0];
-      if (browserLang === 'es') {
-        setLanguageState('es');
-      }
-    }
-  }, []);
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('botica_lang', lang);
-  };
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'es' : 'en');
-  };
+  const setLanguage = (_lang: Language) => {};
+  const toggleLanguage = () => {};
 
   const t = translations[language];
 

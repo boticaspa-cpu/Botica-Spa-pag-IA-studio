@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { ArrowLeft, Calendar, Share2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function BlogPost() {
   const { id } = useParams();
@@ -16,6 +17,11 @@ export function BlogPost() {
 
   return (
     <div className="pt-32 pb-24">
+      <SEO
+        title={`${post.title} | Botica Spa`}
+        description={post.excerpt}
+        url={`https://boticaspa.com/blog/${post.id}`}
+      />
       <div className="max-w-4xl mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

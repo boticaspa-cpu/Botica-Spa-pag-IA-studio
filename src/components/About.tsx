@@ -15,7 +15,7 @@ export const About = () => {
         >
           <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
             <img 
-              src="input_file_5.png" 
+              src="/spa-interior.jpg"
               alt="Massage therapy" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -23,7 +23,7 @@ export const About = () => {
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white rounded-3xl overflow-hidden shadow-xl hidden md:block">
             <img 
-              src="input_file_7.png" 
+              src="/spa-detalle.jpg"
               alt="Botica apothecary" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -39,7 +39,7 @@ export const About = () => {
         >
           <div className="flex items-center gap-3">
             <img 
-              src="input_file_20.png" 
+              src="/logo.png"
               alt="Logo" 
               className="w-6 h-6 object-contain"
               referrerPolicy="no-referrer"

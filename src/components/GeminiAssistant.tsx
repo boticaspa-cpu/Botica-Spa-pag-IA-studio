@@ -2,11 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Send, X, Minus, MapPin, Search, ExternalLink, Bot } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
-import { GoogleGenAI } from "@google/genai";
 import ReactMarkdown from 'react-markdown';
-
-// Initialize Gemini AI
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export function GeminiAssistant() {
   const { t, language } = useLanguage();
@@ -32,26 +28,17 @@ export function GeminiAssistant() {
     setIsLoading(true);
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: [
-          ...messages.map(m => ({ role: m.role === 'user' ? 'user' : 'model', parts: [{ text: m.content }] })),
-          { role: 'user', parts: [{ text: userMessage }] }
-        ],
-        config: {
-          systemInstruction: `You are the Botica Spa Assistant, a friendly and knowledgeable beauty and wellness consultant in Playa del Carmen.
-          You help users choose the best treatments at Botica Spa and provide expert advice on skincare and relaxation.
-          The spa is located in Playa del Carmen, MX. We offer in-home massage services.
-          Current language: ${language === 'en' ? 'English' : 'Spanish'}. Please respond in this language.
-          Use Google Search to find beauty tips or local info if needed.
-          Use Google Maps to find the spa or nearby places if relevant.
-          Be concise, professional, and welcoming.`,
-          tools: [{ googleSearch: {} }, { googleMaps: {} }],
-        },
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages, userMessage, language }),
       });
 
-      const assistantMessage = response.text || "I'm sorry, I couldn't process that.";
-      const groundingMetadata = response.candidates?.[0]?.groundingMetadata;
+      if (!response.ok) throw new Error('Server error');
+      const data = await response.json();
+
+      const assistantMessage = data.text || "I'm sorry, I couldn't process that.";
+      const groundingMetadata = data.groundingMetadata;
 
       setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage, groundingMetadata }]);
     } catch (error) {

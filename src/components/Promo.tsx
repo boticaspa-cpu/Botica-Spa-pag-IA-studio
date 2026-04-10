@@ -79,7 +79,7 @@ export const Promo: React.FC = () => {
                 className="aspect-square rounded-[2rem] overflow-hidden shadow-2xl"
               >
                 <img
-                  src="input_file_16.png"
+                  src="/masaje-cuatro-manos.jpg"
                   alt="Four Hands Massage Promo"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"

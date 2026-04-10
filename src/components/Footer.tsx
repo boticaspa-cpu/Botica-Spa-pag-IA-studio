@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <img 
-                src="input_file_20.png" 
+                src="/logo.png"
                 alt="Botica Spa Logo" 
                 className="w-10 h-10 object-contain"
                 referrerPolicy="no-referrer"
@@ -47,7 +47,7 @@ export const Footer = () => {
             <h4 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h4>
             <ul className="space-y-4 text-sm text-gray-500">
               <li><Link to="/" className="hover:text-black transition-colors">{t.footer.home}</Link></li>
-              <li><Link to="/treatments" className="hover:text-black transition-colors">{t.nav.treatments}</Link></li>
+              <li><Link to="/masajes" className="hover:text-black transition-colors">{t.nav.treatments}</Link></li>
               <li><Link to="/blog" className="hover:text-black transition-colors">{t.nav.blog}</Link></li>
               <li><a href="/#about" className="hover:text-black transition-colors">{t.nav.about}</a></li>
               <li><a href={t.social.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">{t.footer.contact}</a></li>

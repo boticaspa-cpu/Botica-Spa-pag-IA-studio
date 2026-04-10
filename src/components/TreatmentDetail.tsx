@@ -45,12 +45,12 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
             <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden">
               <img
                 src={
-                  treatmentId === 'relaxing' ? 'input_file_4.png' :
-                  treatmentId === 'deepTissue' ? 'input_file_8.png' :
-                  treatmentId === 'botica' ? 'input_file_12.png' :
-                  treatmentId === 'fourHands' ? 'input_file_16.png' :
-                  treatmentId === 'facial' ? 'input_file_16.png' :
-                  'input_file_4.png'
+                  treatmentId === 'relaxing' ? '/masaje-relajante.jpg' :
+                  treatmentId === 'deepTissue' ? '/masaje-profundo.jpg' :
+                  treatmentId === 'botica' ? '/masaje-botica.jpg' :
+                  treatmentId === 'fourHands' ? '/masaje-cuatro-manos.jpg' :
+                  treatmentId === 'facial' ? '/masaje-cuatro-manos.jpg' :
+                  '/masaje-relajante.jpg'
                 }
                 alt={treatment.name}
                 className="w-full h-full object-cover"

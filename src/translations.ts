@@ -4,14 +4,14 @@ export type Language = 'en' | 'es';
 export const translations = {
   en: {
     nav: {
-      treatments: 'Treatments',
+      treatments: 'Massages',
       about: 'About Us',
       blog: 'Blog',
       bookNow: 'Book Now',
     },
     hero: {
       title: 'The Art of In-Home',
-      titleItalic: 'Relaxation',
+      titleItalic: 'Massage',
       subtitle: 'Premium wellness rituals delivered to your private sanctuary in Playa del Carmen. Experience the spa, redefined.',
       ctaBook: 'Book Your Session',
       ctaServices: 'Explore Rituals',
@@ -45,7 +45,7 @@ export const translations = {
           name: 'Revitalizing Facial',
           desc: 'A refreshing treatment to restore your skin\'s natural glow and vitality.',
           details: 'Our facial treatments use organic, locally sourced ingredients to cleanse, exfoliate, and hydrate your skin, leaving you looking radiant and refreshed.',
-          price60: 112.5,
+          price60: 113,
           price90: 150,
           benefitsList: ['Deep cleansing', 'Improved skin texture', 'Radiant complexion'],
           includesList: ['Organic skincare products', 'Facial massage', 'Hydrating mask']
@@ -54,9 +54,9 @@ export const translations = {
           name: 'Relaxing Massage',
           desc: 'A gentle, rhythmic journey designed to dissolve stress and restore inner harmony.',
           details: 'A classic relaxation massage using long, flowing strokes to calm the nervous system and promote deep relaxation.',
-          price60: 112.5,
+          price60: 113,
           price90: 150,
-          price120: 187.5,
+          price120: 188,
           benefitsList: ['Reduces stress and anxiety', 'Improves circulation', 'Promotes better sleep'],
           includesList: ['Professional massage table', 'Organic aromatherapy oils', 'Relaxing soundscape']
         },
@@ -64,9 +64,9 @@ export const translations = {
           name: 'Deep Tissue Massage',
           desc: 'Targeted, intense pressure to release chronic tension and revitalize tired muscles.',
           details: 'A therapeutic massage that focuses on realigning deeper layers of muscles and connective tissue. Ideal for chronic aches and contracted areas.',
-          price60: 131.25,
-          price90: 168.75,
-          price120: 206.25,
+          price60: 132,
+          price90: 169,
+          price120: 207,
           benefitsList: ['Relieves chronic muscle pain', 'Improves posture', 'Breaks up scar tissue'],
           includesList: ['Professional massage table', 'Therapeutic grade oils', 'Muscle relief balm']
         },
@@ -74,9 +74,9 @@ export const translations = {
           name: 'Botica Signature',
           desc: 'Our exclusive signature ritual combining multiple techniques for the ultimate escape.',
           details: 'The Botica Signature is our most popular treatment, blending Swedish, Deep Tissue, and Aromatherapy into one seamless, transformative experience.',
-          price60: 137.5,
+          price60: 138,
           price90: 175,
-          price120: 212.5,
+          price120: 213,
           benefitsList: ['Total body restoration', 'Mental clarity', 'Exclusive technique blend'],
           includesList: ['Premium organic oils', 'Hot stone accents', 'Personalized consultation']
         },
@@ -85,7 +85,7 @@ export const translations = {
           desc: 'A custom-tailored treatment designed specifically for your body\'s unique needs.',
           details: 'Your therapist will consult with you to create a unique blend of techniques, focusing exactly where you need it most.',
           price60: 125,
-          price90: 162.5,
+          price90: 163,
           price120: 200,
           benefitsList: ['Customized to your needs', 'Addresses specific problem areas', 'Total body balance'],
           includesList: ['Professional massage table', 'Choice of aromatherapy', 'Personalized consultation']
@@ -94,7 +94,7 @@ export const translations = {
           name: 'Four-Hands Massage',
           desc: 'The ultimate indulgence: two therapists working in perfect synchronicity for total immersion.',
           details: 'A unique experience where two therapists work together in a choreographed sequence, making it impossible for the brain to track, leading to a state of total surrender.',
-          price60: 237.5,
+          price60: 238,
           price90: 300,
           benefitsList: ['Double the relaxation', 'Ultimate sensory experience', 'Deepest state of meditation'],
           includesList: ['Two professional therapists', 'Premium organic oils', 'Enhanced soundscape']
@@ -162,7 +162,7 @@ export const translations = {
       desc: 'Premium in-home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
       quickLinks: 'Quick Links',
       home: 'Home',
-      treatments: 'Treatments',
+      treatments: 'Massages',
       blog: 'Blog',
       contact: 'Contact',
       rights: 'All rights reserved.',
@@ -206,7 +206,7 @@ export const translations = {
           title: 'The Ultimate Guide to In-Home Wellness in Playa del Carmen',
           excerpt: 'Discover how to transform your vacation rental into a private sanctuary for the perfect relaxation experience.',
           date: 'March 15, 2026',
-          image: 'https://images.unsplash.com/photo-1544161515-4ae6ce6db874?auto=format&fit=crop&q=80',
+          image: '/blog-wellness-guide-playa-del-carmen.jpg',
           content: `
             Playa del Carmen is a paradise, but the true luxury lies in the moments of stillness you create for yourself. 
             In this guide, we explore how to maximize your in-home spa experience. 
@@ -222,7 +222,7 @@ export const translations = {
           title: 'Why Organic Aromatherapy is the Secret to Deep Relaxation',
           excerpt: 'Learn about the local organic oils we use and how they impact your nervous system and overall well-being.',
           date: 'March 10, 2026',
-          image: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80',
+          image: '/blog-aromaterapia-organica-botica-spa.jpg',
           content: `
             At Botica Spa, we exclusively use premium, locally sourced organic oils. 
             Aromatherapy is more than just a pleasant scent; it's a powerful tool for healing. 
@@ -236,7 +236,7 @@ export const translations = {
           title: 'Massage for Travelers: How to Recover from a Long Flight',
           excerpt: 'Long flights can take a toll on your body. Discover the best techniques to combat jet lag and muscle stiffness.',
           date: 'March 5, 2026',
-          image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80',
+          image: '/blog-masaje-viajeros-recuperacion-vuelo.jpg',
           content: `
             Traveling is exciting, but the journey can be exhausting. 
             Jet lag and long hours in a plane seat can lead to muscle stiffness and fatigue. 
@@ -250,7 +250,7 @@ export const translations = {
           title: 'Top 5 Villas in Playa del Carmen for an In-Home Spa Day',
           excerpt: 'Planning a luxury retreat? These villas provide the perfect backdrop for our premium wellness rituals.',
           date: 'March 1, 2026',
-          image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80',
+          image: '/blog-villas-playa-del-carmen-spa.jpg',
           content: `
             Playa del Carmen is home to some of the most stunning villas in the world. 
             If you're staying in one of these private sanctuaries, you already have half of the spa experience ready. 
@@ -264,7 +264,7 @@ export const translations = {
           title: 'The Benefits of Post-Beach Skin Care: Our Revitalizing Facial',
           excerpt: 'Sun, sand, and salt can be harsh on your skin. Learn how our organic facial treatments restore hydration and glow.',
           date: 'February 25, 2026',
-          image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?auto=format&fit=crop&q=80',
+          image: '/blog-facial-revitalizante-post-playa.jpg',
           content: `
             A day at the beach is wonderful for the soul, but it can be taxing for your skin. 
             The combination of UV rays, salt water, and sand can lead to dehydration and irritation. 
@@ -278,7 +278,7 @@ export const translations = {
           title: 'How to Prepare Your Airbnb for a Professional Massage Session',
           excerpt: 'A few simple steps can turn any room into a world-class spa. Here is our guide to preparing your space.',
           date: 'February 20, 2026',
-          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80',
+          image: '/blog-preparar-airbnb-masaje-profesional.jpg',
           content: `
             We bring everything needed for your session, but a little preparation on your end can elevate the experience. 
             From clearing a small space for the table to adjusting the temperature, these tips ensure you get the most out of your ritual.
@@ -495,7 +495,7 @@ export const translations = {
           title: 'La Guía Definitiva de Bienestar en Casa en Playa del Carmen',
           excerpt: 'Descubre cómo transformar tu alquiler vacacional en un santuario privado para la experiencia de relajación perfecta.',
           date: '15 de Marzo, 2026',
-          image: 'https://images.unsplash.com/photo-1544161515-4ae6ce6db874?auto=format&fit=crop&q=80',
+          image: '/blog-wellness-guide-playa-del-carmen.jpg',
           content: `
             Playa del Carmen es un paraíso, pero el verdadero lujo reside en los momentos de quietud que creas para ti mismo. 
             En esta guía, exploramos cómo maximizar tu experiencia de spa en casa. 
@@ -511,7 +511,7 @@ export const translations = {
           title: 'Por qué la Aromaterapia Orgánica es el Secreto de la Relajación Profunda',
           excerpt: 'Conoce los aceites orgánicos locales que utilizamos y cómo impactan en tu sistema nervioso y bienestar general.',
           date: '10 de Marzo, 2026',
-          image: 'https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&q=80',
+          image: '/blog-aromaterapia-organica-botica-spa.jpg',
           content: `
             En Botica Spa, utilizamos exclusivamente aceites orgánicos premium de origen local. 
             La aromaterapia es más que un aroma agradable; es una poderosa herramienta de sanación. 
@@ -525,7 +525,7 @@ export const translations = {
           title: 'Masaje para Viajeros: Cómo Recuperarse de un Vuelo Largo',
           excerpt: 'Los vuelos largos pueden afectar tu cuerpo. Descubre las mejores técnicas para combatir el jet lag y la rigidez muscular.',
           date: '5 de Marzo, 2026',
-          image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80',
+          image: '/blog-masaje-viajeros-recuperacion-vuelo.jpg',
           content: `
             Viajar es emocionante, pero el trayecto puede ser agotador. 
             El jet lag y las largas horas en el asiento de un avión pueden provocar rigidez muscular y fatiga. 
@@ -539,7 +539,7 @@ export const translations = {
           title: 'Las 5 Mejores Villas en Playa del Carmen para un Día de Spa en Casa',
           excerpt: '¿Planeas un retiro de lujo? Estas villas ofrecen el escenario perfecto para nuestros rituales de bienestar premium.',
           date: '1 de Marzo, 2026',
-          image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80',
+          image: '/blog-villas-playa-del-carmen-spa.jpg',
           content: `
             Playa del Carmen alberga algunas de las villas más impresionantes del mundo. 
             Si te hospedas en uno de estos santuarios privados, ya tienes la mitad de la experiencia de spa lista. 
@@ -553,7 +553,7 @@ export const translations = {
           title: 'Los Beneficios del Cuidado de la Piel Post-Playa: Nuestro Facial Revitalizante',
           excerpt: 'El sol, la arena y la sal pueden ser duros con tu piel. Aprende cómo nuestros tratamientos faciales orgánicos restauran la hidratación y el brillo.',
           date: '25 de Febrero, 2026',
-          image: 'https://images.unsplash.com/photo-1590439471364-192aa70c0b53?auto=format&fit=crop&q=80',
+          image: '/blog-facial-revitalizante-post-playa.jpg',
           content: `
             Un día en la playa es maravilloso para el alma, pero puede ser agotador para la piel. 
             La combinación de rayos UV, agua salada y arena puede provocar deshidratación e irritación. 
@@ -567,7 +567,7 @@ export const translations = {
           title: 'Cómo Preparar tu Airbnb para una Sesión de Masaje Profesional',
           excerpt: 'Unos simples pasos pueden convertir cualquier habitación en un spa de clase mundial. Aquí tienes nuestra guía para preparar tu espacio.',
           date: '20 de Febrero, 2026',
-          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80',
+          image: '/blog-preparar-airbnb-masaje-profesional.jpg',
           content: `
             Nosotros traemos todo lo necesario para tu sesión, pero un poco de preparación por tu parte puede elevar la experiencia. 
             Desde despejar un pequeño espacio para la mesa hasta ajustar la temperatura, estos consejos aseguran que aproveches al máximo tu ritual.
