@@ -24,6 +24,14 @@ export function PaymentSuccess() {
         ? parseFloat(booking.depositAmount).toFixed(2)
         : '0';
 
+      // Guardar reserva en Firestore
+      const paymentId = searchParams.get('payment_id') || searchParams.get('collection_id') || '';
+      fetch('/api/reservas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...booking, paymentId, status: 'confirmed' }),
+      }).catch(err => console.warn('Could not save booking to Firestore:', err));
+
       const guestLines = Array.isArray(booking.guests)
         ? booking.guests.map(
             (g: { serviceName: string; duration: string }, i: number) =>

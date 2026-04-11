@@ -30,9 +30,9 @@ export const translations = {
       feature3Desc: 'From professional massage tables to curated soundscapes, we handle every detail of your escape.',
     },
     services: {
-      badge: 'The Rituals',
+      badge: 'Our Massages',
       title: 'Curated Wellness',
-      select: 'Select Ritual',
+      select: 'Select Massage',
       viewDetails: 'View Details',
       from: 'From',
       duration: 'Duration',
@@ -112,8 +112,8 @@ export const translations = {
     social: {
       instagram: 'https://instagram.com/boticaspa',
       facebook: 'https://facebook.com/boticaspa',
-      whatsapp: 'https://wa.me/529841234567',
-      phone: '+52 984 123 4567',
+      whatsapp: 'https://wa.me/529842687428',
+      phone: '+52 984 268 7428',
       email: 'hola@boticaspa.com',
       location: 'Playa del Carmen, MX'
     },
@@ -151,12 +151,12 @@ export const translations = {
       button: 'Book Your Session Now',
     },
     assistant: {
-      title: 'Botica Assistant',
-      placeholder: 'Ask me about our treatments or beauty tips...',
+      title: 'Tina · Botica Spa',
+      placeholder: 'Ask Tina about our treatments...',
       send: 'Send',
       minimize: 'Minimize',
-      maximize: 'Chat with us',
-      welcome: 'Hello! I am your Botica Spa assistant. How can I help you today?',
+      maximize: 'Chat with Tina',
+      welcome: "Hi! I'm Tina 🌿 I'm here to tell you everything about our in-home spa rituals. What can I help you with today?",
     },
     footer: {
       desc: 'Premium in-home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
@@ -401,8 +401,8 @@ export const translations = {
     social: {
       instagram: 'https://instagram.com/boticaspa',
       facebook: 'https://facebook.com/boticaspa',
-      whatsapp: 'https://wa.me/529841234567',
-      phone: '+52 984 123 4567',
+      whatsapp: 'https://wa.me/529842687428',
+      phone: '+52 984 268 7428',
       email: 'hola@boticaspa.com',
       location: 'Playa del Carmen, MX'
     },
@@ -440,12 +440,12 @@ export const translations = {
       button: 'Reserva tu sesión ahora',
     },
     assistant: {
-      title: 'Asistente Botica',
-      placeholder: 'Pregúntame sobre nuestros tratamientos o tips de belleza...',
+      title: 'Tina · Botica Spa',
+      placeholder: 'Pregúntale a Tina sobre nuestros tratamientos...',
       send: 'Enviar',
       minimize: 'Minimizar',
-      maximize: 'Chatea con nosotros',
-      welcome: '¡Hola! Soy tu asistente de Botica Spa. ¿Cómo puedo ayudarte hoy?',
+      maximize: 'Habla con Tina',
+      welcome: '¡Hola! Soy Tina 🌿 Estoy aquí para contarte todo sobre nuestros rituales de spa a domicilio. ¿En qué te puedo ayudar?',
     },
     footer: {
       desc: 'Servicios de masaje premium a domicilio en Playa del Carmen. Llevando el santuario de un spa de clase mundial a tu espacio privado.',

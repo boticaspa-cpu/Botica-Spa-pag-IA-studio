@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Send, X, Minus, MapPin, Search, ExternalLink, Bot } from 'lucide-react';
+import { Sparkles, Send, X, Minus, Bot } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import ReactMarkdown from 'react-markdown';
 
@@ -8,7 +8,7 @@ export function GeminiAssistant() {
   const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string, groundingMetadata?: any }[]>([]);
+  const [messages, setMessages] = useState<{ role: 'user' | 'assistant', content: string }[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,9 +38,7 @@ export function GeminiAssistant() {
       const data = await response.json();
 
       const assistantMessage = data.text || "I'm sorry, I couldn't process that.";
-      const groundingMetadata = data.groundingMetadata;
-
-      setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage, groundingMetadata }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: assistantMessage }]);
     } catch (error) {
       console.error("Gemini Error:", error);
       setMessages(prev => [...prev, { role: 'assistant', content: "I'm sorry, I'm having trouble connecting right now. Please try again later." }]);
@@ -99,45 +97,6 @@ export function GeminiAssistant() {
                         {msg.content}
                       </ReactMarkdown>
                     </div>
-                    
-                    {/* Grounding Metadata */}
-                    {msg.groundingMetadata?.groundingChunks && (
-                      <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
-                        {msg.groundingMetadata.groundingChunks.map((chunk: any, cIdx: number) => {
-                          if (chunk.web) {
-                            return (
-                              <a 
-                                key={cIdx} 
-                                href={chunk.web.uri} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-[10px] text-brand hover:underline"
-                              >
-                                <Search className="w-3 h-3" />
-                                <span className="truncate">{chunk.web.title || chunk.web.uri}</span>
-                                <ExternalLink className="w-2 h-2" />
-                              </a>
-                            );
-                          }
-                          if (chunk.maps) {
-                            return (
-                              <a 
-                                key={cIdx} 
-                                href={chunk.maps.uri} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-[10px] text-brand hover:underline"
-                              >
-                                <MapPin className="w-3 h-3" />
-                                <span className="truncate">{chunk.maps.title || chunk.maps.uri}</span>
-                                <ExternalLink className="w-2 h-2" />
-                              </a>
-                            );
-                          }
-                          return null;
-                        })}
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}

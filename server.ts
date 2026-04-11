@@ -4,8 +4,17 @@ import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
-import { GoogleGenAI } from "@google/genai";
+import { createRequire } from "module";
+import Anthropic from "@anthropic-ai/sdk";
 import { MercadoPagoConfig, Preference } from "mercadopago";
+import { initializeApp, getApps } from "firebase/app";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, Timestamp } from "firebase/firestore";
+
+// Firebase initialization
+const _require = createRequire(import.meta.url);
+const _fbConfig = _require("./firebase-applet-config.json");
+const _fbApp = getApps().length ? getApps()[0] : initializeApp(_fbConfig);
+const firestoreDb = getFirestore(_fbApp, _fbConfig.firestoreDatabaseId);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +24,60 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+
+  // ─── Redirects 301 desde URLs viejas de WordPress ───────────────────────
+  const redirects: Record<string, string> = {
+    // WordPress service pages → new React English URLs
+    '/relaxing-massage':                      '/massages/relaxing-massage',
+    '/relaxing-massage/':                     '/massages/relaxing-massage',
+    '/deep-tissue-massage':                   '/massages/deep-tissue-massage',
+    '/deep-tissue-massage/':                  '/massages/deep-tissue-massage',
+    '/four-hands-massage':                    '/massages/four-hands-massage',
+    '/four-hands-massage/':                   '/massages/four-hands-massage',
+    '/botica-massage':                        '/massages/botica-signature',
+    '/botica-massage/':                       '/massages/botica-signature',
+    '/personalized-massage':                  '/massages/personalized-massage',
+    '/personalized-massage/':                 '/massages/personalized-massage',
+    '/facial':                                '/massages/revitalizing-facial',
+    '/facial/':                               '/massages/revitalizing-facial',
+
+    // WordPress structural pages
+    '/services':                              '/massages',
+    '/services/':                             '/massages',
+    '/wellness-center':                       '/massages',
+    '/wellness-center/':                      '/massages',
+    '/about':                                 '/#about',
+    '/about/':                                '/#about',
+    '/contact':                               '/#about',
+    '/contact/':                              '/#about',
+    '/thank-you':                             '/booking/success',
+    '/thank-you/':                            '/booking/success',
+    '/cancellation-and-rescheduling-policy':  '/#faq',
+    '/cancellation-and-rescheduling-policy/': '/#faq',
+
+    // Legacy Spanish URLs (in case /masajes was crawled before cutover)
+    '/masajes':                               '/massages',
+    '/masajes/':                              '/massages',
+    '/masajes/relaxing-massage':              '/massages/relaxing-massage',
+    '/masajes/deep-tissue-massage':           '/massages/deep-tissue-massage',
+    '/masajes/four-hands-massage':            '/massages/four-hands-massage',
+    '/masajes/botica-signature':              '/massages/botica-signature',
+    '/masajes/personalized-massage':          '/massages/personalized-massage',
+    '/masajes/revitalizing-facial':           '/massages/revitalizing-facial',
+  };
+
+  Object.entries(redirects).forEach(([from, to]) => {
+    app.get(from, (_req, res) => res.redirect(301, to));
+  });
+
+  // Redirect blog viejo /?page_id=100
+  app.get('/', (req, res, next) => {
+    if (req.query['page_id'] === '100') {
+      return res.redirect(301, '/blog');
+    }
+    next();
+  });
+  // ────────────────────────────────────────────────────────────────────────
 
   // API routes
   app.post("/api/send-confirmation", async (req, res) => {
@@ -139,8 +202,7 @@ async function startServer() {
         },
       });
 
-      // En producción cambiar sandbox_init_point → init_point
-      const checkoutUrl = response.sandbox_init_point || response.init_point;
+      const checkoutUrl = response.init_point || response.sandbox_init_point;
       res.json({ url: checkoutUrl });
     } catch (error) {
       console.error("Mercado Pago error:", error);
@@ -148,44 +210,157 @@ async function startServer() {
     }
   });
 
-  // Gemini chat endpoint
+  // Tina AI chat endpoint (Claude Haiku)
   app.post("/api/chat", async (req, res) => {
-    const { messages, userMessage, language } = req.body;
+    const { messages, userMessage } = req.body;
 
-    if (!process.env.GEMINI_API_KEY) {
-      return res.status(500).json({ error: "Gemini API key not configured" });
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return res.status(500).json({ error: "Anthropic API key not configured" });
     }
 
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+    const TINA_SYSTEM_PROMPT = `Eres Tina, asistente virtual de Botica Spa en Playa del Carmen.
+
+PERSONALIDAD:
+- Eres mujer, cálida, genuinamente entusiasta del bienestar y lo orgánico
+- Adoras Botica Spa con el corazón — no como vendedora, sino como creyente
+- Eres amable pero nunca presionas ni haces venta agresiva
+- Usas un tono cercano, con emojis ocasionales (🌿✨💆‍♀️)
+- Respondes en el idioma en que te escriben (español o inglés)
+
+REGLA CRÍTICA — NO INVENTAS NADA:
+Solo das información que está en esta lista. Si te preguntan algo que no está aquí, dices honestamente que no tienes esa información y ofreces mandar al WhatsApp para que el equipo ayude.
+
+INFORMACIÓN REAL DE BOTICA SPA:
+
+**Servicio:** In-home spa — llevamos todo a tu hotel, villa o Airbnb en Playa del Carmen, Tulum, Cancún, Akumal y Puerto Morelos. (Aplica cargo de traslado fuera de Playa del Carmen.)
+
+**Terapeutas:** Certificadas, expertas, seleccionadas a mano.
+
+**Productos:** Aceites orgánicos premium, aromaterapia artesanal, ingredientes locales.
+
+**PRECIOS (USD):**
+- Revitalizing Facial: 60min $113 | 90min $150
+- Relaxing Massage: 60min $113 | 90min $150 | 120min $188
+- Deep Tissue Massage: 60min $132 | 90min $169 | 120min $207
+- Botica Signature (el favorito): 60min $138 | 90min $175 | 120min $213
+- Personalized Massage: 60min $125 | 90min $163 | 120min $200
+- Four-Hands Massage (2 terapeutas): 60min $238 | 90min $300
+- Especial del mes: 2 masajes Four-Hands por $437.50
+
+**Reservas:** Se requiere 30% de depósito para confirmar. El resto se paga el día del servicio.
+**Contacto/Email:** hola@boticaspa.com
+
+CUANDO ALGUIEN QUIERE RESERVAR:
+Responde algo como: "¡Qué buena elección! 🌿 Para confirmar tu reserva, nuestro equipo te atiende directamente por WhatsApp: https://wa.me/529842687428 — ahí te ayudan con disponibilidad, fecha y todos los detalles. ¡Te va a encantar! ✨"
+
+No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reservar.`;
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash-exp",
-        contents: [
-          ...messages.map((m: { role: string; content: string }) => ({
-            role: m.role === 'user' ? 'user' : 'model',
-            parts: [{ text: m.content }],
-          })),
-          { role: 'user', parts: [{ text: userMessage }] },
-        ],
-        config: {
-          systemInstruction: `You are the Botica Spa Assistant, a friendly and knowledgeable beauty and wellness consultant in Playa del Carmen.
-          You help users choose the best treatments at Botica Spa and provide expert advice on skincare and relaxation.
-          The spa is located in Playa del Carmen, MX. We offer in-home massage services.
-          Current language: ${language === 'en' ? 'English' : 'Spanish'}. Please respond in this language.
-          Use Google Search to find beauty tips or local info if needed.
-          Be concise, professional, and welcoming.`,
-          tools: [{ googleSearch: {} }],
-        },
+      const history = (messages || []).map((m: { role: string; content: string }) => ({
+        role: m.role === 'user' ? 'user' : 'assistant',
+        content: m.content,
+      })) as Anthropic.MessageParam[];
+
+      const response = await client.messages.create({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 512,
+        system: TINA_SYSTEM_PROMPT,
+        messages: [...history, { role: 'user', content: userMessage }],
       });
 
-      res.json({
-        text: response.text,
-        groundingMetadata: response.candidates?.[0]?.groundingMetadata ?? null,
-      });
+      const text = response.content[0].type === 'text' ? response.content[0].text : '';
+      res.json({ text });
     } catch (error) {
-      console.error("Gemini error:", error);
-      res.status(500).json({ error: "Failed to get response from Gemini" });
+      console.error("Anthropic error:", error);
+      res.status(500).json({ error: "Failed to get response" });
+    }
+  });
+
+  // ── Reservas (Firebase Firestore) ─────────────────────────────
+
+  // POST /api/reservas — Crear nueva reserva
+  app.post("/api/reservas", async (req, res) => {
+    try {
+      const booking = {
+        ...req.body,
+        status: req.body.status || "confirmed",
+        createdAt: Timestamp.now(),
+      };
+      const docRef = await addDoc(collection(firestoreDb, "bookings"), booking);
+      res.status(201).json({ id: docRef.id });
+    } catch (error) {
+      console.error("Firestore error (create):", error);
+      res.status(500).json({ error: "Failed to save booking" });
+    }
+  });
+
+  // GET /api/reservas — Listar reservas (protegido con X-Admin-Key)
+  app.get("/api/reservas", async (req, res) => {
+    const adminKey = process.env.ADMIN_API_KEY;
+    if (adminKey && req.headers["x-admin-key"] !== adminKey) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    try {
+      const snapshot = await getDocs(collection(firestoreDb, "bookings"));
+      const bookings = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      res.json(bookings);
+    } catch (error) {
+      console.error("Firestore error (list):", error);
+      res.status(500).json({ error: "Failed to fetch bookings" });
+    }
+  });
+
+  // DELETE /api/reservas/:id — Cancelar reserva (cambia status a "cancelled")
+  app.delete("/api/reservas/:id", async (req, res) => {
+    const adminKey = process.env.ADMIN_API_KEY;
+    if (adminKey && req.headers["x-admin-key"] !== adminKey) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    try {
+      const bookingRef = doc(firestoreDb, "bookings", req.params.id);
+      await updateDoc(bookingRef, { status: "cancelled" });
+      res.json({ id: req.params.id, status: "cancelled" });
+    } catch (error) {
+      console.error("Firestore error (cancel):", error);
+      res.status(500).json({ error: "Failed to cancel booking" });
+    }
+  });
+
+  // ── WhatsApp Cloud API ─────────────────────────────────────────
+
+  // POST /api/whatsapp — Enviar mensaje de confirmación
+  app.post("/api/whatsapp", async (req, res) => {
+    const { to, name, fecha, hora, servicio } = req.body;
+
+    if (!process.env.WHATSAPP_TOKEN || !process.env.WHATSAPP_PHONE_ID) {
+      return res.json({ status: "skipped", note: "WhatsApp not configured" });
+    }
+
+    try {
+      const url = `https://graph.facebook.com/v19.0/${process.env.WHATSAPP_PHONE_ID}/messages`;
+      const payload = {
+        messaging_product: "whatsapp",
+        to,
+        type: "text",
+        text: {
+          body: `Hola ${name}, tu reserva en Botica Spa ha sido confirmada 🌿\n\n📅 Fecha: ${fecha}\n⏰ Hora: ${hora}\n🧖 Servicio: ${servicio}\n\nTe esperamos pronto. ¡Cualquier duda estamos aquí!`,
+        },
+      };
+      const r = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await r.json();
+      res.json(data);
+    } catch (error) {
+      console.error("WhatsApp error:", error);
+      res.status(500).json({ error: "Failed to send WhatsApp message" });
     }
   });
 
@@ -199,7 +374,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.get('*', (_req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }

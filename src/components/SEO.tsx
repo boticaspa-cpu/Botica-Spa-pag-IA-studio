@@ -9,38 +9,30 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/" }) => {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
 
-  const defaultTitle = language === 'en' 
-    ? 'The Art of In-Home Relaxation | Botica Spa Playa del Carmen' 
-    : 'El Arte de la Relajación a Domicilio | Botica Spa Playa del Carmen';
-  
-  const defaultDescription = language === 'en' 
-    ? 'Premium wellness rituals delivered to your private sanctuary in Playa del Carmen. Experience signature relaxation, deep tissue recovery, and bespoke therapy at home.' 
-    : 'Rituales de bienestar premium en la comodidad de tu espacio privado en Playa del Carmen. Masajes relajantes, tejido profundo y terapia a medida a domicilio.';
+  const defaultTitle = 'Massage Playa del Carmen | In-Home Spa | Botica Spa';
+
+  const defaultDescription = 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now.';
 
   return (
     <Helmet>
       <title>{title || defaultTitle}</title>
       <meta name="description" content={description || defaultDescription} />
-      <meta name="keywords" content="masajes a domicilio playa del carmen, in-home massage playa del carmen, spa a domicilio playa del carmen, massage therapy playa del carmen, relaxing massage playa del carmen, deep tissue massage playa del carmen, bachelorette spa playa del carmen, masajes para grupos playa del carmen, facial playa del carmen, four hands massage playa del carmen" />
+      <meta name="keywords" content="massage playa del carmen, in-home massage playa del carmen, four hands massage playa del carmen, deep tissue massage playa del carmen, spa playa del carmen, relaxing massage playa del carmen, massage hotel playa del carmen, massage airbnb playa del carmen, facial playa del carmen, mobile spa playa del carmen" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
-      <meta property="og:title" content={title || (language === 'en' ? 'Botica Spa | Premium In-Home Wellness' : 'Botica Spa | Bienestar Premium a Domicilio')} />
-      <meta property="og:description" content={description || (language === 'en' 
-        ? 'Luxury spa rituals delivered to your door in Playa del Carmen. Certified therapists, organic oils, and total serenity.' 
-        : 'Rituales de spa de lujo en tu puerta en Playa del Carmen. Terapeutas certificados, aceites orgánicos y serenidad total.')} />
+      <meta property="og:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
+      <meta property="og:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more.'} />
       <meta property="og:image" content="https://boticaspa.com/og-image.jpg" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />
-      <meta name="twitter:title" content={title || (language === 'en' ? 'Botica Spa | Premium In-Home Wellness' : 'Botica Spa | Bienestar Premium a Domicilio')} />
-      <meta name="twitter:description" content={description || (language === 'en' 
-        ? 'Luxury spa rituals delivered to your door in Playa del Carmen.' 
-        : 'Rituales de spa de lujo en tu puerta en Playa del Carmen.')} />
+      <meta name="twitter:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
+      <meta name="twitter:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa.'} />
       <meta name="twitter:image" content="https://boticaspa.com/og-image.jpg" />
 
       {/* Canonical */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { Sparkles, ArrowRight } from 'lucide-react';
@@ -16,31 +17,37 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
   const allServices = [
     {
       id: 'botica',
+      slug: 'botica-signature',
       image: '/masaje-botica.jpg',
       price: t.services.items.botica.price60,
     },
     {
       id: 'fourHands',
+      slug: 'four-hands-massage',
       image: '/masaje-cuatro-manos.jpg',
       price: t.services.items.fourHands.price60,
     },
     {
       id: 'deepTissue',
+      slug: 'deep-tissue-massage',
       image: '/masaje-profundo.jpg',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
+      slug: 'relaxing-massage',
       image: '/masaje-relajante.jpg',
       price: t.services.items.relaxing.price60,
     },
     {
       id: 'personalized',
+      slug: 'personalized-massage',
       image: '/spa-detalle.jpg',
       price: t.services.items.personalized.price60,
     },
     {
       id: 'facial',
+      slug: 'revitalizing-facial',
       image: '/masaje-cuatro-manos.jpg',
       price: t.services.items.facial.price60,
     },
@@ -49,9 +56,9 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
   return (
     <>
       <SEO
-        title="Spa Treatments & Massage Rituals | Botica Spa Riviera Maya"
-        description="Explore our in-home spa treatments: signature massage, four-hands, deep tissue, relaxing, personalized rituals and revitalizing facials. Delivered to your villa or hotel in Riviera Maya."
-        url="https://boticaspa.com/masajes"
+        title="Massage Services Playa del Carmen | In-Home Spa | Botica Spa"
+        description="Choose from relaxing, deep tissue, four-hands, herbal and signature massages — delivered to your hotel, villa or Airbnb in Playa del Carmen."
+        url="https://boticaspa.com/massages"
       />
       <main className="pt-32 pb-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
@@ -115,12 +122,13 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                             ${service.price.toLocaleString(undefined, { minimumFractionDigits: service.price % 1 !== 0 ? 2 : 0 })} {t.services.currency}
                           </span>
                         </div>
-                        <button
-                          onClick={() => onSelectTreatment(service.id)}
+                        <Link
+                          to={`/massages/${service.slug}`}
                           className="w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"
+                          aria-label={`View details for ${item.name}`}
                         >
                           <ArrowRight className="w-5 h-5" />
-                        </button>
+                        </Link>
                       </div>
 
                     </div>

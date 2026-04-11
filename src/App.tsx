@@ -21,6 +21,7 @@ import { SEO } from './components/SEO';
 import { GeminiAssistant } from './components/GeminiAssistant';
 import { Home } from './pages/Home';
 import { TreatmentsPage } from './pages/TreatmentsPage';
+import { ServicePage } from './pages/ServicePage';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { PaymentSuccess } from './pages/PaymentSuccess';
@@ -103,7 +104,7 @@ function AppContent() {
           "hidden md:flex items-center gap-8 text-xs uppercase tracking-widest transition-colors",
           location.pathname === '/' ? "text-white/80" : "text-[#1A1A1A]/60"
         )}>
-          <Link to="/masajes" className={cn(
+          <Link to="/massages" className={cn(
             "hover:text-white transition-colors",
             location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.treatments}</Link>
@@ -166,8 +167,8 @@ function AppContent() {
             </div>
 
             <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
-              <Link 
-                to="/masajes" 
+              <Link
+                to="/massages"
                 className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -213,7 +214,8 @@ function AppContent() {
 
       <Routes>
         <Route path="/" element={<Home onSelectTreatment={handleSelectTreatment} onBookNow={handleBook} />} />
-        <Route path="/masajes" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
+        <Route path="/massages" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
+        <Route path="/massages/:serviceId" element={<ServicePage onBookNow={(id) => { setSelectedTreatment(id); setIsBookingOpen(true); }} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/booking/success" element={<PaymentSuccess />} />
