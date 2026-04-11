@@ -5,7 +5,7 @@ import { format, addDays, isSameDay, differenceInCalendarDays } from 'date-fns';
 import { cn } from '../lib/utils';
 import { useLanguage } from '../LanguageContext';
 
-const WHATSAPP_NUMBER = '5298426874288';
+const WHATSAPP_NUMBER = '529842687428';
 const DEPOSIT_PERCENT = 0.30;
 
 interface GuestService {

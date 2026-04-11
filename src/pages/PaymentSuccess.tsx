@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '5298426874288';
+const WHATSAPP_NUMBER = '529842687428';
 
 export function PaymentSuccess() {
   const [searchParams] = useSearchParams();

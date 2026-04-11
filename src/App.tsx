@@ -18,7 +18,6 @@ import { Footer } from './components/Footer';
 import { BookingSystem } from './components/BookingSystem';
 import { TreatmentDetail } from './components/TreatmentDetail';
 import { SEO } from './components/SEO';
-import { GeminiAssistant } from './components/GeminiAssistant';
 import { Home } from './pages/Home';
 import { TreatmentsPage } from './pages/TreatmentsPage';
 import { ServicePage } from './pages/ServicePage';
@@ -267,7 +266,6 @@ function AppContent() {
         initialServiceId={selectedTreatment}
       />
       
-      <GeminiAssistant />
     </div>
   );
 }

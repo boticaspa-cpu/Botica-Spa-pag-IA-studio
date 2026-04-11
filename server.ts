@@ -240,14 +240,15 @@ INFORMACIÓN REAL DE BOTICA SPA:
 
 **Productos:** Aceites orgánicos premium, aromaterapia artesanal, ingredientes locales.
 
-**PRECIOS (USD):**
-- Revitalizing Facial: 60min $113 | 90min $150
-- Relaxing Massage: 60min $113 | 90min $150 | 120min $188
-- Deep Tissue Massage: 60min $132 | 90min $169 | 120min $207
-- Botica Signature (el favorito): 60min $138 | 90min $175 | 120min $213
-- Personalized Massage: 60min $125 | 90min $163 | 120min $200
-- Four-Hands Massage (2 terapeutas): 60min $238 | 90min $300
-- Especial del mes: 2 masajes Four-Hands por $437.50
+**PRECIOS (MXN):**
+- Facial Revitalizante (máximo 60 min): 60min $1,700
+- Relaxing Massage: 60min $1,700 | 90min $2,100 | 120min $2,500
+- Deep Tissue Massage: 60min $1,700 | 90min $2,100 | 120min $2,500
+- Botica Signature (el favorito, mínimo 90 min): 90min $2,100 | 120min $2,500
+- Personalized Massage: 60min $1,700 | 90min $2,100 | 120min $2,500
+- Four-Hands Massage (2 terapeutas, mínimo 90 min): 90min $3,900
+- Masaje en pareja (2 personas juntas): 60min $3,200 | 90min $4,000 | 120min $4,600
+- Especial del mes: 2 masajes Four-Hands por $7,800
 
 **Reservas:** Se requiere 30% de depósito para confirmar. El resto se paga el día del servicio.
 **Contacto/Email:** hola@boticaspa.com
