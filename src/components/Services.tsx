@@ -16,12 +16,12 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
     {
       id: 'botica',
       image: '/masaje-botica.jpg',
-      price: t.services.items.botica.price60,
+      price: t.services.items.botica.price90,
     },
     {
       id: 'fourHands',
       image: '/masaje-cuatro-manos.jpg',
-      price: t.services.items.fourHands.price60,
+      price: t.services.items.fourHands.price90,
       highlight: true
     },
     {
