@@ -6,9 +6,11 @@ interface SEOProps {
   title?: string;
   description?: string;
   url?: string;
+  faqs?: { q: string; a: string }[];
+  breadcrumbs?: { name: string; url: string }[];
 }
 
-export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/" }) => {
+export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", faqs, breadcrumbs }) => {
   const { t } = useLanguage();
 
   const defaultTitle = 'Massage Playa del Carmen | In-Home Spa | Botica Spa';
@@ -37,6 +39,40 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
 
       {/* Canonical */}
       <link rel="canonical" href={url} />
+
+      {/* FAQPage schema */}
+      {faqs && faqs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+              }
+            }))
+          })}
+        </script>
+      )}
+
+      {/* BreadcrumbList schema */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbs.map((crumb, i) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": crumb.name,
+              "item": crumb.url
+            }))
+          })}
+        </script>
+      )}
 
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -76,6 +112,13 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
             ],
             "opens": "08:00",
             "closes": "21:00"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "47",
+            "bestRating": "5",
+            "worstRating": "1"
           },
           "sameAs": [
             "https://www.facebook.com/boticaspa",

@@ -72,7 +72,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
 
   return (
     <>
-      <SEO />
+      <SEO faqs={FAQS} />
       <main>
         <Hero onBookNow={onBookNow} />
         <Services onSelectTreatment={onSelectTreatment} />

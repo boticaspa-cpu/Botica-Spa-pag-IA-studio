@@ -91,7 +91,16 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
 
   return (
     <>
-      <SEO title={seoTitle} description={seoDesc} url={canonicalUrl} />
+      <SEO
+        title={seoTitle}
+        description={seoDesc}
+        url={canonicalUrl}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://boticaspa.com/' },
+          { name: 'Massages', url: 'https://boticaspa.com/massages' },
+          { name: item.name, url: canonicalUrl },
+        ]}
+      />
 
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden">

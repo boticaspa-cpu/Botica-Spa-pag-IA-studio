@@ -21,7 +21,28 @@ export function BlogPost() {
         title={`${post.title} | Botica Spa`}
         description={post.excerpt}
         url={`https://boticaspa.com/blog/${post.id}`}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://boticaspa.com/' },
+          { name: 'Blog', url: 'https://boticaspa.com/blog' },
+          { name: post.title, url: `https://boticaspa.com/blog/${post.id}` },
+        ]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.excerpt,
+        "datePublished": post.date,
+        "dateModified": post.date,
+        "author": { "@type": "Organization", "name": "Botica Spa" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Botica Spa",
+          "logo": { "@type": "ImageObject", "url": "https://boticaspa.com/logo.png" }
+        },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": `https://boticaspa.com/blog/${post.id}` },
+        "image": post.image ? `https://boticaspa.com${post.image}` : "https://boticaspa.com/og-image.jpg"
+      })}} />
       <div className="max-w-4xl mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
