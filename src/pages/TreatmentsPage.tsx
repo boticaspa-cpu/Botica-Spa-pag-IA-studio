@@ -19,13 +19,13 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
       id: 'botica',
       slug: 'botica-signature',
       image: '/masaje-botica.jpg',
-      price: t.services.items.botica.price60,
+      price: t.services.items.botica.price90,
     },
     {
       id: 'fourHands',
       slug: 'four-hands-massage',
       image: '/masaje-cuatro-manos.jpg',
-      price: t.services.items.fourHands.price60,
+      price: t.services.items.fourHands.price90,
     },
     {
       id: 'deepTissue',

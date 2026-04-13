@@ -35,15 +35,15 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           loop
           playsInline
           className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.5) contrast(1.05)' }}
+          style={{ filter: 'brightness(0.55) contrast(1.1) saturate(1.4) sepia(0.3)' }}
         >
-          <source 
-            src="https://cdn.pixabay.com/video/2023/10/19/185641-876115984_large.mp4" 
-            type="video/mp4" 
+          <source
+            src="https://cdn.pixabay.com/video/2023/10/19/185641-876115984_large.mp4"
+            type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/60 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/50 via-orange-900/10 to-amber-950/70 backdrop-blur-[0.5px]" />
       </motion.div>
 
       <motion.div 
@@ -55,15 +55,6 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.span 
-            initial={{ opacity: 0, letterSpacing: "0.2em" }}
-            animate={{ opacity: 1, letterSpacing: "0.5em" }}
-            transition={{ duration: 1.5, delay: 0.2 }}
-            className="text-white/80 uppercase text-[10px] mb-12 block font-sans font-medium"
-          >
-            Botica Spa • Playa del Carmen
-          </motion.span>
-          
           <h1 className="text-7xl md:text-9xl lg:text-[10rem] text-white font-serif font-light leading-[0.9] mb-12 tracking-tight">
             {t.hero.title} <br />
             <motion.span 
