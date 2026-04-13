@@ -35,7 +35,7 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           loop
           playsInline
           className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.6) contrast(1.15) saturate(1.8) sepia(0.55)' }}
+          style={{ filter: 'brightness(0.85) contrast(1.05) saturate(1.9) sepia(0.5)' }}
         >
           <source
             src="https://cdn.pixabay.com/video/2023/10/19/185641-876115984_large.mp4"
@@ -43,11 +43,11 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           />
           Your browser does not support the video tag.
         </video>
-        {/* Golden sunrise overlay — radial burst from center + dark edges */}
+        {/* God-ray burst — blinding golden light from center */}
         <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(251,191,36,0.18) 0%, rgba(217,119,6,0.28) 40%, rgba(120,53,15,0.65) 100%)'
+          background: 'radial-gradient(ellipse 70% 50% at 50% 35%, rgba(255,220,80,0.35) 0%, rgba(251,146,60,0.2) 50%, rgba(120,53,15,0.45) 100%)'
         }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-amber-950/80 via-transparent to-amber-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-amber-950/60 via-transparent to-transparent" />
       </motion.div>
 
       <motion.div 
