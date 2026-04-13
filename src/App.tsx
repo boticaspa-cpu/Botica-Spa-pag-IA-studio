@@ -111,11 +111,6 @@ function AppContent() {
             "hover:text-white transition-colors",
             location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.blog}</Link>
-          <a href="/#about" className={cn(
-            "hover:text-white transition-colors",
-            location.pathname !== '/' && "hover:text-brand"
-          )}>{t.nav.about}</a>
-          
           <button
             onClick={() => setIsBookingOpen(true)}
             className={cn(
@@ -180,14 +175,6 @@ function AppContent() {
               >
                 {t.nav.blog}
               </Link>
-              <a 
-                href="/#about" 
-                className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t.nav.about}
-              </a>
-              
               <button 
                 onClick={() => {
                   setIsBookingOpen(true);
