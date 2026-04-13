@@ -24,6 +24,7 @@ import { ServicePage } from './pages/ServicePage';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { PaymentSuccess } from './pages/PaymentSuccess';
+import { LocationPage } from './pages/LocationPage';
 import { cn } from './lib/utils';
 
 function AppContent() {
@@ -205,6 +206,10 @@ function AppContent() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/booking/success" element={<PaymentSuccess />} />
+        <Route path="/massage-tulum" element={<LocationPage city="tulum" onBookNow={handleBook} />} />
+        <Route path="/massage-cancun" element={<LocationPage city="cancun" onBookNow={handleBook} />} />
+        <Route path="/massage-akumal" element={<LocationPage city="akumal" onBookNow={handleBook} />} />
+        <Route path="/massage-playacar" element={<LocationPage city="playacar" onBookNow={handleBook} />} />
       </Routes>
 
       <Footer />
