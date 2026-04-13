@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
 import { Promo } from '../components/Promo';
@@ -69,6 +69,20 @@ const FAQS = [
 export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
   const { language, t } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [googleReviews, setGoogleReviews] = useState<any[]>([]);
+  const [reviewStats, setReviewStats] = useState<{ rating: number; total: number } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then(r => r.json())
+      .then(data => {
+        if (data.reviews?.length > 0) {
+          setGoogleReviews(data.reviews);
+          setReviewStats({ rating: data.rating, total: data.total });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <>
@@ -115,8 +129,27 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
               </motion.h2>
             </div>
 
+            {reviewStats && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center gap-3 mb-12 -mt-8"
+              >
+                <div className="flex gap-0.5 text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-gray-700">{reviewStats.rating.toFixed(1)}</span>
+                <span className="text-sm text-gray-400">· {reviewStats.total} Google reviews</span>
+              </motion.div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {t.testimonials.items.map((item: any, index: number) => (
+              {(googleReviews.length > 0 ? googleReviews : t.testimonials.items).map((item: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -126,7 +159,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                   className="flex flex-col items-center text-center space-y-6"
                 >
                   <div className="flex gap-1 text-amber-400">
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(item.rating ?? 5)].map((_, i) => (
                       <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
@@ -135,9 +168,12 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                   <p className="text-lg text-gray-600 italic leading-relaxed">
                     "{item.text}"
                   </p>
-                  <div className="pt-4">
+                  <div className="pt-4 flex flex-col items-center gap-2">
+                    {item.photo && (
+                      <img src={item.photo} alt={item.author} className="w-10 h-10 rounded-full object-cover" referrerPolicy="no-referrer" />
+                    )}
                     <p className="font-medium uppercase tracking-[0.2em] text-xs text-gray-900">{item.author}</p>
-                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest">{item.location}</p>
+                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest">{item.time ?? item.location}</p>
                   </div>
                 </motion.div>
               ))}
