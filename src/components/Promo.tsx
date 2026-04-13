@@ -9,15 +9,15 @@ export const Promo: React.FC = () => {
   const t = translations[language];
 
   return (
-    <section className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2d5a4e 0%, #1a3d35 40%, #0f2820 100%)' }}>
+    <section className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #e8e4d8 0%, #d6cfbe 50%, #c8bfa8 100%)' }}>
       {/* Decorative Background */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-400 rounded-full blur-[180px] opacity-15" />
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal-300 rounded-full blur-[150px] opacity-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#b5a88a] rounded-full blur-[180px] opacity-25" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#c9b99a] rounded-full blur-[150px] opacity-20" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto bg-white/8 backdrop-blur-xl border border-white/15 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+        <div className="max-w-5xl mx-auto bg-white/30 backdrop-blur-xl border border-white/40 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <motion.div
@@ -34,7 +34,7 @@ export const Promo: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight"
+                className="text-4xl md:text-6xl font-serif text-[#1A1A1A] mb-6 leading-tight"
               >
                 {t.promo.title}
               </motion.h2>
@@ -44,7 +44,7 @@ export const Promo: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-white/60 text-lg mb-10 font-light leading-relaxed max-w-md"
+                className="text-[#1A1A1A]/60 text-lg mb-10 font-light leading-relaxed max-w-md"
               >
                 {t.promo.description}
               </motion.p>
@@ -56,8 +56,8 @@ export const Promo: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="flex flex-col gap-2 mb-12"
               >
-                <span className="text-white/40 text-xs uppercase tracking-widest">{t.promo.offer}</span>
-                <span className="text-5xl md:text-7xl font-serif text-white">{t.promo.price}</span>
+                <span className="text-[#1A1A1A]/40 text-xs uppercase tracking-widest">{t.promo.offer}</span>
+                <span className="text-5xl md:text-7xl font-serif text-[#1A1A1A]">{t.promo.price}</span>
               </motion.div>
 
               <motion.a
