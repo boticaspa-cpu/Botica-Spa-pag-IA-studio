@@ -61,13 +61,13 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-[8rem] text-white font-serif font-light leading-[0.9] mb-12 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif font-light leading-[0.9] mb-12 tracking-tight" style={{ color: '#fff', textShadow: '0 2px 40px rgba(0,0,0,0.5), 0 0 80px rgba(255,248,220,0.15)' }}>
             {t.hero.title} <br />
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.5, delay: 0.5 }}
-              className="italic text-white/90"
+              className="italic"
             >
               {t.hero.titleItalic}.
             </motion.span>
