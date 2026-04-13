@@ -9,14 +9,15 @@ export const Promo: React.FC = () => {
   const t = translations[language];
 
   return (
-    <section className="py-24 bg-[#1A1A1A] relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #2d5a4e 0%, #1a3d35 40%, #0f2820 100%)' }}>
       {/* Decorative Background */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand rounded-full blur-[150px] opacity-20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-400 rounded-full blur-[180px] opacity-15" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-teal-300 rounded-full blur-[150px] opacity-10" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
+        <div className="max-w-5xl mx-auto bg-white/8 backdrop-blur-xl border border-white/15 rounded-[3rem] p-8 md:p-16 overflow-hidden relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <motion.div
