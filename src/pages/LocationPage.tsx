@@ -20,7 +20,7 @@ interface CityConfig {
 const cityConfigs: Record<string, CityConfig> = {
   tulum: {
     name: 'Tulum',
-    heroImage: '/spa-interior.jpg',
+    heroImage: '/spa-interior.webp',
     titleEn: 'Massage Tulum | In-Home Spa at Your Villa or Hotel | Botica Spa',
     descEn: 'In-home massage in Tulum. We bring certified therapists to your villa, hotel or Airbnb. Relaxing, deep tissue, four-hands & more. Book on WhatsApp.',
     h1En: 'Massage in Tulum',
@@ -30,7 +30,7 @@ const cityConfigs: Record<string, CityConfig> = {
   },
   cancun: {
     name: 'Cancún',
-    heroImage: '/masaje-relajante.jpg',
+    heroImage: '/masaje-relajante.webp',
     titleEn: 'Massage Cancún | In-Home Spa at Your Hotel or Villa | Botica Spa',
     descEn: 'In-home massage in Cancún. Certified therapists delivered to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now.',
     h1En: 'Massage in Cancún',
@@ -40,7 +40,7 @@ const cityConfigs: Record<string, CityConfig> = {
   },
   akumal: {
     name: 'Akumal',
-    heroImage: '/galeria-1.jpg',
+    heroImage: '/galeria-1.webp',
     titleEn: 'Massage Akumal | In-Home Spa | Botica Spa',
     descEn: 'In-home massage in Akumal. We bring certified therapists to your villa or hotel in Akumal Bay. Relaxing, deep tissue, four-hands & more.',
     h1En: 'Massage in Akumal',
@@ -50,7 +50,7 @@ const cityConfigs: Record<string, CityConfig> = {
   },
   playacar: {
     name: 'Playacar',
-    heroImage: '/galeria-2.jpg',
+    heroImage: '/galeria-2.webp',
     titleEn: 'Massage Playacar | In-Home Spa at Your Villa | Botica Spa',
     descEn: 'In-home massage in Playacar. Certified therapists delivered to your villa or hotel in Playacar Phase 1 & 2. Relaxing, deep tissue, four-hands & more.',
     h1En: 'Massage in Playacar',
@@ -61,12 +61,12 @@ const cityConfigs: Record<string, CityConfig> = {
 };
 
 const allServices = [
-  { id: 'botica', slug: 'botica-signature', image: '/masaje-botica.jpg', priceKey: 'price90' as const },
-  { id: 'fourHands', slug: 'four-hands-massage', image: '/masaje-cuatro-manos.jpg', priceKey: 'price90' as const },
-  { id: 'deepTissue', slug: 'deep-tissue-massage', image: '/masaje-profundo.jpg', priceKey: 'price60' as const },
-  { id: 'relaxing', slug: 'relaxing-massage', image: '/masaje-relajante.jpg', priceKey: 'price60' as const },
-  { id: 'personalized', slug: 'personalized-massage', image: '/spa-detalle.jpg', priceKey: 'price60' as const },
-  { id: 'facial', slug: 'revitalizing-facial', image: '/masaje-cuatro-manos.jpg', priceKey: 'price60' as const },
+  { id: 'botica', slug: 'botica-signature', image: '/masaje-botica.webp', priceKey: 'price90' as const },
+  { id: 'fourHands', slug: 'four-hands-massage', image: '/masaje-cuatro-manos.webp', priceKey: 'price90' as const },
+  { id: 'deepTissue', slug: 'deep-tissue-massage', image: '/masaje-profundo.webp', priceKey: 'price60' as const },
+  { id: 'relaxing', slug: 'relaxing-massage', image: '/masaje-relajante.webp', priceKey: 'price60' as const },
+  { id: 'personalized', slug: 'personalized-massage', image: '/spa-detalle.webp', priceKey: 'price60' as const },
+  { id: 'facial', slug: 'revitalizing-facial', image: '/masaje-cuatro-manos.webp', priceKey: 'price60' as const },
 ];
 
 interface LocationPageProps {

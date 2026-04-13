@@ -21,7 +21,7 @@ const serviceConfig: Record<string, {
 }> = {
   'relaxing-massage': {
     key: 'relaxing',
-    image: '/masaje-relajante.jpg',
+    image: '/masaje-relajante.webp',
     titleEn: 'Relaxing Massage in Playa del Carmen | In-Home Spa | Botica Spa',
     descEn: 'Book a professional relaxing massage at your hotel, villa or Airbnb in Playa del Carmen. Certified therapists, organic oils, delivered to your door. From $1,700 MXN.',
     titleEs: 'Masaje Relajante a Domicilio en Playa del Carmen | Botica Spa',
@@ -29,7 +29,7 @@ const serviceConfig: Record<string, {
   },
   'deep-tissue-massage': {
     key: 'deepTissue',
-    image: '/masaje-profundo.jpg',
+    image: '/masaje-profundo.webp',
     titleEn: 'Deep Tissue Massage Playa del Carmen | In-Home | Botica Spa',
     descEn: 'Expert deep tissue massage delivered to your villa, hotel or Airbnb in Playa del Carmen. Release chronic tension with certified therapists. From $1,700 MXN.',
     titleEs: 'Masaje de Tejido Profundo a Domicilio Playa del Carmen | Botica Spa',
@@ -37,7 +37,7 @@ const serviceConfig: Record<string, {
   },
   'four-hands-massage': {
     key: 'fourHands',
-    image: '/masaje-cuatro-manos.jpg',
+    image: '/masaje-cuatro-manos.webp',
     titleEn: 'Four-Hands Massage Playa del Carmen | Two Therapists | Botica Spa',
     descEn: 'Experience a luxury four-hands massage at your villa or hotel in Playa del Carmen. Two certified therapists in perfect synchronicity. From $3,900 MXN.',
     titleEs: 'Masaje a Cuatro Manos en Playa del Carmen | Botica Spa',
@@ -45,7 +45,7 @@ const serviceConfig: Record<string, {
   },
   'botica-signature': {
     key: 'botica',
-    image: '/masaje-botica.jpg',
+    image: '/masaje-botica.webp',
     titleEn: 'Botica Signature Massage Playa del Carmen | Luxury In-Home Spa',
     descEn: 'Our exclusive signature ritual blending Swedish, Deep Tissue and Aromatherapy. The ultimate in-home spa experience in Playa del Carmen. From $1,700 MXN.',
     titleEs: 'Masaje Botica Signature Playa del Carmen | Spa a Domicilio de Lujo',
@@ -53,7 +53,7 @@ const serviceConfig: Record<string, {
   },
   'personalized-massage': {
     key: 'personalized',
-    image: '/spa-detalle.jpg',
+    image: '/spa-detalle.webp',
     titleEn: 'Personalized Massage Playa del Carmen | Custom In-Home Therapy | Botica Spa',
     descEn: 'A custom-tailored massage designed for your unique needs, delivered to your hotel or Airbnb in Playa del Carmen. Certified therapists. From $1,700 MXN.',
     titleEs: 'Masaje Personalizado a Domicilio Playa del Carmen | Botica Spa',
@@ -61,7 +61,7 @@ const serviceConfig: Record<string, {
   },
   'revitalizing-facial': {
     key: 'facial',
-    image: '/masaje-cuatro-manos.jpg',
+    image: '/masaje-cuatro-manos.webp',
     titleEn: 'Revitalizing Facial Treatment Playa del Carmen | In-Home | Botica Spa',
     descEn: 'Professional organic facial treatment delivered to your villa or hotel in Playa del Carmen. Restore your skin\'s natural glow after a day at the beach. $1,700 MXN.',
     titleEs: 'Facial Revitalizante a Domicilio Playa del Carmen | Botica Spa',
@@ -106,8 +106,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
       <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden">
         <img
           src={config.image}
-          alt={item.name}
+          alt={`${item.name} in Playa del Carmen — in-home massage by Botica Spa`}
           className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         <div className="relative z-10 max-w-5xl mx-auto px-8 pb-16 w-full">

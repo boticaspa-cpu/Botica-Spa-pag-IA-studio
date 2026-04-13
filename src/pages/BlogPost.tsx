@@ -41,7 +41,7 @@ export function BlogPost() {
           "logo": { "@type": "ImageObject", "url": "https://boticaspa.com/logo.png" }
         },
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://boticaspa.com/blog/${post.id}` },
-        "image": post.image ? `https://boticaspa.com${post.image}` : "https://boticaspa.com/og-image.jpg"
+        "image": post.image ? `https://boticaspa.com${post.image}` : "https://boticaspa.com/og-image.webp"
       })}} />
       <div className="max-w-4xl mx-auto px-8">
         <motion.div
@@ -93,11 +93,11 @@ export function BlogPost() {
           transition={{ delay: 0.3 }}
           className="aspect-[16/9] rounded-3xl overflow-hidden mb-16 shadow-2xl"
         >
-          <img 
-            src={post.image} 
+          <img
+            src={post.image}
             alt={post.title}
             className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
+            loading="eager"
           />
         </motion.div>
 

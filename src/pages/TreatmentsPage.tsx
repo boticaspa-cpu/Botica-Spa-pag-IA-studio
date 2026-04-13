@@ -18,37 +18,37 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
     {
       id: 'botica',
       slug: 'botica-signature',
-      image: '/masaje-botica.jpg',
+      image: '/masaje-botica.webp',
       price: t.services.items.botica.price90,
     },
     {
       id: 'fourHands',
       slug: 'four-hands-massage',
-      image: '/masaje-cuatro-manos.jpg',
+      image: '/masaje-cuatro-manos.webp',
       price: t.services.items.fourHands.price90,
     },
     {
       id: 'deepTissue',
       slug: 'deep-tissue-massage',
-      image: '/masaje-profundo.jpg',
+      image: '/masaje-profundo.webp',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
       slug: 'relaxing-massage',
-      image: '/masaje-relajante.jpg',
+      image: '/masaje-relajante.webp',
       price: t.services.items.relaxing.price60,
     },
     {
       id: 'personalized',
       slug: 'personalized-massage',
-      image: '/spa-detalle.jpg',
+      image: '/spa-detalle.webp',
       price: t.services.items.personalized.price60,
     },
     {
       id: 'facial',
       slug: 'revitalizing-facial',
-      image: '/masaje-cuatro-manos.jpg',
+      image: '/masaje-cuatro-manos.webp',
       price: t.services.items.facial.price60,
     },
   ];
@@ -97,9 +97,9 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/5">
                     <img
                       src={service.image}
-                      alt={item.name}
+                      alt={`${item.name} in Playa del Carmen — in-home spa by Botica Spa`}
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      referrerPolicy="no-referrer"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                     
