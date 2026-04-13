@@ -329,6 +329,23 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
     }
   });
 
+  // POST /api/leads — Captura de email al inicio del booking
+  app.post("/api/leads", async (req, res) => {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ error: "Email required" });
+    try {
+      await addDoc(collection(firestoreDb, "leads"), {
+        email,
+        createdAt: new Date().toISOString(),
+        source: "booking_form",
+      });
+      res.json({ ok: true });
+    } catch (error) {
+      console.error("Lead save error:", error);
+      res.status(500).json({ error: "Failed to save lead" });
+    }
+  });
+
   // ── WhatsApp Cloud API ─────────────────────────────────────────
 
   // POST /api/whatsapp — Enviar mensaje de confirmación

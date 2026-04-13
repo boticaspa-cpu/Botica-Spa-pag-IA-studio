@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Calendar, Clock, User, MapPin, ChevronLeft, MessageCircle, CreditCard, Users, Plus, X } from 'lucide-react';
+import { Calendar, Clock, User, ChevronLeft, MessageCircle, CreditCard, Users, Plus, X } from 'lucide-react';
 import { format, addDays, isSameDay, differenceInCalendarDays } from 'date-fns';
 import { cn } from '../lib/utils';
 import { useLanguage } from '../LanguageContext';
@@ -47,7 +47,7 @@ function buildWhatsAppUrl(booking: any, depositPaid?: number) {
 
 export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: boolean, onClose: () => void, initialServiceId?: string | null }) => {
   const { t, language } = useLanguage();
-  const [step, setStep] = useState(initialServiceId ? 2 : 1);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const SERVICES = [
@@ -115,70 +115,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
 
   const [guests, setGuests] = useState<GuestService[]>([emptyGuest()]);
 
-  const addressInputRef = useRef<HTMLInputElement>(null);
-  const [mapsLoaded, setMapsLoaded] = useState(false);
-  const [geoLoading, setGeoLoading] = useState(false);
-
-  const handleGetLocation = () => {
-    if (!navigator.geolocation) return;
-    setGeoLoading(true);
-    navigator.geolocation.getCurrentPosition(
-      async ({ coords }) => {
-        const { latitude: lat, longitude: lng } = coords;
-        const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
-        try {
-          const r = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`,
-            { headers: { 'Accept-Language': 'es' } }
-          );
-          const data = await r.json();
-          const address = data.display_name || `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-          setFormData(prev => ({ ...prev, address, mapsUrl }));
-        } catch {
-          setFormData(prev => ({ ...prev, address: `${lat.toFixed(5)}, ${lng.toFixed(5)}`, mapsUrl }));
-        } finally {
-          setGeoLoading(false);
-        }
-      },
-      () => setGeoLoading(false),
-      { enableHighAccuracy: true, timeout: 10000 }
-    );
-  };
-
-  // Load Google Maps Places script once
-  React.useEffect(() => {
-    const key = import.meta.env.VITE_GOOGLE_MAPS_KEY;
-    if (!key) return;
-    if ((window as any).google?.maps?.places) { setMapsLoaded(true); return; }
-    if (document.getElementById('gm-places-script')) return;
-    const script = document.createElement('script');
-    script.id = 'gm-places-script';
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places`;
-    script.async = true;
-    script.onload = () => setMapsLoaded(true);
-    document.head.appendChild(script);
-  }, []);
-
-  // Attach autocomplete when step 3 renders and Maps is ready
-  React.useEffect(() => {
-    if (step !== 3 || !mapsLoaded || !addressInputRef.current) return;
-    const gm = (window as any).google.maps;
-    const autocomplete = new gm.places.Autocomplete(addressInputRef.current, {
-      types: ['address'],
-      componentRestrictions: { country: 'mx' },
-    });
-    const listener = autocomplete.addListener('place_changed', () => {
-      const place = autocomplete.getPlace();
-      if (!place.geometry?.location) return;
-      const address = place.formatted_address || '';
-      const lat: number = place.geometry.location.lat();
-      const lng: number = place.geometry.location.lng();
-      const mapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
-      setFormData(prev => ({ ...prev, address, mapsUrl }));
-    });
-    return () => gm.event.removeListener(listener);
-  }, [step, mapsLoaded]);
-
   const [formData, setFormData] = useState({
     date: new Date(),
     time: '',
@@ -186,7 +122,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
     customerEmail: '',
     customerPhone: '',
     address: '',
-    mapsUrl: '',
   });
 
   React.useEffect(() => {
@@ -278,7 +213,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
     customerEmail: formData.customerEmail,
     customerPhone: formData.customerPhone,
     address: formData.address,
-    mapsUrl: formData.mapsUrl,
   });
 
   const handleWhatsApp = () => {
@@ -331,7 +265,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
             <img src="/logo.png" alt="Logo" className="w-12 h-12 object-contain" referrerPolicy="no-referrer" />
             <div>
               <h2 className="text-2xl font-serif font-medium">{t.booking.title}</h2>
-              <p className="text-sm text-gray-500 mt-1">{t.booking.step} {step} {t.booking.of} 4</p>
+              <p className="text-sm text-gray-500 mt-1">{step === 0 ? "Let's get started" : `${t.booking.step} ${step} ${t.booking.of} 4`}</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors">
@@ -345,6 +279,43 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
         <div className="flex-1 overflow-y-auto p-8">
           <AnimatePresence mode="wait">
             <>
+              {/* ─── Step 0 — Email capture ─── */}
+              {step === 0 && (
+                <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                  <h3 className="text-2xl font-serif mb-2">Welcome ✨</h3>
+                  <p className="text-sm text-gray-400 mb-8">Enter your email to get started — we'll save your spot while you complete your booking.</p>
+                  <div className="space-y-1">
+                    <label className="text-xs uppercase tracking-widest text-gray-500">Email</label>
+                    <input
+                      type="email"
+                      autoFocus
+                      value={formData.customerEmail}
+                      onChange={e => setFormData({ ...formData, customerEmail: e.target.value })}
+                      onKeyDown={e => { if (e.key === 'Enter' && formData.customerEmail) handleNext(); }}
+                      className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
+                      placeholder="jane@example.com"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-3">We'll only use this to confirm your booking details.</p>
+                  <div className="mt-8 flex justify-end">
+                    <button
+                      disabled={!formData.customerEmail}
+                      onClick={() => {
+                        fetch('/api/leads', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ email: formData.customerEmail }),
+                        }).catch(() => {});
+                        handleNext();
+                      }}
+                      className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      {t.booking.continue}
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+
               {/* ─── Step 1 — Select services per guest ─── */}
               {step === 1 && (
                 <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
@@ -434,7 +405,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                   {totalPrice > 0 && (
                     <div className="mt-6 flex justify-between items-center bg-brand/5 border border-brand/20 rounded-xl px-4 py-3">
                       <span className="text-sm text-gray-600">{guests.filter(g => g.serviceId).length} service{guests.filter(g => g.serviceId).length !== 1 ? 's' : ''} selected</span>
-                      <span className="font-serif text-xl text-brand">${totalPrice} <span className="text-xs font-sans text-gray-400">USD</span></span>
+                      <span className="font-serif text-xl text-brand">${totalPrice} <span className="text-xs font-sans text-gray-400">MXN</span></span>
                     </div>
                   )}
 
@@ -615,53 +586,14 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-xs uppercase tracking-widest text-gray-500 flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> {t.booking.address}
-                      </label>
-                      <div className="flex gap-2">
-                        <input
-                          ref={addressInputRef}
-                          type="text"
-                          value={formData.address}
-                          onChange={e => setFormData({ ...formData, address: e.target.value, mapsUrl: '' })}
-                          className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
-                          placeholder="🔍 Busca tu dirección…"
-                        />
-                        <button
-                          type="button"
-                          onClick={handleGetLocation}
-                          disabled={geoLoading}
-                          title="Usar mi ubicación actual"
-                          className="flex-shrink-0 flex items-center justify-center w-14 rounded-xl bg-gray-50 hover:bg-brand hover:text-white text-gray-500 transition-all disabled:opacity-40"
-                        >
-                          {geoLoading
-                            ? <div className="w-4 h-4 border-2 border-gray-300 border-t-brand rounded-full animate-spin" />
-                            : <MapPin className="w-5 h-5" />}
-                        </button>
-                      </div>
-                      {formData.mapsUrl && (
-                        <div className="mt-2 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                          <iframe
-                            src={`https://maps.google.com/maps?q=${encodeURIComponent(formData.address)}&z=15&output=embed`}
-                            width="100%"
-                            height="180"
-                            style={{ border: 0 }}
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                          />
-                          <div className="bg-gray-50 px-3 py-2 flex items-center justify-between gap-2">
-                            <span className="text-xs text-gray-500 truncate">{formData.address}</span>
-                            <a
-                              href={formData.mapsUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-brand font-medium whitespace-nowrap hover:underline"
-                            >
-                              Ver mapa →
-                            </a>
-                          </div>
-                        </div>
-                      )}
+                      <label className="text-xs uppercase tracking-widest text-gray-500">{t.booking.address}</label>
+                      <input
+                        type="text"
+                        value={formData.address}
+                        onChange={e => setFormData({ ...formData, address: e.target.value })}
+                        className="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-brand transition-all"
+                        placeholder="Hotel name, villa or Airbnb address"
+                      />
                     </div>
                   </div>
 
@@ -715,7 +647,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
 
                     {/* Location */}
                     <div className="border-b border-gray-200 pb-4">
-                      <p className="text-xs uppercase tracking-widest text-gray-500 mb-1 flex items-center gap-1"><MapPin className="w-3 h-3" /> Location</p>
+                      <p className="text-xs uppercase tracking-widest text-gray-500 mb-1">📍 Location</p>
                       <p className="font-medium text-sm">{formData.address}</p>
                       {formData.mapsUrl && (
                         <a href={formData.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-brand hover:underline mt-1 inline-block">
@@ -728,11 +660,11 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     <div className="space-y-2">
                       <div className="flex justify-between font-semibold text-base pt-1">
                         <span>Total</span>
-                        <span className="font-serif text-xl text-[#1A1A1A]">${totalPrice} <span className="text-xs font-sans font-normal text-gray-400">USD</span></span>
+                        <span className="font-serif text-xl text-[#1A1A1A]">${totalPrice} <span className="text-xs font-sans font-normal text-gray-400">MXN</span></span>
                       </div>
                       <div className="flex justify-between text-sm pt-1 border-t border-gray-200">
                         <span className="text-amber-700 font-medium">30% Deposit {requiresDeposit ? '(pay now online)' : '(via WhatsApp)'}</span>
-                        <span className="text-amber-700 font-serif text-lg">${depositAmount} <span className="text-xs font-sans font-normal">USD</span></span>
+                        <span className="text-amber-700 font-serif text-lg">${depositAmount} <span className="text-xs font-sans font-normal">MXN</span></span>
                       </div>
                       <div className="flex justify-between text-sm text-gray-400">
                         <span>Balance on day of service</span>
