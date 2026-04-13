@@ -59,7 +59,12 @@ export const Promo: React.FC = () => {
                 <span className="text-5xl md:text-7xl font-serif text-white">{t.promo.price}</span>
               </motion.div>
 
-              <motion.button
+              <motion.a
+                href={`https://wa.me/529842687428?text=${encodeURIComponent(language === 'en'
+                  ? "Hi! I'd like to claim the Monthly Special 🌿\n\n2 Four-Hands Massages for $7,399 MXN\n\nCould you help me book this offer? Thank you!"
+                  : "¡Hola! Me gustaría reclamar el Especial del Mes 🌿\n\n2 Masajes a Cuatro Manos por $7,399 MXN\n\n¿Me pueden ayudar a reservar esta oferta? ¡Gracias!")}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -68,7 +73,7 @@ export const Promo: React.FC = () => {
               >
                 {t.promo.cta}
                 <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              </motion.a>
             </div>
 
             <div className="relative">
