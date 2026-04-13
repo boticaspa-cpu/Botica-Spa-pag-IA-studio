@@ -103,7 +103,7 @@ export const translations = {
       title: 'Monthly Special',
       description: 'Experience the ultimate luxury with a companion or treat yourself twice.',
       offer: '2 Four-Hands Massages',
-      price: '$7,800 MXN',
+      price: '$7,399 MXN',
       cta: 'Claim Offer',
     },
     social: {
@@ -389,7 +389,7 @@ export const translations = {
       title: 'Especial del Mes',
       description: 'Experimenta el lujo máximo con un acompañante o consiéntete dos veces.',
       offer: '2 Masajes a Cuatro Manos',
-      price: '$7,000 MXN',
+      price: '$7,399 MXN',
       cta: 'Reclamar Oferta',
     },
     social: {

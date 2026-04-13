@@ -80,7 +80,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
         {/* View All Treatments Link */}
         <section className="py-12 bg-[#F5F2ED] text-center">
           <Link 
-            to="/masajes"
+            to="/massages"
             className="inline-flex items-center gap-3 text-brand font-bold uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all group"
           >
             {language === 'en' ? 'View Full Treatment Menu' : 'Ver Menú Completo de Tratamientos'}

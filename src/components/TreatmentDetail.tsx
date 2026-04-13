@@ -93,8 +93,12 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
                       <span className="text-xs uppercase tracking-wider font-semibold">{t.services.duration}</span>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-[#4A4A4A]">60 {t.services.minutes} — <span className="font-semibold">${treatment.price60.toLocaleString(undefined, { minimumFractionDigits: treatment.price60 % 1 !== 0 ? 2 : 0 })} {t.services.currency}</span></p>
-                      <p className="text-sm text-[#4A4A4A]">90 {t.services.minutes} — <span className="font-semibold">${treatment.price90.toLocaleString(undefined, { minimumFractionDigits: treatment.price90 % 1 !== 0 ? 2 : 0 })} {t.services.currency}</span></p>
+                      {treatment.price60 && (
+                        <p className="text-sm text-[#4A4A4A]">60 {t.services.minutes} — <span className="font-semibold">${treatment.price60.toLocaleString(undefined, { minimumFractionDigits: treatment.price60 % 1 !== 0 ? 2 : 0 })} {t.services.currency}</span></p>
+                      )}
+                      {treatment.price90 && (
+                        <p className="text-sm text-[#4A4A4A]">90 {t.services.minutes} — <span className="font-semibold">${treatment.price90.toLocaleString(undefined, { minimumFractionDigits: treatment.price90 % 1 !== 0 ? 2 : 0 })} {t.services.currency}</span></p>
+                      )}
                       {treatment.price120 && (
                         <p className="text-sm text-[#4A4A4A]">120 {t.services.minutes} — <span className="font-semibold">${treatment.price120.toLocaleString(undefined, { minimumFractionDigits: treatment.price120 % 1 !== 0 ? 2 : 0 })} {t.services.currency}</span></p>
                       )}

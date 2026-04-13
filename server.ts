@@ -248,7 +248,7 @@ INFORMACIÓN REAL DE BOTICA SPA:
 - Personalized Massage: 60min $1,700 | 90min $2,100 | 120min $2,500
 - Four-Hands Massage (2 terapeutas, mínimo 90 min): 90min $3,900
 - Masaje en pareja (2 personas juntas): 60min $3,200 | 90min $4,000 | 120min $4,600
-- Especial del mes: 2 masajes Four-Hands por $7,800
+- Especial del mes: 2 masajes Four-Hands por $7,399
 
 **Reservas:** Se requiere 30% de depósito para confirmar. El resto se paga el día del servicio.
 **Contacto/Email:** hola@boticaspa.com

@@ -17,7 +17,7 @@ interface GuestService {
 
 function buildWhatsAppUrl(booking: any, depositPaid?: number) {
   const guestLines = (booking.guests as GuestService[]).map(
-    (g, i) => `   Guest ${i + 1}: ${g.serviceName} — ${g.duration} ($${g.price} USD)`
+    (g, i) => `   Guest ${i + 1}: ${g.serviceName} — ${g.duration} ($${g.price} MXN)`
   );
 
   const lines = [
@@ -34,12 +34,12 @@ function buildWhatsAppUrl(booking: any, depositPaid?: number) {
     `📧 Email: ${booking.customerEmail}`,
     `📱 Phone: ${booking.customerPhone}`,
     ``,
-    `💰 Total: $${booking.totalPrice} USD`,
-    `💳 30% Deposit: $${booking.depositAmount} USD`,
+    `💰 Total: $${booking.totalPrice} MXN`,
+    `💳 30% Deposit: $${booking.depositAmount} MXN`,
   ];
 
   if (depositPaid != null) {
-    lines.push(``, `✅ 30% deposit paid: $${depositPaid.toFixed(2)} USD`);
+    lines.push(``, `✅ 30% deposit paid: $${depositPaid.toFixed(2)} MXN`);
   }
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
@@ -56,7 +56,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
       name: t.services.items.botica.name,
       description: t.services.items.botica.desc,
       prices: {
-        '60 min': t.services.items.botica.price60,
         '90 min': t.services.items.botica.price90,
         '120 min': t.services.items.botica.price120,
       },
@@ -66,7 +65,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
       name: t.services.items.fourHands.name,
       description: t.services.items.fourHands.desc,
       prices: {
-        '60 min': t.services.items.fourHands.price60,
         '90 min': t.services.items.fourHands.price90,
       },
     },
@@ -106,7 +104,6 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
       description: t.services.items.facial.desc,
       prices: {
         '60 min': t.services.items.facial.price60,
-        '90 min': t.services.items.facial.price90,
       },
     },
   ];
@@ -374,7 +371,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                               <div>
                                 <p className="font-medium text-sm">Guest {gIdx + 1}</p>
                                 {isSelected ? (
-                                  <p className="text-xs text-brand">{guest.serviceName} — {guest.duration} · ${guest.price} USD</p>
+                                  <p className="text-xs text-brand">{guest.serviceName} — {guest.duration} · ${guest.price} MXN</p>
                                 ) : (
                                   <p className="text-xs text-gray-400">Tap to choose a treatment</p>
                                 )}
@@ -411,7 +408,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                                             selected ? "bg-brand border-brand text-white" : "border-gray-200 bg-white hover:border-brand"
                                           )}
                                         >
-                                          {dur} · ${price as number} USD
+                                          {dur} · ${price as number} MXN
                                         </button>
                                       );
                                     })}
@@ -699,7 +696,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                             <span className="text-sm font-medium">{g.serviceName}</span>
                             <span className="text-xs text-gray-400">{g.duration}</span>
                           </div>
-                          <span className="text-sm font-serif">${g.price} USD</span>
+                          <span className="text-sm font-serif">${g.price} MXN</span>
                         </div>
                       ))}
                     </div>
@@ -739,7 +736,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       </div>
                       <div className="flex justify-between text-sm text-gray-400">
                         <span>Balance on day of service</span>
-                        <span>${balanceDue} USD</span>
+                        <span>${balanceDue} MXN</span>
                       </div>
                     </div>
                   </div>
@@ -766,7 +763,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                         className="flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-all disabled:opacity-50"
                       >
                         <CreditCard className="w-4 h-4" />
-                        {loading ? 'Redirecting…' : `Pay 30% deposit — $${depositAmount} USD`}
+                        {loading ? 'Redirecting…' : `Pay 30% deposit — $${depositAmount} MXN`}
                       </button>
                     ) : (
                       <button
