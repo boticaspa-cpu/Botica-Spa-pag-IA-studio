@@ -45,10 +45,30 @@ function buildWhatsAppUrl(booking: any, depositPaid?: number) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
 
+function buildQuickWhatsAppUrl(guests: GuestService[], email: string) {
+  const guestLines = guests.map(
+    (g, i) => `   Guest ${i + 1}: ${g.serviceName} — ${g.duration} ($${g.price} MXN)`
+  );
+  const total = guests.reduce((sum, g) => sum + g.price, 0);
+  const lines = [
+    `Hello! I'd like to book a massage with Botica Spa 🌿`,
+    ``,
+    `🧖 Services:`,
+    ...guestLines,
+    ``,
+    `💰 Total: $${total} MXN`,
+    `📧 Email: ${email}`,
+    ``,
+    `Please help me find an available time!`,
+  ];
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+}
+
 export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: boolean, onClose: () => void, initialServiceId?: string | null }) => {
   const { t, language } = useLanguage();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [bookingMode, setBookingMode] = useState<'quick' | 'advance'>('quick');
 
   const SERVICES = [
     {
@@ -132,14 +152,15 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
           const firstDuration = Object.keys(service.prices)[0];
           const firstPrice = Object.values(service.prices)[0] as number;
           setGuests([{ serviceId: service.id, serviceName: service.name, duration: firstDuration, price: firstPrice }]);
-          setStep(2);
+          setBookingMode('quick');
+          setStep(1);
         }
       } else {
         setGuests([emptyGuest()]);
         setExpandedGuest(0);
-        setStep(1);
+        setStep(0);
       }
-      setFormData(prev => ({ ...prev, date: new Date(), time: '' }));
+      setFormData(prev => ({ ...prev, date: new Date(), time: '', customerEmail: '' }));
     }
   }, [isOpen, initialServiceId, language]);
 
@@ -265,7 +286,9 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
             <img src="/logo.png" alt="Logo" className="w-12 h-12 object-contain" referrerPolicy="no-referrer" />
             <div>
               <h2 className="text-2xl font-serif font-medium">{t.booking.title}</h2>
-              <p className="text-sm text-gray-500 mt-1">{step === 0 ? "Let's get started" : `${t.booking.step} ${step} ${t.booking.of} 4`}</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {step === 0 ? "Let's get started" : bookingMode === 'quick' ? `Pick your treatment` : `${t.booking.step} ${step} ${t.booking.of} 4`}
+              </p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-gray-200 rounded-full transition-colors">
@@ -282,9 +305,9 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {/* ─── Step 0 — Email capture ─── */}
               {step === 0 && (
                 <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <h3 className="text-2xl font-serif mb-2">Welcome ✨</h3>
-                  <p className="text-sm text-gray-400 mb-8">Enter your email to get started — we'll save your spot while you complete your booking.</p>
-                  <div className="space-y-1">
+                  <h3 className="text-2xl font-serif mb-2">Book Your Massage</h3>
+                  <p className="text-sm text-gray-400 mb-6">Enter your email and we'll get you set up in seconds.</p>
+                  <div className="space-y-1 mb-6">
                     <label className="text-xs uppercase tracking-widest text-gray-500">Email</label>
                     <input
                       type="email"
@@ -296,8 +319,9 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       placeholder="jane@example.com"
                     />
                   </div>
-                  <p className="text-xs text-gray-400 mt-3">We'll only use this to confirm your booking details.</p>
-                  <div className="mt-8 flex justify-end">
+
+                  {/* Two paths */}
+                  <div className="space-y-3">
                     <button
                       disabled={!formData.customerEmail}
                       onClick={() => {
@@ -306,13 +330,32 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({ email: formData.customerEmail }),
                         }).catch(() => {});
-                        handleNext();
+                        setBookingMode('quick');
+                        setStep(1);
                       }}
-                      className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-green-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
-                      {t.booking.continue}
+                      <MessageCircle className="w-5 h-5" />
+                      Book on WhatsApp — pick a service &amp; chat now
+                    </button>
+                    <button
+                      disabled={!formData.customerEmail}
+                      onClick={() => {
+                        fetch('/api/leads', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ email: formData.customerEmail }),
+                        }).catch(() => {});
+                        setBookingMode('advance');
+                        setStep(1);
+                      }}
+                      className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gray-100 text-gray-700 rounded-2xl text-sm hover:bg-gray-200 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      <Calendar className="w-4 h-4" />
+                      Schedule in advance (5+ days) — pay deposit online
                     </button>
                   </div>
+                  <p className="text-xs text-gray-400 mt-4 text-center">WhatsApp: instant reply · Advance: secure your date with a 30% deposit</p>
                 </motion.div>
               )}
 
@@ -409,14 +452,31 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     </div>
                   )}
 
-                  <div className="mt-6 flex justify-end">
-                    <button
-                      disabled={!allGuestsSelected}
-                      onClick={handleNext}
-                      className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
-                    >
-                      {t.booking.continue}
-                    </button>
+                  <div className="mt-6">
+                    {bookingMode === 'quick' ? (
+                      <button
+                        disabled={!allGuestsSelected}
+                        onClick={() => {
+                          const url = buildQuickWhatsAppUrl(guests, formData.customerEmail);
+                          window.open(url, '_blank');
+                          onClose();
+                        }}
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-green-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        Open WhatsApp to confirm your booking
+                      </button>
+                    ) : (
+                      <div className="flex justify-end">
+                        <button
+                          disabled={!allGuestsSelected}
+                          onClick={handleNext}
+                          className="px-8 py-3 bg-brand text-white rounded-full disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          {t.booking.continue}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               )}

@@ -111,7 +111,7 @@ export const translations = {
       facebook: 'https://facebook.com/boticaspa',
       whatsapp: 'https://wa.me/529842687428',
       phone: '+52 984 268 7428',
-      email: 'hola@boticaspa.com',
+      email: 'boticaspa@gmail.com',
       location: 'Playa del Carmen, MX'
     },
     gallery: {
@@ -426,7 +426,7 @@ Botica Spa serves all major Tulum zones including the hotel strip, Tulum Pueblo,
       facebook: 'https://facebook.com/boticaspa',
       whatsapp: 'https://wa.me/529842687428',
       phone: '+52 984 268 7428',
-      email: 'hola@boticaspa.com',
+      email: 'boticaspa@gmail.com',
       location: 'Playa del Carmen, MX'
     },
     gallery: {
