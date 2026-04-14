@@ -47,8 +47,7 @@ export const About = () => {
             <span className="text-xs uppercase tracking-[0.4em] text-gray-400 block">{t.about.badge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
-            {t.about.title} <br />
-            <span className="italic">{t.about.titleItalic}</span>
+            {t.about.title} <span className="italic">{t.about.titleItalic}</span>
           </h2>
           <p className="text-gray-600 leading-relaxed text-lg">
             {t.about.description}

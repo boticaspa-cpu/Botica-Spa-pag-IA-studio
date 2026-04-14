@@ -80,13 +80,15 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
           "@context": "https://schema.org",
           "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
           "name": "Botica Spa",
+          "description": "Premium mobile massage service in Playa del Carmen. We bring certified therapists to your hotel, villa, or Airbnb. Serving Playa del Carmen, Playacar, Tulum, Cancún, Akumal and Puerto Morelos.",
           "image": "https://boticaspa.com/logo.png",
           "@id": "https://boticaspa.com",
           "url": "https://boticaspa.com",
           "telephone": t.social.phone,
-          "serviceType": "Mobile Spa / In-Home Massage Service",
+          "serviceType": "Mobile Massage / In-Home Spa Service",
           "areaServed": [
             { "@type": "City", "name": "Playa del Carmen" },
+            { "@type": "City", "name": "Playacar" },
             { "@type": "City", "name": "Tulum" },
             { "@type": "City", "name": "Cancún" },
             { "@type": "City", "name": "Akumal" },
@@ -96,7 +98,6 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
             "@type": "PostalAddress",
             "addressLocality": "Playa del Carmen",
             "addressRegion": "Quintana Roo",
-            "postalCode": "77710",
             "addressCountry": "MX"
           },
           "openingHoursSpecification": {

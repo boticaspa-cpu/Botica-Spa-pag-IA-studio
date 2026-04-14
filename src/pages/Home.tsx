@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import { SEO } from '../components/SEO';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, MapPin, MessageCircle } from 'lucide-react';
 
 interface HomeProps {
   onSelectTreatment: (id: string) => void;
@@ -105,7 +105,96 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
         <Promo />
         <About />
         <Gallery />
-        
+
+        {/* Delivery Areas Section */}
+        <section className="py-24 px-4 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-xs uppercase tracking-[0.4em] text-[#5A5A40] mb-4 block font-bold"
+              >
+                Where We Go
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl md:text-5xl font-serif font-light"
+              >
+                We Deliver to Your Door
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-400 text-sm mt-4 max-w-md mx-auto"
+              >
+                Across the Riviera Maya — hotels, villas, Airbnbs. We bring everything.
+              </motion.p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+              {[
+                { city: 'Playa del Carmen', note: 'Primary service area', fee: 'No travel fee', primary: true },
+                { city: 'Playacar', note: 'Phase 1 & Phase 2', fee: 'No travel fee', primary: true },
+                { city: 'Tulum', note: 'Available daily', fee: 'Travel fee applies', primary: false },
+                { city: 'Cancún', note: 'Hotel Zone & downtown', fee: 'Travel fee applies', primary: false },
+                { city: 'Akumal', note: 'Akumal Bay & surrounding', fee: 'Travel fee may apply', primary: false },
+                { city: 'Puerto Morelos', note: 'Ask us on WhatsApp', fee: 'Travel fee applies', primary: false },
+              ].map((area, i) => (
+                <motion.div
+                  key={area.city}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className={`rounded-2xl p-6 border flex flex-col gap-3 ${area.primary ? 'bg-[#F9F8F6] border-[#D6CFBE]' : 'bg-white border-gray-100'}`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-2">
+                      <MapPin className={`w-4 h-4 flex-shrink-0 ${area.primary ? 'text-[#5A5A40]' : 'text-gray-400'}`} />
+                      <span className="font-serif text-lg text-[#1A1A1A]">{area.city}</span>
+                    </div>
+                    {area.primary && (
+                      <span className="text-[9px] uppercase tracking-widest font-bold text-[#5A5A40] bg-[#5A5A40]/10 px-2 py-1 rounded-full">
+                        Primary
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500">{area.note}</p>
+                  <p className={`text-[10px] uppercase tracking-widest font-bold ${area.primary ? 'text-[#5A5A40]' : 'text-gray-400'}`}>
+                    {area.fee}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-center"
+            >
+              <a
+                href="https://wa.me/529842687428?text=Hi!%20I%27d%20like%20to%20check%20if%20you%20cover%20my%20area%20%F0%9F%8C%BF"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-sm text-gray-500 hover:text-[#1A1A1A] transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Not sure if we cover your area? Message us on WhatsApp
+                <ArrowRight className="w-3 h-3" />
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Testimonials Section */}
         <section className="py-32 px-4 bg-white overflow-hidden">
           <div className="max-w-6xl mx-auto">
