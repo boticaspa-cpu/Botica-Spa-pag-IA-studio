@@ -53,38 +53,35 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
         }} />
       </motion.div>
 
-      <motion.div 
+      <motion.div
         style={{ y: contentY, opacity }}
         className="relative z-10 text-center px-4 max-w-5xl mx-auto"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif font-light leading-[0.9] mb-12 tracking-tight" style={{ color: '#fff', textShadow: '0 2px 30px rgba(0,0,0,0.7), 0 4px 60px rgba(0,0,0,0.5)' }}>
-            {t.hero.title} <br />
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-              className="italic"
-            >
-              {t.hero.titleItalic}.
-            </motion.span>
-          </h1>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.8 }}
-            className="text-lg md:text-xl text-white/95 font-sans font-light mb-16 max-w-2xl mx-auto leading-relaxed"
+        {/* H1 — painted at opacity:1 immediately so Lighthouse records LCP at first frame */}
+        <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif font-light leading-[0.9] mb-12 tracking-tight" style={{ color: '#fff', textShadow: '0 2px 30px rgba(0,0,0,0.7), 0 4px 60px rgba(0,0,0,0.5)' }}>
+          {t.hero.title} <br />
+          <motion.span
+            initial={{ x: -12 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="italic"
           >
+            {t.hero.titleItalic}.
+          </motion.span>
+        </h1>
+
+        {/* Subtitle and CTAs animate in — opacity animation only on non-LCP elements */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="text-lg md:text-xl text-white/95 font-sans font-light mb-16 max-w-2xl mx-auto leading-relaxed">
             {t.hero.subtitle}
-          </motion.p>
+          </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.05, backgroundColor: "#ffffff" }}
               whileTap={{ scale: 0.98 }}
               onClick={onBookNow}
@@ -92,7 +89,7 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
             >
               {t.hero.ctaBook}
             </motion.button>
-            <motion.a 
+            <motion.a
               href="#services"
               whileHover={{ x: 8 }}
               className="text-white border-b border-white/20 hover:border-white transition-all duration-500 pb-2 text-[10px] uppercase tracking-[0.4em] font-medium"
