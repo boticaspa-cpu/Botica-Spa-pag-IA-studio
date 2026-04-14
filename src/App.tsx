@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageCircle,
@@ -15,7 +15,7 @@ import { Promo } from './components/Promo';
 import { About } from './components/About';
 import { Gallery } from './components/Gallery';
 import { Footer } from './components/Footer';
-import { BookingSystem } from './components/BookingSystem';
+const BookingSystem = lazy(() => import('./components/BookingSystem').then(m => ({ default: m.BookingSystem })));
 import { TreatmentDetail } from './components/TreatmentDetail';
 import { SEO } from './components/SEO';
 import { Home } from './pages/Home';
@@ -258,11 +258,13 @@ function AppContent() {
         }}
       />
 
-      <BookingSystem 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)}
-        initialServiceId={selectedTreatment}
-      />
+      <Suspense fallback={null}>
+        <BookingSystem
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+          initialServiceId={selectedTreatment}
+        />
+      </Suspense>
       
     </div>
   );
