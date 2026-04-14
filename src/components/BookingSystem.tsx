@@ -283,7 +283,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
         {/* Header */}
         <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-[#F9F8F6]">
           <div className="flex items-center gap-4">
-            <img src="/logo.png" alt="Logo" className="w-12 h-12 object-contain" referrerPolicy="no-referrer" />
+            <img src="/logo.png" alt="Botica Spa" width={48} height={48} className="w-12 h-12 object-contain" />
             <div>
               <h2 className="text-2xl font-serif font-medium">{t.booking.title}</h2>
               <p className="text-sm text-gray-500 mt-1">

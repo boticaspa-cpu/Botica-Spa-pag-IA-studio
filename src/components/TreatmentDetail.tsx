@@ -47,14 +47,17 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
                 src={
                   treatmentId === 'relaxing' ? '/masaje-relajante.jpg' :
                   treatmentId === 'deepTissue' ? '/masaje-profundo.jpg' :
-                  treatmentId === 'botica' ? '/masaje-botica.jpg' :
-                  treatmentId === 'fourHands' ? '/masaje-cuatro-manos.jpg' :
-                  treatmentId === 'facial' ? '/masaje-cuatro-manos.jpg' :
-                  '/masaje-relajante.jpg'
+                  treatmentId === 'botica' ? '/masaje-botica.webp' :
+                  treatmentId === 'fourHands' ? '/masaje-cuatro-manos.webp' :
+                  treatmentId === 'facial' ? '/masaje-cuatro-manos.webp' :
+                  '/masaje-relajante.webp'
                 }
                 alt={treatment.name}
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:hidden" />
               <div className="absolute bottom-6 left-6 md:hidden">

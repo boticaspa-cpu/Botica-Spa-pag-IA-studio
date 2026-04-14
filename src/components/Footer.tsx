@@ -11,11 +11,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <img 
+              <img
                 src="/logo.png"
-                alt="Botica Spa Logo" 
+                alt="Botica Spa Logo"
+                width={40}
+                height={40}
                 className="w-10 h-10 object-contain"
-                referrerPolicy="no-referrer"
               />
               <h2 className="text-3xl font-sans font-bold tracking-tight">Botica Spa</h2>
             </div>

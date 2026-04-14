@@ -15,23 +15,23 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
   const services = [
     {
       id: 'botica',
-      image: '/masaje-botica.jpg',
+      image: '/masaje-botica.webp',
       price: t.services.items.botica.price90,
     },
     {
       id: 'fourHands',
-      image: '/masaje-cuatro-manos.jpg',
+      image: '/masaje-cuatro-manos.webp',
       price: t.services.items.fourHands.price90,
       highlight: true
     },
     {
       id: 'deepTissue',
-      image: '/masaje-profundo.jpg',
+      image: '/masaje-profundo.webp',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
-      image: '/masaje-relajante.jpg',
+      image: '/masaje-relajante.webp',
       price: t.services.items.relaxing.price60,
     },
   ];

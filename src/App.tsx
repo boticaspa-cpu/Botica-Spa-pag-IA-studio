@@ -96,8 +96,9 @@ function AppContent() {
           <img
             src="/logo.png"
             alt="Botica Spa Logo"
+            width={48}
+            height={48}
             className={cn("w-12 h-12 object-contain transition-all", location.pathname === '/' ? "brightness-0 invert" : "")}
-            referrerPolicy="no-referrer"
           />
         </Link>
         <div className={cn(
@@ -150,8 +151,9 @@ function AppContent() {
                 <img
                   src="/logo.png"
                   alt="Botica Spa Logo"
+                  width={40}
+                  height={40}
                   className="w-10 h-10 object-contain"
-                  referrerPolicy="no-referrer"
                 />
               </Link>
               <button
