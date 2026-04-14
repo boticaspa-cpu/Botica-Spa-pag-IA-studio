@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   MessageCircle,
@@ -33,6 +33,8 @@ function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const hasOpenedBooking = useRef(false);
+  if (isBookingOpen) hasOpenedBooking.current = true;
   const location = useLocation();
 
   const getSEOProps = () => {
@@ -258,13 +260,15 @@ function AppContent() {
         }}
       />
 
-      <Suspense fallback={null}>
-        <BookingSystem
-          isOpen={isBookingOpen}
-          onClose={() => setIsBookingOpen(false)}
-          initialServiceId={selectedTreatment}
-        />
-      </Suspense>
+      {hasOpenedBooking.current && (
+        <Suspense fallback={null}>
+          <BookingSystem
+            isOpen={isBookingOpen}
+            onClose={() => setIsBookingOpen(false)}
+            initialServiceId={selectedTreatment}
+          />
+        </Suspense>
+      )}
       
     </div>
   );
