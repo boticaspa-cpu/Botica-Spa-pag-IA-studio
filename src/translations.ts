@@ -107,7 +107,7 @@ export const translations = {
       cta: 'Claim Offer',
     },
     social: {
-      instagram: 'https://instagram.com/boticaspa',
+      instagram: 'https://www.instagram.com/botica.spa/',
       facebook: 'https://facebook.com/boticaspa',
       whatsapp: 'https://wa.me/529842687428',
       phone: '+52 984 268 7428',
@@ -422,7 +422,7 @@ Botica Spa serves all major Tulum zones including the hotel strip, Tulum Pueblo,
       cta: 'Reclamar Oferta',
     },
     social: {
-      instagram: 'https://instagram.com/boticaspa',
+      instagram: 'https://www.instagram.com/botica.spa/',
       facebook: 'https://facebook.com/boticaspa',
       whatsapp: 'https://wa.me/529842687428',
       phone: '+52 984 268 7428',

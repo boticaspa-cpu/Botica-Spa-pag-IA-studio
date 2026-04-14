@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
+import { createGzip, createBrotliCompress, constants as zlibConstants } from "zlib";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
@@ -24,6 +25,50 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+
+  // ── Gzip/Brotli compression (built-in zlib, no extra dependency) ──────────
+  // Only compresses compressible text types; skips already-compressed assets.
+  const COMPRESSIBLE = /^(text\/|application\/(javascript|json|xml)|image\/svg)/;
+  app.use((req, res, next) => {
+    if (req.method === 'HEAD') return next();
+    const ae = (req.headers['accept-encoding'] as string) || '';
+    if (!ae.includes('gzip') && !ae.includes('br')) return next();
+
+    const origWrite = res.write.bind(res);
+    const origEnd = res.end.bind(res);
+    const origWriteHead = res.writeHead.bind(res);
+
+    // Intercept writeHead to decide whether to compress based on Content-Type
+    (res as any).writeHead = function (code: number, headers?: any) {
+      const ct = res.getHeader('Content-Type') as string || '';
+      const ce = res.getHeader('Content-Encoding') as string || '';
+      if (ce || !COMPRESSIBLE.test(ct)) {
+        // Not compressible — pass through
+        return origWriteHead(code, headers);
+      }
+      let gz: ReturnType<typeof createGzip>;
+      if (ae.includes('br')) {
+        gz = createBrotliCompress({ params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 4 } }) as any;
+        res.setHeader('Content-Encoding', 'br');
+      } else {
+        gz = createGzip({ level: 6 });
+        res.setHeader('Content-Encoding', 'gzip');
+      }
+      res.removeHeader('Content-Length');
+      gz.on('data', (chunk: Buffer) => origWrite(chunk));
+      gz.on('end', () => origEnd());
+      gz.on('error', () => origEnd());
+      res.write = function (chunk: any, enc?: any, cb?: any) { return gz.write(chunk, enc, cb); } as any;
+      res.end = function (chunk?: any, enc?: any, cb?: any) {
+        if (chunk) gz.write(chunk, enc as any);
+        gz.end();
+        return this as any;
+      };
+      return origWriteHead(code, headers);
+    };
+    next();
+  });
+  // ─────────────────────────────────────────────────────────────────────────
 
   // ─── Redirects 301 desde URLs viejas de WordPress ───────────────────────
   const redirects: Record<string, string> = {

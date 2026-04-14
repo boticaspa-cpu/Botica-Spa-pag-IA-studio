@@ -36,6 +36,7 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
             {/* Close Button */}
             <button
               onClick={onClose}
+              aria-label="Close treatment details"
               className="absolute top-6 right-6 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors shadow-sm"
             >
               <X className="w-6 h-6 text-[#1A1A1A]" />
@@ -45,8 +46,8 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
             <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden">
               <img
                 src={
-                  treatmentId === 'relaxing' ? '/masaje-relajante.jpg' :
-                  treatmentId === 'deepTissue' ? '/masaje-profundo.jpg' :
+                  treatmentId === 'relaxing' ? '/masaje-relajante.webp' :
+                  treatmentId === 'deepTissue' ? '/masaje-profundo.webp' :
                   treatmentId === 'botica' ? '/masaje-botica.webp' :
                   treatmentId === 'fourHands' ? '/masaje-cuatro-manos.webp' :
                   treatmentId === 'facial' ? '/masaje-cuatro-manos.webp' :
@@ -126,9 +127,9 @@ export const TreatmentDetail: React.FC<TreatmentDetailProps> = ({ treatmentId, o
 
                 {/* Benefits */}
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider font-semibold text-[#5A5A40] mb-4">
+                  <h3 className="text-xs uppercase tracking-wider font-semibold text-[#5A5A40] mb-4">
                     {t.services.benefits}
-                  </h4>
+                  </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {treatment.benefitsList.map((benefit: string, i: number) => (
                       <div key={i} className="flex items-center gap-3">

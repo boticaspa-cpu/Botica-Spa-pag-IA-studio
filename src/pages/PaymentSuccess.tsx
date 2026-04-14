@@ -72,7 +72,7 @@ export function PaymentSuccess() {
         <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-6" />
         <h1 className="text-3xl font-serif mb-4">¡Pago Confirmado!</h1>
         <p className="text-gray-500 mb-2">Tu depósito ha sido recibido.</p>
-        <p className="text-gray-400 text-sm">Te estamos redirigiendo a WhatsApp para completar tu reserva…</p>
+        <p className="text-gray-500 text-sm">Te estamos redirigiendo a WhatsApp para completar tu reserva…</p>
         <div className="mt-8 flex justify-center">
           <div className="w-6 h-6 border-2 border-gray-300 border-t-green-500 rounded-full animate-spin" />
         </div>

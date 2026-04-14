@@ -192,10 +192,10 @@ function AppContent() {
             </div>
 
             <div className="p-8 border-t border-gray-100 flex justify-center gap-8">
-              <a href={t.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors">
+              <a href={t.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors">
                 Instagram
               </a>
-              <a href={t.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-black transition-colors">
+              <a href={t.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors">
                 Facebook
               </a>
             </div>
