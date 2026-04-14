@@ -333,7 +333,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                         setBookingMode('quick');
                         setStep(1);
                       }}
-                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-green-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-brand-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       <MessageCircle className="w-5 h-5" />
                       Book on WhatsApp — pick a service &amp; chat now
@@ -461,7 +461,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           window.open(url, '_blank');
                           onClose();
                         }}
-                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-green-600 text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-green-700 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-brand-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                       >
                         <MessageCircle className="w-5 h-5" />
                         Open WhatsApp to confirm your booking
@@ -760,7 +760,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     ) : (
                       <button
                         onClick={handleWhatsApp}
-                        className="flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-all"
+                        className="flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 hover:bg-brand-dark transition-all"
                       >
                         <MessageCircle className="w-4 h-4" />
                         Book on WhatsApp
