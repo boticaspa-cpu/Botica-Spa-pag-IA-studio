@@ -81,9 +81,12 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/5">
                   <img
                     src={service.image}
-                    alt={item.name}
+                    alt={`${item.name} — in-home massage service by Botica Spa Playa del Carmen`}
+                    width={480}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
                   

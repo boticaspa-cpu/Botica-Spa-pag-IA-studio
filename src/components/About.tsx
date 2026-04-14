@@ -14,19 +14,25 @@ export const About = () => {
           className="relative"
         >
           <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-            <img 
-              src="/spa-interior.jpg"
-              alt="Massage therapy" 
+            <img
+              src="/spa-interior.webp"
+              alt="In-home massage session — Botica Spa therapist setting up at a Playa del Carmen villa"
+              width={800}
+              height={1000}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
           </div>
           <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white rounded-3xl overflow-hidden shadow-xl hidden md:block">
-            <img 
-              src="/spa-detalle.jpg"
-              alt="Botica apothecary" 
+            <img
+              src="/spa-detalle.webp"
+              alt="Organic aromatherapy oils and botanical products used by Botica Spa"
+              width={192}
+              height={192}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
             />
           </div>
         </motion.div>
@@ -38,11 +44,14 @@ export const About = () => {
           className="space-y-8"
         >
           <div className="flex items-center gap-3">
-            <img 
+            <img
               src="/logo.png"
-              alt="Logo" 
+              alt="Botica Spa logo"
+              width={24}
+              height={24}
+              loading="lazy"
+              decoding="async"
               className="w-6 h-6 object-contain"
-              referrerPolicy="no-referrer"
             />
             <span className="text-xs uppercase tracking-[0.4em] text-gray-400 block">{t.about.badge}</span>
           </div>

@@ -34,6 +34,7 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           muted
           loop
           playsInline
+          aria-hidden="true"
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.88) contrast(1.0) saturate(1.2) sepia(0.2)' }}
         >

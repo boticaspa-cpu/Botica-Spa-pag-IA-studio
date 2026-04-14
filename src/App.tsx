@@ -124,8 +124,9 @@ function AppContent() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           onClick={() => setIsMenuOpen(true)}
+          aria-label="Open navigation menu"
           className={cn(
             "md:hidden p-2 transition-colors",
             location.pathname === '/' ? "text-white" : "text-[#1A1A1A]"
@@ -153,8 +154,9 @@ function AppContent() {
                   referrerPolicy="no-referrer"
                 />
               </Link>
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
                 className="p-2 text-[#1A1A1A]"
               >
                 <X className="w-6 h-6" />
@@ -223,6 +225,7 @@ function AppContent() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               onClick={scrollToTop}
+              aria-label="Scroll to top"
               className="w-14 h-14 bg-white text-[#1A1A1A] rounded-full shadow-2xl flex items-center justify-center hover:bg-[#F5F2ED] transition-all border border-gray-100"
             >
               <ChevronUp className="w-6 h-6" />
@@ -234,9 +237,10 @@ function AppContent() {
           href={t.social.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Chat with us on WhatsApp"
           className="w-14 h-14 bg-brand text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 hover:bg-brand-dark transition-all group relative"
         >
-          <MessageCircle className="w-6 h-6" />
+          <MessageCircle className="w-6 h-6" aria-hidden="true" />
           <span className="absolute right-full mr-4 px-4 py-2 bg-white text-[#1A1A1A] text-[10px] font-bold uppercase tracking-widest rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-gray-100">
             {language === 'en' ? 'Chat with us' : 'Chatea con nosotros'}
           </span>
