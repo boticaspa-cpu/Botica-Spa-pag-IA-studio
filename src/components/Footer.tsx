@@ -29,7 +29,7 @@ export const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand transition-all"
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-brand hover:border-brand transition-all"
               >
                 <Instagram size={18} />
               </a>
@@ -38,14 +38,14 @@ export const Footer = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-brand hover:border-brand transition-all"
+                className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-brand hover:border-brand transition-all"
               >
                 <Facebook size={18} />
               </a>
             </div>
           </div>
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h4>
+            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h4>
             <ul className="space-y-4 text-sm text-gray-500">
               <li><Link to="/" className="hover:text-black transition-colors">{t.footer.home}</Link></li>
               <li><Link to="/massages" className="hover:text-black transition-colors">{t.nav.treatments}</Link></li>
@@ -56,7 +56,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.contact}</h4>
+            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.contact}</h4>
             <ul className="space-y-4 text-sm text-gray-500">
               <li>{t.social.location}</li>
               <li>{t.social.phone}</li>
@@ -65,8 +65,8 @@ export const Footer = () => {
           </div>
         </div>
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-400">© 2026 Botica Spa. {t.footer.rights}</p>
-          <div className="flex gap-6 text-xs text-gray-400">
+          <p className="text-xs text-gray-500">© 2026 Botica Spa. {t.footer.rights}</p>
+          <div className="flex gap-6 text-xs text-gray-500">
             <a href="#" className="hover:text-black transition-colors">{t.footer.privacy}</a>
             <a href="#" className="hover:text-black transition-colors">{t.footer.terms}</a>
           </div>

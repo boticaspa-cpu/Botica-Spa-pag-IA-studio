@@ -306,7 +306,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {step === 0 && (
                 <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                   <h3 className="text-2xl font-serif mb-2">Book Your Massage</h3>
-                  <p className="text-sm text-gray-400 mb-6">Enter your email and we'll get you set up in seconds.</p>
+                  <p className="text-sm text-gray-500 mb-6">Enter your email and we'll get you set up in seconds.</p>
                   <div className="space-y-1 mb-6">
                     <label className="text-xs uppercase tracking-widest text-gray-500">Email</label>
                     <input
@@ -355,7 +355,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       Schedule in advance (5+ days) — pay deposit online
                     </button>
                   </div>
-                  <p className="text-xs text-gray-400 mt-4 text-center">WhatsApp: instant reply · Advance: secure your date with a 30% deposit</p>
+                  <p className="text-xs text-gray-500 mt-4 text-center">WhatsApp: instant reply · Advance: secure your date with a 30% deposit</p>
                 </motion.div>
               )}
 
@@ -363,9 +363,9 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {step === 1 && (
                 <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                   <h3 className="text-lg font-medium mb-2 flex items-center gap-2">
-                    <Users className="w-5 h-5 text-gray-400" /> {t.booking.step1Title}
+                    <Users className="w-5 h-5 text-gray-500" /> {t.booking.step1Title}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-6">Each person can choose a different treatment and duration.</p>
+                  <p className="text-sm text-gray-500 mb-6">Each person can choose a different treatment and duration.</p>
 
                   <div className="space-y-4">
                     {guests.map((guest, gIdx) => {
@@ -376,6 +376,8 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           {/* Guest header */}
                           <button
                             onClick={() => setExpandedGuest(isExpanded ? -1 : gIdx)}
+                            aria-expanded={isExpanded}
+                            aria-label={`${isExpanded ? 'Collapse' : 'Expand'} treatment selection for Guest ${gIdx + 1}`}
                             className="w-full flex items-center justify-between p-4 text-left"
                           >
                             <div className="flex items-center gap-3">
@@ -387,20 +389,22 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                                 {isSelected ? (
                                   <p className="text-xs text-brand">{guest.serviceName} — {guest.duration} · ${guest.price} MXN</p>
                                 ) : (
-                                  <p className="text-xs text-gray-400">Tap to choose a treatment</p>
+                                  <p className="text-xs text-gray-500">Tap to choose a treatment</p>
                                 )}
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
                               {guests.length > 1 && (
-                                <span
+                                <button
+                                  type="button"
+                                  aria-label={`Remove guest ${gIdx + 1}`}
                                   onClick={e => { e.stopPropagation(); removeGuest(gIdx); }}
-                                  className="p-1 rounded-full hover:bg-red-50 text-gray-300 hover:text-red-400 transition-colors cursor-pointer"
+                                  className="p-1 rounded-full hover:bg-red-50 text-gray-300 hover:text-red-400 transition-colors"
                                 >
-                                  <X className="w-4 h-4" />
-                                </span>
+                                  <X className="w-4 h-4" aria-hidden="true" />
+                                </button>
                               )}
-                              <span className={cn("text-gray-400 transition-transform", isExpanded && "rotate-180")}>▾</span>
+                              <span className={cn("text-gray-500 transition-transform", isExpanded && "rotate-180")}>▾</span>
                             </div>
                           </button>
 
@@ -439,7 +443,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                   {/* Add guest */}
                   <button
                     onClick={addGuest}
-                    className="mt-4 w-full flex items-center justify-center gap-2 py-3 border border-dashed border-gray-300 rounded-2xl text-sm text-gray-400 hover:border-brand hover:text-brand transition-all"
+                    className="mt-4 w-full flex items-center justify-center gap-2 py-3 border border-dashed border-gray-300 rounded-2xl text-sm text-gray-500 hover:border-brand hover:text-brand transition-all"
                   >
                     <Plus className="w-4 h-4" /> Add another person
                   </button>
@@ -448,7 +452,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                   {totalPrice > 0 && (
                     <div className="mt-6 flex justify-between items-center bg-brand/5 border border-brand/20 rounded-xl px-4 py-3">
                       <span className="text-sm text-gray-600">{guests.filter(g => g.serviceId).length} service{guests.filter(g => g.serviceId).length !== 1 ? 's' : ''} selected</span>
-                      <span className="font-serif text-xl text-brand">${totalPrice} <span className="text-xs font-sans text-gray-400">MXN</span></span>
+                      <span className="font-serif text-xl text-brand">${totalPrice} <span className="text-xs font-sans text-gray-500">MXN</span></span>
                     </div>
                   )}
 
@@ -485,7 +489,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {step === 2 && (
                 <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                   <h3 className="text-lg font-medium mb-6 flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-gray-400" /> {t.booking.step2Title}
+                    <Calendar className="w-5 h-5 text-gray-500" /> {t.booking.step2Title}
                   </h3>
 
                   {/* Date picker */}
@@ -536,7 +540,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     <p className="text-sm text-gray-500 mb-4 uppercase tracking-widest">{t.booking.times}</p>
                     <div className="flex gap-4 justify-center">
                       <div className="flex flex-col items-center gap-1 flex-1">
-                        <span className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Hour</span>
+                        <span className="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Hour</span>
                         <div className="h-52 overflow-y-auto flex flex-col gap-1 scroll-smooth scrollbar-hide w-full">
                           {HOURS.map(h => {
                             const past = isTimePast(h, selectedMinute, formData.date);
@@ -559,7 +563,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       </div>
                       <div className="flex items-center self-center text-2xl font-serif text-gray-300 pb-4">:</div>
                       <div className="flex flex-col items-center gap-1 flex-1">
-                        <span className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Min</span>
+                        <span className="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Min</span>
                         <div className="h-52 overflow-y-auto flex flex-col gap-1 scroll-smooth scrollbar-hide w-full">
                           {MINUTES.map(m => {
                             const past = isTimePast(selectedHour, m, formData.date);
@@ -590,7 +594,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
 
                   <div className="mt-12 flex justify-between">
                     <button onClick={handleBack} className="flex items-center gap-2 text-gray-500 hover:text-black">
-                      <ChevronLeft className="w-4 h-4" /> {t.booking.back}
+                      <ChevronLeft className="w-4 h-4" aria-hidden="true" /> {t.booking.back}
                     </button>
                     <button
                       disabled={!formData.time}
@@ -607,7 +611,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {step === 3 && (
                 <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                   <h3 className="text-lg font-medium mb-6 flex items-center gap-2">
-                    <User className="w-5 h-5 text-gray-400" /> {t.booking.step3Title}
+                    <User className="w-5 h-5 text-gray-500" /> {t.booking.step3Title}
                   </h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -659,7 +663,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
 
                   <div className="mt-12 flex justify-between">
                     <button onClick={handleBack} className="flex items-center gap-2 text-gray-500 hover:text-black">
-                      <ChevronLeft className="w-4 h-4" /> {t.booking.back}
+                      <ChevronLeft className="w-4 h-4" aria-hidden="true" /> {t.booking.back}
                     </button>
                     <button
                       disabled={!formData.customerName || !formData.customerEmail || !formData.customerPhone || !formData.address}
@@ -686,7 +690,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full bg-brand/10 text-brand text-xs flex items-center justify-center font-medium">{i + 1}</div>
                             <span className="text-sm font-medium">{g.serviceName}</span>
-                            <span className="text-xs text-gray-400">{g.duration}</span>
+                            <span className="text-xs text-gray-500">{g.duration}</span>
                           </div>
                           <span className="text-sm font-serif">${g.price} MXN</span>
                         </div>
@@ -720,13 +724,13 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     <div className="space-y-2">
                       <div className="flex justify-between font-semibold text-base pt-1">
                         <span>Total</span>
-                        <span className="font-serif text-xl text-[#1A1A1A]">${totalPrice} <span className="text-xs font-sans font-normal text-gray-400">MXN</span></span>
+                        <span className="font-serif text-xl text-[#1A1A1A]">${totalPrice} <span className="text-xs font-sans font-normal text-gray-500">MXN</span></span>
                       </div>
                       <div className="flex justify-between text-sm pt-1 border-t border-gray-200">
                         <span className="text-amber-700 font-medium">30% Deposit {requiresDeposit ? '(pay now online)' : '(via WhatsApp)'}</span>
                         <span className="text-amber-700 font-serif text-lg">${depositAmount} <span className="text-xs font-sans font-normal">MXN</span></span>
                       </div>
-                      <div className="flex justify-between text-sm text-gray-400">
+                      <div className="flex justify-between text-sm text-gray-500">
                         <span>Balance on day of service</span>
                         <span>${balanceDue} MXN</span>
                       </div>
@@ -734,18 +738,18 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                   </div>
 
                   {requiresDeposit ? (
-                    <p className="text-xs text-gray-400 text-center mb-6">
+                    <p className="text-xs text-gray-500 text-center mb-6">
                       After payment you'll be redirected to WhatsApp to complete your reservation with our team.
                     </p>
                   ) : (
-                    <p className="text-xs text-gray-400 text-center mb-6">
+                    <p className="text-xs text-gray-500 text-center mb-6">
                       You'll be connected to our team on WhatsApp to process your 30% deposit and confirm.
                     </p>
                   )}
 
                   <div className="flex justify-between items-center">
                     <button onClick={handleBack} className="flex items-center gap-2 text-gray-500 hover:text-black">
-                      <ChevronLeft className="w-4 h-4" /> {t.booking.back}
+                      <ChevronLeft className="w-4 h-4" aria-hidden="true" /> {t.booking.back}
                     </button>
 
                     {requiresDeposit ? (

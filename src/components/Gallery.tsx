@@ -17,7 +17,7 @@ export const Gallery = () => {
     <section className="py-24 px-4 bg-[#F9F8F6]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-4 block">{t.gallery.badge}</span>
+          <span className="text-xs uppercase tracking-[0.4em] text-gray-500 mb-4 block">{t.gallery.badge}</span>
           <h2 className="text-4xl md:text-5xl font-serif text-gray-900">{t.gallery.title}</h2>
         </div>
 

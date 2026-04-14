@@ -53,7 +53,7 @@ export const About = () => {
               decoding="async"
               className="w-6 h-6 object-contain"
             />
-            <span className="text-xs uppercase tracking-[0.4em] text-gray-400 block">{t.about.badge}</span>
+            <span className="text-xs uppercase tracking-[0.4em] text-gray-500 block">{t.about.badge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
             {t.about.title} <span className="italic">{t.about.titleItalic}</span>
@@ -67,7 +67,7 @@ export const About = () => {
                 <span className="text-sm font-serif text-brand">01</span>
               </div>
               <div>
-                <h4 className="font-medium mb-1">{t.about.feature1Title}</h4>
+                <h3 className="font-medium mb-1">{t.about.feature1Title}</h3>
                 <p className="text-sm text-gray-500">{t.about.feature1Desc}</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export const About = () => {
                 <span className="text-sm font-serif text-brand">02</span>
               </div>
               <div>
-                <h4 className="font-medium mb-1">{t.about.feature2Title}</h4>
+                <h3 className="font-medium mb-1">{t.about.feature2Title}</h3>
                 <p className="text-sm text-gray-500">{t.about.feature2Desc}</p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export const About = () => {
                 <span className="text-sm font-serif text-brand">03</span>
               </div>
               <div>
-                <h4 className="font-medium mb-1">{t.about.feature3Title}</h4>
+                <h3 className="font-medium mb-1">{t.about.feature3Title}</h3>
                 <p className="text-sm text-gray-500">{t.about.feature3Desc}</p>
               </div>
             </div>

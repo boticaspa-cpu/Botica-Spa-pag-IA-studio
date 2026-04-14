@@ -132,7 +132,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-gray-400 text-sm mt-4 max-w-md mx-auto"
+                className="text-gray-500 text-sm mt-4 max-w-md mx-auto"
               >
                 Across the Riviera Maya — hotels, villas, Airbnbs. We bring everything.
               </motion.p>
@@ -157,7 +157,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2">
-                      <MapPin className={`w-4 h-4 flex-shrink-0 ${area.primary ? 'text-[#5A5A40]' : 'text-gray-400'}`} />
+                      <MapPin className={`w-4 h-4 flex-shrink-0 ${area.primary ? 'text-[#5A5A40]' : 'text-gray-500'}`} />
                       <span className="font-serif text-lg text-[#1A1A1A]">{area.city}</span>
                     </div>
                     {area.primary && (
@@ -167,7 +167,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                     )}
                   </div>
                   <p className="text-xs text-gray-500">{area.note}</p>
-                  <p className={`text-[10px] uppercase tracking-widest font-bold ${area.primary ? 'text-[#5A5A40]' : 'text-gray-400'}`}>
+                  <p className={`text-[10px] uppercase tracking-widest font-bold ${area.primary ? 'text-[#5A5A40]' : 'text-gray-500'}`}>
                     {area.fee}
                   </p>
                 </motion.div>
@@ -203,7 +203,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-4 block"
+                className="text-xs uppercase tracking-[0.4em] text-gray-500 mb-4 block"
               >
                 {t.testimonials.badge}
               </motion.span>
@@ -233,7 +233,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                   ))}
                 </div>
                 <span className="text-sm font-medium text-gray-700">{reviewStats.rating.toFixed(1)}</span>
-                <span className="text-sm text-gray-400">· {reviewStats.total} Google reviews</span>
+                <span className="text-sm text-gray-500">· {reviewStats.total} Google reviews</span>
               </motion.div>
             )}
 
@@ -262,7 +262,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                       <img src={item.photo} alt={item.author} className="w-10 h-10 rounded-full object-cover" referrerPolicy="no-referrer" />
                     )}
                     <p className="font-medium uppercase tracking-[0.2em] text-xs text-gray-900">{item.author}</p>
-                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest">{item.time ?? item.location}</p>
+                    <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">{item.time ?? item.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -301,7 +301,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-4 block"
+                className="text-xs uppercase tracking-[0.4em] text-gray-500 mb-4 block"
               >
                 FAQ
               </motion.span>
@@ -319,7 +319,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-gray-400 text-sm mt-4"
+                className="text-gray-500 text-sm mt-4"
               >
                 Everything you need to know before your first in-home session.
               </motion.p>
@@ -337,9 +337,9 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     className="w-full flex items-center justify-between py-6 text-left gap-4"
                   >
-                    <h4 className="font-serif text-lg leading-snug text-[#1A1A1A]">{faq.q}</h4>
+                    <h3 className="font-serif text-lg leading-snug text-[#1A1A1A]">{faq.q}</h3>
                     <ChevronDown
-                      className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
+                      className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
                     />
                   </button>
                   <AnimatePresence initial={false}>
