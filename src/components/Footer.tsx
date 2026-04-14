@@ -45,7 +45,7 @@ export const Footer = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h4>
+            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h3>
             <ul className="space-y-4 text-sm text-gray-500">
               <li><Link to="/" className="hover:text-black transition-colors">{t.footer.home}</Link></li>
               <li><Link to="/massages" className="hover:text-black transition-colors">{t.nav.treatments}</Link></li>
@@ -56,7 +56,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.contact}</h4>
+            <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.contact}</h3>
             <ul className="space-y-4 text-sm text-gray-500">
               <li>{t.social.location}</li>
               <li>{t.social.phone}</li>
