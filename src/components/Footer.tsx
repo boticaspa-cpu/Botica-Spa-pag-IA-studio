@@ -52,6 +52,8 @@ export const Footer = () => {
               <li><Link to="/blog" className="hover:text-black transition-colors">{t.nav.blog}</Link></li>
               <li><Link to="/massage-tulum" className="hover:text-black transition-colors">Massage in Tulum</Link></li>
               <li><Link to="/massage-cancun" className="hover:text-black transition-colors">Massage in Cancún</Link></li>
+              <li><Link to="/massage-akumal" className="hover:text-black transition-colors">Massage in Akumal</Link></li>
+              <li><Link to="/massage-playacar" className="hover:text-black transition-colors">Massage in Playacar</Link></li>
               <li><a href={t.social.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">{t.footer.contact}</a></li>
             </ul>
           </div>

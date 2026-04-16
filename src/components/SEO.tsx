@@ -8,9 +8,10 @@ interface SEOProps {
   url?: string;
   faqs?: { q: string; a: string }[];
   breadcrumbs?: { name: string; url: string }[];
+  aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
-export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", faqs, breadcrumbs }) => {
+export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", faqs, breadcrumbs, aggregateRating }) => {
   const { t } = useLanguage();
 
   const defaultTitle = 'Massage Playa del Carmen | In-Home Spa | Botica Spa';
@@ -116,8 +117,8 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
           },
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "47",
+            "ratingValue": aggregateRating ? String(aggregateRating.ratingValue) : "5.0",
+            "reviewCount": aggregateRating ? String(aggregateRating.reviewCount) : "47",
             "bestRating": "5",
             "worstRating": "1"
           },

@@ -37,19 +37,6 @@ function AppContent() {
   if (isBookingOpen) hasOpenedBooking.current = true;
   const location = useLocation();
 
-  const getSEOProps = () => {
-    if (location.pathname === '/') {
-      return {
-        title: 'Botica Spa | Mobile Spa & Massage Services in Riviera Maya',
-        description: 'Luxury in-home spa rituals delivered to your villa, hotel, or Airbnb in Playa del Carmen, Tulum, and Cancún. Certified therapists, organic oils, total serenity.',
-        url: 'https://boticaspa.com/'
-      };
-    }
-    return null;
-  };
-
-  const seoProps = getSEOProps();
-
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -88,7 +75,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-[#F9F8F6]">
-      {seoProps && <SEO {...seoProps} />}
       {/* Navigation */}
       <nav className={cn(
         "fixed top-0 left-0 right-0 z-40 px-8 py-6 flex justify-between items-center transition-all duration-500",

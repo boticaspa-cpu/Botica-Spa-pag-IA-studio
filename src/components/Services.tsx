@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { ArrowRight, Sparkles, Plus } from 'lucide-react';
@@ -15,22 +16,26 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
   const services = [
     {
       id: 'botica',
+      slug: 'botica-signature',
       image: '/masaje-botica.webp',
       price: t.services.items.botica.price90,
     },
     {
       id: 'fourHands',
+      slug: 'four-hands-massage',
       image: '/masaje-cuatro-manos.webp',
       price: t.services.items.fourHands.price90,
       highlight: true
     },
     {
       id: 'deepTissue',
+      slug: 'deep-tissue-massage',
       image: '/masaje-profundo.webp',
       price: t.services.items.deepTissue.price60,
     },
     {
       id: 'relaxing',
+      slug: 'relaxing-massage',
       image: '/masaje-relajante.webp',
       price: t.services.items.relaxing.price60,
     },
@@ -117,6 +122,13 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                       >
                         <ArrowRight className="w-6 h-6" />
                       </button>
+                      <Link
+                        to={`/massages/${service.slug}`}
+                        aria-label={`Learn more about ${item.name}`}
+                        className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"
+                      >
+                        <Plus className="w-5 h-5" />
+                      </Link>
                     </div>
                   </div>
                 </div>
