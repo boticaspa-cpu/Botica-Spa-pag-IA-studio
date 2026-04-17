@@ -142,6 +142,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
     customerEmail: '',
     customerPhone: '',
     address: '',
+    mapsUrl: '',
   });
 
   React.useEffect(() => {
@@ -153,13 +154,12 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
           const firstPrice = Object.values(service.prices)[0] as number;
           setGuests([{ serviceId: service.id, serviceName: service.name, duration: firstDuration, price: firstPrice }]);
           setBookingMode('quick');
-          setStep(1);
         }
       } else {
         setGuests([emptyGuest()]);
         setExpandedGuest(0);
-        setStep(0);
       }
+      setStep(0);
       setFormData(prev => ({ ...prev, date: new Date(), time: '', customerEmail: '' }));
     }
   }, [isOpen, initialServiceId, language]);
