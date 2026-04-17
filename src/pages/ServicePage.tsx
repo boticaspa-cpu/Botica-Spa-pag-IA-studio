@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Check, Clock, ArrowLeft, Sparkles } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';

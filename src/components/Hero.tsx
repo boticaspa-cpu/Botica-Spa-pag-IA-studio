@@ -4,6 +4,7 @@ import { useLanguage } from '../LanguageContext';
 
 export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
   const { t } = useLanguage();
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -17,29 +18,28 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
   return (
     <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background with Parallax and Overlay */}
-      <motion.div 
-        style={{ y: videoY }} 
+      <motion.div
+        style={{ y: videoY }}
         className="absolute inset-0 z-0"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1.25 }}
-        transition={{ 
-          duration: 20, 
-          repeat: Infinity, 
-          repeatType: "reverse", 
-          ease: "linear" 
-        }}
+        {...(!isMobile && {
+          initial: { scale: 1.1 },
+          animate: { scale: 1.25 },
+          transition: { duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }
+        })}
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.88) contrast(1.0) saturate(1.2) sepia(0.2)' }}
-        >
-          Your browser does not support the video tag.
-        </video>
+        {!isMobile && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.88) contrast(1.0) saturate(1.2) sepia(0.2)' }}
+          >
+            Your browser does not support the video tag.
+          </video>
+        )}
         {/* White-gold light burst — champagne sunrise */}
         <div className="absolute inset-0" style={{
           background: 'radial-gradient(ellipse 90% 60% at 50% 25%, rgba(255,248,220,0.25) 0%, rgba(255,236,180,0.1) 50%, transparent 100%)'

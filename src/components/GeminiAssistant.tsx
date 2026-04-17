@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, Send, X, Minus, Bot } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 import ReactMarkdown from 'react-markdown';

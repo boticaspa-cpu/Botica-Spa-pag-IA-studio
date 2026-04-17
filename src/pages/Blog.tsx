@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 import { ArrowRight, Calendar } from 'lucide-react';
