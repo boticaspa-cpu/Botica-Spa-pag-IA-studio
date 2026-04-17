@@ -82,6 +82,11 @@ function AppContent() {
     setIsBookingOpen(true);
   };
 
+  const isEs = language === 'es';
+  const altPath = isEs
+    ? (Object.entries(ES_PATHS).find(([, v]) => v === location.pathname)?.[0] ?? (location.pathname.replace(/^\/es/, '') || '/'))
+    : toLangPath(location.pathname, 'es');
+
   return (
     <div className="min-h-screen bg-[#F9F8F6]">
       {/* Navigation */}
@@ -115,25 +120,17 @@ function AppContent() {
             location.pathname !== '/' && "hover:text-brand"
           )}>{t.nav.blog}</LangLink>
           {/* Language switcher */}
-          {(() => {
-            const isEs = language === 'es';
-            const altPath = isEs
-              ? (Object.entries(ES_PATHS).find(([, v]) => v === location.pathname)?.[0] ?? (location.pathname.replace(/^\/es/, '') || '/'))
-              : toLangPath(location.pathname, 'es');
-            return (
-              <Link
-                to={altPath}
-                className={cn(
-                  "text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all",
-                  location.pathname === '/'
-                    ? "border-white/30 text-white/70 hover:border-white hover:text-white"
-                    : "border-gray-300 text-gray-500 hover:border-brand hover:text-brand"
-                )}
-              >
-                {isEs ? 'EN' : 'ES'}
-              </Link>
-            );
-          })()}
+          <Link
+            to={altPath}
+            className={cn(
+              "text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all",
+              location.pathname === '/'
+                ? "border-white/30 text-white/70 hover:border-white hover:text-white"
+                : "border-gray-300 text-gray-500 hover:border-brand hover:text-brand"
+            )}
+          >
+            {isEs ? 'EN' : 'ES'}
+          </Link>
           <button
             onClick={() => setIsBookingOpen(true)}
             className={cn(
@@ -145,17 +142,30 @@ function AppContent() {
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open navigation menu"
-          className={cn(
-            "md:hidden p-2 transition-colors",
-            location.pathname === '/' ? "text-white" : "text-[#1A1A1A]"
-          )}
-        >
-          <Menu className="w-6 h-6" />
-        </button>
+        {/* Mobile: language pill + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <Link
+            to={altPath}
+            className={cn(
+              "text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border transition-all",
+              location.pathname === '/'
+                ? "border-white/30 text-white/70 hover:border-white hover:text-white"
+                : "border-gray-300 text-gray-500 hover:border-brand hover:text-brand"
+            )}
+          >
+            {isEs ? 'EN' : 'ES'}
+          </Link>
+          <button
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open navigation menu"
+            className={cn(
+              "p-2 transition-colors",
+              location.pathname === '/' ? "text-white" : "text-[#1A1A1A]"
+            )}
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
@@ -208,22 +218,6 @@ function AppContent() {
               >
                 {t.nav.blog}
               </LangLink>
-              {/* Language switcher mobile */}
-              {(() => {
-                const isEs = language === 'es';
-                const altPath = isEs
-                  ? (Object.entries(ES_PATHS).find(([, v]) => v === location.pathname)?.[0] ?? (location.pathname.replace(/^\/es/, '') || '/'))
-                  : toLangPath(location.pathname, 'es');
-                return (
-                  <Link
-                    to={altPath}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-brand transition-colors border border-gray-200 rounded-full px-5 py-2"
-                  >
-                    {isEs ? 'Ver en English' : 'Ver en Español'}
-                  </Link>
-                );
-              })()}
               <button 
                 onClick={() => {
                   setIsBookingOpen(true);
