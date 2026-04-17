@@ -25,11 +25,11 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { LocationPage } from './pages/LocationPage';
-import { AdminLogin } from './pages/admin/AdminLogin';
-import { AdminDashboard } from './pages/admin/AdminDashboard';
-import { AdminClientes } from './pages/admin/AdminClientes';
-import { AdminSEO } from './pages/admin/AdminSEO';
-import { ProtectedRoute } from './components/admin/ProtectedRoute';
+const AdminLogin = lazy(() => import('./pages/admin/AdminLogin').then(m => ({ default: m.AdminLogin })));
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
+const AdminClientes = lazy(() => import('./pages/admin/AdminClientes').then(m => ({ default: m.AdminClientes })));
+const AdminSEO = lazy(() => import('./pages/admin/AdminSEO').then(m => ({ default: m.AdminSEO })));
+const ProtectedRoute = lazy(() => import('./components/admin/ProtectedRoute').then(m => ({ default: m.ProtectedRoute })));
 import { cn } from './lib/utils';
 
 function AppContent() {
@@ -287,7 +287,7 @@ function App() {
 
 function AppRouterSwitch() {
   const location = useLocation();
-  if (location.pathname.startsWith('/admin')) return <AdminRouter />;
+  if (location.pathname.startsWith('/admin')) return <Suspense fallback={null}><AdminRouter /></Suspense>;
   return <AppContent />;
 }
 

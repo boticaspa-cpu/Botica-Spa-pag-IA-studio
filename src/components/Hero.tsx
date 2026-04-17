@@ -38,10 +38,6 @@ export const Hero = ({ onBookNow }: { onBookNow: () => void }) => {
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.88) contrast(1.0) saturate(1.2) sepia(0.2)' }}
         >
-          <source
-            src="https://cdn.pixabay.com/video/2023/10/19/185641-876115984_large.mp4"
-            type="video/mp4"
-          />
           Your browser does not support the video tag.
         </video>
         {/* White-gold light burst — champagne sunrise */}
