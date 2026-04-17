@@ -1,6 +1,39 @@
 {
+  "redirects": [
+    { "source": "/home",         "destination": "/",                          "permanent": true },
+    { "source": "/home/",        "destination": "/",                          "permanent": true },
+    { "source": "/botica-massage",        "destination": "/massages/botica-signature",  "permanent": true },
+    { "source": "/botica-massage/",       "destination": "/massages/botica-signature",  "permanent": true },
+    { "source": "/relaxing-massage",      "destination": "/massages/relaxing-massage",  "permanent": true },
+    { "source": "/relaxing-massage/",     "destination": "/massages/relaxing-massage",  "permanent": true },
+    { "source": "/deep-tissue-massage",   "destination": "/massages/deep-tissue-massage","permanent": true },
+    { "source": "/deep-tissue-massage/",  "destination": "/massages/deep-tissue-massage","permanent": true },
+    { "source": "/four-hands-massage",    "destination": "/massages/four-hands-massage","permanent": true },
+    { "source": "/four-hands-massage/",   "destination": "/massages/four-hands-massage","permanent": true },
+    { "source": "/personalized-massage",  "destination": "/massages/personalized-massage","permanent": true },
+    { "source": "/personalized-massage/", "destination": "/massages/personalized-massage","permanent": true },
+    { "source": "/facial",               "destination": "/massages/revitalizing-facial","permanent": true },
+    { "source": "/facial/",              "destination": "/massages/revitalizing-facial","permanent": true },
+    { "source": "/services",             "destination": "/massages",                   "permanent": true },
+    { "source": "/services/",            "destination": "/massages",                   "permanent": true },
+    { "source": "/wellness-center",      "destination": "/massages",                   "permanent": true },
+    { "source": "/wellness-center/",     "destination": "/massages",                   "permanent": true },
+    { "source": "/contact/",             "destination": "/contact",                    "permanent": true },
+    { "source": "/thank-you",            "destination": "/booking/success",            "permanent": true },
+    { "source": "/thank-you/",           "destination": "/booking/success",            "permanent": true },
+    { "source": "/masajes",              "destination": "/massages",                   "permanent": true },
+    { "source": "/masajes/",             "destination": "/massages",                   "permanent": true },
+    { "source": "/masajes/relaxing-massage",      "destination": "/massages/relaxing-massage",   "permanent": true },
+    { "source": "/masajes/deep-tissue-massage",   "destination": "/massages/deep-tissue-massage","permanent": true },
+    { "source": "/masajes/four-hands-massage",    "destination": "/massages/four-hands-massage", "permanent": true },
+    { "source": "/masajes/botica-signature",      "destination": "/massages/botica-signature",   "permanent": true },
+    { "source": "/masajes/personalized-massage",  "destination": "/massages/personalized-massage","permanent": true },
+    { "source": "/masajes/revitalizing-facial",   "destination": "/massages/revitalizing-facial","permanent": true },
+    { "source": "/cancellation-and-rescheduling-policy",  "destination": "/#faq", "permanent": true },
+    { "source": "/cancellation-and-rescheduling-policy/", "destination": "/#faq", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)",     "destination": "/index.html" }
   ]
 }
