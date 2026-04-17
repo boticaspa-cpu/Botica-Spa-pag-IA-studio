@@ -7,7 +7,8 @@ import {
   X
 } from 'lucide-react';
 import { Routes, Route, Link, useLocation, BrowserRouter as Router, Navigate } from 'react-router-dom';
-import { useLanguage } from './LanguageContext';
+import { useLanguage, LanguageProvider } from './LanguageContext';
+import { LangLink, toLangPath, ES_PATHS } from './components/LangLink';
 import { translations } from './translations';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
@@ -25,6 +26,8 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { LocationPage } from './pages/LocationPage';
+import { AboutPage } from './pages/AboutPage';
+import { ContactPage } from './pages/ContactPage';
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin').then(m => ({ default: m.AdminLogin })));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const AdminClientes = lazy(() => import('./pages/admin/AdminClientes').then(m => ({ default: m.AdminClientes })));
@@ -37,6 +40,7 @@ function AppContent() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null);
+  const [bookingServiceKey, setBookingServiceKey] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const hasOpenedBooking = useRef(false);
   if (isBookingOpen) hasOpenedBooking.current = true;
@@ -98,14 +102,38 @@ function AppContent() {
           "hidden md:flex items-center gap-8 text-xs uppercase tracking-widest transition-colors",
           location.pathname === '/' ? "text-white/80" : "text-[#1A1A1A]/60"
         )}>
-          <Link to="/massages" className={cn(
+          <LangLink to="/massages" className={cn(
             "hover:text-white transition-colors",
             location.pathname !== '/' && "hover:text-brand"
-          )}>{t.nav.treatments}</Link>
-          <Link to="/blog" className={cn(
+          )}>{t.nav.treatments}</LangLink>
+          <LangLink to="/about" className={cn(
             "hover:text-white transition-colors",
             location.pathname !== '/' && "hover:text-brand"
-          )}>{t.nav.blog}</Link>
+          )}>{language === 'en' ? 'About' : 'Nosotros'}</LangLink>
+          <LangLink to="/blog" className={cn(
+            "hover:text-white transition-colors",
+            location.pathname !== '/' && "hover:text-brand"
+          )}>{t.nav.blog}</LangLink>
+          {/* Language switcher */}
+          {(() => {
+            const isEs = language === 'es';
+            const altPath = isEs
+              ? (Object.entries(ES_PATHS).find(([, v]) => v === location.pathname)?.[0] ?? (location.pathname.replace(/^\/es/, '') || '/'))
+              : toLangPath(location.pathname, 'es');
+            return (
+              <Link
+                to={altPath}
+                className={cn(
+                  "text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border transition-all",
+                  location.pathname === '/'
+                    ? "border-white/30 text-white/70 hover:border-white hover:text-white"
+                    : "border-gray-300 text-gray-500 hover:border-brand hover:text-brand"
+                )}
+              >
+                {isEs ? 'EN' : 'ES'}
+              </Link>
+            );
+          })()}
           <button
             onClick={() => setIsBookingOpen(true)}
             className={cn(
@@ -159,20 +187,43 @@ function AppContent() {
             </div>
 
             <div className="flex-1 flex flex-col justify-center items-center gap-8 p-8">
-              <Link
+              <LangLink
                 to="/massages"
                 className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t.nav.treatments}
-              </Link>
-              <Link 
-                to="/blog" 
+              </LangLink>
+              <LangLink
+                to="/about"
+                className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'en' ? 'About' : 'Nosotros'}
+              </LangLink>
+              <LangLink
+                to="/blog"
                 className="text-3xl font-serif text-[#1A1A1A] hover:text-brand transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t.nav.blog}
-              </Link>
+              </LangLink>
+              {/* Language switcher mobile */}
+              {(() => {
+                const isEs = language === 'es';
+                const altPath = isEs
+                  ? (Object.entries(ES_PATHS).find(([, v]) => v === location.pathname)?.[0] ?? (location.pathname.replace(/^\/es/, '') || '/'))
+                  : toLangPath(location.pathname, 'es');
+                return (
+                  <Link
+                    to={altPath}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-brand transition-colors border border-gray-200 rounded-full px-5 py-2"
+                  >
+                    {isEs ? 'Ver en English' : 'Ver en Español'}
+                  </Link>
+                );
+              })()}
               <button 
                 onClick={() => {
                   setIsBookingOpen(true);
@@ -197,16 +248,32 @@ function AppContent() {
       </AnimatePresence>
 
       <Routes>
+        {/* English routes */}
         <Route path="/" element={<Home onSelectTreatment={handleSelectTreatment} onBookNow={handleBook} />} />
         <Route path="/massages" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
-        <Route path="/massages/:serviceId" element={<ServicePage onBookNow={(id) => { setSelectedTreatment(id); setIsBookingOpen(true); }} />} />
+        <Route path="/massages/:serviceId" element={<ServicePage onBookNow={(id) => { setBookingServiceKey(id); setIsBookingOpen(true); }} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/booking/success" element={<PaymentSuccess />} />
         <Route path="/massage-tulum" element={<LocationPage city="tulum" onBookNow={handleBook} />} />
         <Route path="/massage-cancun" element={<LocationPage city="cancun" onBookNow={handleBook} />} />
         <Route path="/massage-akumal" element={<LocationPage city="akumal" onBookNow={handleBook} />} />
         <Route path="/massage-playacar" element={<LocationPage city="playacar" onBookNow={handleBook} />} />
+        {/* Spanish routes */}
+        <Route path="/es/" element={<Home onSelectTreatment={handleSelectTreatment} onBookNow={handleBook} />} />
+        <Route path="/es/masajes" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
+        <Route path="/es/masajes/:serviceId" element={<ServicePage onBookNow={(id) => { setBookingServiceKey(id); setIsBookingOpen(true); }} />} />
+        <Route path="/es/blog" element={<Blog />} />
+        <Route path="/es/blog/:id" element={<BlogPost />} />
+        <Route path="/es/sobre-nosotros" element={<AboutPage />} />
+        <Route path="/es/booking/success" element={<PaymentSuccess />} />
+        <Route path="/es/masaje-tulum" element={<LocationPage city="tulum" onBookNow={handleBook} />} />
+        <Route path="/es/masaje-cancun" element={<LocationPage city="cancun" onBookNow={handleBook} />} />
+        <Route path="/es/masaje-akumal" element={<LocationPage city="akumal" onBookNow={handleBook} />} />
+        <Route path="/es/masaje-playacar" element={<LocationPage city="playacar" onBookNow={handleBook} />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/es/contacto" element={<ContactPage />} />
       </Routes>
 
       <Footer />
@@ -242,10 +309,11 @@ function AppContent() {
         </a>
       </div>
 
-      <TreatmentDetail 
-        treatmentId={selectedTreatment} 
+      <TreatmentDetail
+        treatmentId={selectedTreatment}
         onClose={() => setSelectedTreatment(null)}
         onBook={(id) => {
+          setBookingServiceKey(id);
           setSelectedTreatment(null);
           setIsBookingOpen(true);
         }}
@@ -255,8 +323,8 @@ function AppContent() {
         <Suspense fallback={null}>
           <BookingSystem
             isOpen={isBookingOpen}
-            onClose={() => setIsBookingOpen(false)}
-            initialServiceId={selectedTreatment}
+            onClose={() => { setIsBookingOpen(false); setBookingServiceKey(null); }}
+            initialServiceId={bookingServiceKey ?? selectedTreatment}
           />
         </Suspense>
       )}
@@ -280,7 +348,9 @@ function AdminRouter() {
 function App() {
   return (
     <Router>
-      <AppRouterSwitch />
+      <LanguageProvider>
+        <AppRouterSwitch />
+      </LanguageProvider>
     </Router>
   );
 }

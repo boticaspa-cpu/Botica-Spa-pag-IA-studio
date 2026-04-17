@@ -94,10 +94,9 @@ async function startServer() {
     '/services/':                             '/massages',
     '/wellness-center':                       '/massages',
     '/wellness-center/':                      '/massages',
-    '/about':                                 '/#about',
-    '/about/':                                '/#about',
-    '/contact':                               '/#about',
-    '/contact/':                              '/#about',
+    '/home':                                  '/',
+    '/home/':                                 '/',
+    '/contact/':                              '/contact',
     '/thank-you':                             '/booking/success',
     '/thank-you/':                            '/booking/success',
     '/cancellation-and-rescheduling-policy':  '/#faq',
@@ -430,25 +429,40 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
     }
   });
 
-  // ── Google Reviews rating (Places API) ──────────────────────────────────
-  // Returns cached rating from Google Maps Places details
+  // ── Google Reviews (Places API) — real reviews + rating, cached 1h ────────
+  let _reviewsCache: { data: object; ts: number } | null = null;
+  const REVIEWS_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 1 semana
+
   app.get("/api/reviews", async (_req, res) => {
+    if (_reviewsCache && Date.now() - _reviewsCache.ts < REVIEWS_CACHE_TTL) {
+      return res.json(_reviewsCache.data);
+    }
     const apiKey = process.env.GOOGLE_MAPS_SERVER_KEY || process.env.VITE_GOOGLE_MAPS_KEY;
-    const placeId = process.env.GOOGLE_PLACE_ID || 'ChIJN1t_tDeuEmsRUsoyG83frY4'; // fallback placeholder
-    if (!apiKey) {
-      return res.json({ rating: 4.9, total: 47, source: 'static' });
+    const placeId = process.env.GOOGLE_PLACE_ID;
+    if (!apiKey || !placeId) {
+      return res.json({ rating: 4.9, total: 47, reviews: [], source: 'static' });
     }
     try {
-      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total&key=${apiKey}`;
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total,reviews&language=en&key=${apiKey}`;
       const r = await fetch(url);
-      const data = await r.json() as { result?: { rating?: number; user_ratings_total?: number } };
+      const data = await r.json() as { result?: { rating?: number; user_ratings_total?: number; reviews?: any[] } };
       const result = data.result;
-      if (result?.rating) {
-        return res.json({ rating: result.rating, total: result.user_ratings_total || 0 });
-      }
-      res.json({ rating: 4.9, total: 47, source: 'static' });
+      const reviews = (result?.reviews || []).map((rv: any) => ({
+        author: rv.author_name,
+        text: rv.text,
+        rating: rv.rating,
+        photo: rv.profile_photo_url,
+        time: rv.relative_time_description,
+      }));
+      const payload = {
+        rating: result?.rating ?? 4.9,
+        total: result?.user_ratings_total ?? 47,
+        reviews,
+      };
+      _reviewsCache = { data: payload, ts: Date.now() };
+      return res.json(payload);
     } catch {
-      res.json({ rating: 4.9, total: 47, source: 'static' });
+      return res.json({ rating: 4.9, total: 47, reviews: [], source: 'static' });
     }
   });
 
@@ -516,6 +530,86 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
     }
   });
 
+  // ─── Server-side meta injection ──────────────────────────────────────────
+  // Injects correct <title>, <meta description>, canonical and hreflang into
+  // the HTML shell before sending, so Google never needs JS to read SEO tags.
+  const B = 'https://boticaspa.com';
+
+  interface PageMeta { title: string; desc: string; enUrl: string; esUrl: string; }
+
+  const STATIC_META: Record<string, PageMeta> = {
+    '/':    { title: 'In-Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa', desc: 'In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now.', enUrl: `${B}/`, esUrl: `${B}/es/` },
+    '/es/': { title: 'Spa a Domicilio Playa del Carmen | Masaje en tu Hotel | Botica Spa', desc: 'Spa a domicilio en Playa del Carmen. Llevamos terapeutas certificados a tu hotel, Airbnb o villa. Masajes relajantes, tejido profundo, cuatro manos y más. Reserva ahora.', enUrl: `${B}/`, esUrl: `${B}/es/` },
+    '/es':  { title: 'Spa a Domicilio Playa del Carmen | Masaje en tu Hotel | Botica Spa', desc: 'Spa a domicilio en Playa del Carmen. Llevamos terapeutas certificados a tu hotel, Airbnb o villa. Masajes relajantes, tejido profundo, cuatro manos y más. Reserva ahora.', enUrl: `${B}/`, esUrl: `${B}/es/` },
+
+    '/massages':    { title: 'Massage Playa del Carmen | All In-Home Treatments | Botica Spa', desc: 'Choose from relaxing, deep tissue, four-hands, herbal and signature massages — delivered to your hotel, villa or Airbnb in Playa del Carmen. Book same-day or in advance.', enUrl: `${B}/massages`, esUrl: `${B}/es/masajes` },
+    '/es/masajes':  { title: 'Masaje a Domicilio Playa del Carmen | Todos los Tratamientos | Botica Spa', desc: 'Masaje relajante, tejido profundo, cuatro manos y más — a domicilio en tu hotel, villa o Airbnb en Playa del Carmen. Reserva el mismo día o con anticipación.', enUrl: `${B}/massages`, esUrl: `${B}/es/masajes` },
+
+    '/about':               { title: 'About Botica Spa | Gina Agassini & Our Story | In-Home Spa Playa del Carmen', desc: 'Meet Gina Agassini, founder of Botica Spa. Born from years of luxury resort experience in the Riviera Maya, built around one belief: the best massage happens in your own space.', enUrl: `${B}/about`, esUrl: `${B}/es/sobre-nosotros` },
+    '/es/sobre-nosotros':   { title: 'Sobre Botica Spa | Gina Agassini y Nuestra Historia | Spa a Domicilio Playa del Carmen', desc: 'Conoce a Gina Agassini, fundadora de Botica Spa. Nacida de años de experiencia en resorts de lujo en la Riviera Maya, construida alrededor de una creencia: el mejor masaje ocurre en tu propio espacio.', enUrl: `${B}/about`, esUrl: `${B}/es/sobre-nosotros` },
+
+    '/blog':    { title: 'Wellness Blog | Botica Spa Playa del Carmen', desc: 'Tips, guides and stories about in-home spa, wellness and travel in Playa del Carmen and the Riviera Maya.', enUrl: `${B}/blog`, esUrl: `${B}/es/blog` },
+    '/es/blog': { title: 'Blog de Bienestar | Botica Spa Playa del Carmen', desc: 'Consejos, guías e historias sobre spa a domicilio, bienestar y viajes en Playa del Carmen y la Riviera Maya.', enUrl: `${B}/blog`, esUrl: `${B}/es/blog` },
+
+    '/massage-tulum':    { title: 'Massage Tulum | In-Home Spa Delivered to You | Botica Spa', desc: 'Professional in-home massage in Tulum. Certified therapists delivered to your villa, hotel or Airbnb. Book same-day or in advance. Travel fee applies.', enUrl: `${B}/massage-tulum`, esUrl: `${B}/es/masaje-tulum` },
+    '/es/masaje-tulum':  { title: 'Masaje a Domicilio en Tulum | Botica Spa', desc: 'Masaje profesional a domicilio en Tulum. Terapeutas certificados en tu villa, hotel o Airbnb. Reserva el mismo día o con anticipación.', enUrl: `${B}/massage-tulum`, esUrl: `${B}/es/masaje-tulum` },
+
+    '/massage-cancun':   { title: 'Massage Cancún | In-Home Spa Hotel Zone & Downtown | Botica Spa', desc: 'In-home massage in Cancún — Hotel Zone, downtown and beyond. Certified therapists delivered to your hotel or Airbnb. Travel fee applies.', enUrl: `${B}/massage-cancun`, esUrl: `${B}/es/masaje-cancun` },
+    '/es/masaje-cancun': { title: 'Masaje a Domicilio en Cancún | Botica Spa', desc: 'Masaje a domicilio en Cancún — Zona Hotelera y centro. Terapeutas certificados en tu hotel o Airbnb.', enUrl: `${B}/massage-cancun`, esUrl: `${B}/es/masaje-cancun` },
+
+    '/massage-akumal':   { title: 'Massage Akumal | In-Home Spa Akumal Bay | Botica Spa', desc: 'Professional in-home massage in Akumal. Certified therapists delivered to your villa or Airbnb in Akumal Bay and surroundings.', enUrl: `${B}/massage-akumal`, esUrl: `${B}/es/masaje-akumal` },
+    '/es/masaje-akumal': { title: 'Masaje a Domicilio en Akumal | Botica Spa', desc: 'Masaje profesional a domicilio en Akumal Bay. Terapeutas certificados en tu villa o Airbnb en Akumal.', enUrl: `${B}/massage-akumal`, esUrl: `${B}/es/masaje-akumal` },
+
+    '/contact':     { title: 'Contact Botica Spa | Book Your In-Home Massage Playa del Carmen', desc: 'Contact Botica Spa to book your in-home massage in Playa del Carmen. Reach us via WhatsApp, email or phone. We serve Playa del Carmen, Tulum, Cancún and the Riviera Maya.', enUrl: `${B}/contact`, esUrl: `${B}/es/contacto` },
+    '/es/contacto': { title: 'Contacto Botica Spa | Reserva tu Masaje a Domicilio Playa del Carmen', desc: 'Contacta a Botica Spa para reservar tu masaje a domicilio en Playa del Carmen. Escríbenos por WhatsApp, email o teléfono. Servicio en toda la Riviera Maya.', enUrl: `${B}/contact`, esUrl: `${B}/es/contacto` },
+
+    '/massage-playacar':   { title: 'Massage Playacar | In-Home Spa Phase 1 & 2 | Botica Spa', desc: 'In-home massage in Playacar — Phase 1 & Phase 2. Certified therapists delivered to your villa or hotel. No travel fee.', enUrl: `${B}/massage-playacar`, esUrl: `${B}/es/masaje-playacar` },
+    '/es/masaje-playacar': { title: 'Masaje a Domicilio en Playacar | Botica Spa', desc: 'Masaje a domicilio en Playacar Fase 1 y Fase 2. Terapeutas certificados en tu villa u hotel. Sin cargo de traslado.', enUrl: `${B}/massage-playacar`, esUrl: `${B}/es/masaje-playacar` },
+  };
+
+  const SERVICE_META: Record<string, { en: { title: string; desc: string }; es: { title: string; desc: string } }> = {
+    'relaxing-massage':    { en: { title: 'Relaxing Massage Playa del Carmen | In-Home Spa | Botica Spa', desc: 'Book a professional relaxing massage at your hotel, villa or Airbnb in Playa del Carmen. Certified therapists, organic oils, delivered to your door. From $1,700 MXN.' }, es: { title: 'Masaje Relajante a Domicilio en Playa del Carmen | Botica Spa', desc: 'Reserva un masaje relajante profesional en tu hotel, villa o Airbnb en Playa del Carmen. Terapeutas certificadas, aceites orgánicos.' } },
+    'deep-tissue-massage': { en: { title: 'Deep Tissue Massage Playa del Carmen | In-Home | Botica Spa', desc: 'Expert deep tissue massage delivered to your villa, hotel or Airbnb in Playa del Carmen. Release chronic tension with certified therapists. From $1,700 MXN.' }, es: { title: 'Masaje de Tejido Profundo a Domicilio Playa del Carmen | Botica Spa', desc: 'Masaje de tejido profundo a domicilio en Playa del Carmen. Libera la tensión crónica con terapeutas certificadas.' } },
+    'four-hands-massage':  { en: { title: 'Four-Hands Massage Playa del Carmen | Two Therapists | Botica Spa', desc: 'Experience a luxury four-hands massage at your villa or hotel in Playa del Carmen. Two certified therapists in perfect synchronicity. From $3,900 MXN.' }, es: { title: 'Masaje a Cuatro Manos en Playa del Carmen | Botica Spa', desc: 'Masaje a cuatro manos a domicilio en Playa del Carmen. Dos terapeutas certificadas en perfecta sincronía.' } },
+    'botica-signature':    { en: { title: 'Botica Signature Massage Playa del Carmen | Luxury In-Home Spa', desc: 'Our exclusive signature ritual blending Swedish, Deep Tissue and Aromatherapy. The ultimate in-home spa experience in Playa del Carmen. From $1,700 MXN.' }, es: { title: 'Masaje Botica Signature Playa del Carmen | Spa a Domicilio de Lujo', desc: 'Nuestro ritual exclusivo que combina sueco, tejido profundo y aromaterapia. La experiencia de spa a domicilio más completa en Playa del Carmen.' } },
+    'personalized-massage':{ en: { title: 'Personalized Massage Playa del Carmen | Custom In-Home Therapy | Botica Spa', desc: 'A custom-tailored massage designed for your unique needs, delivered to your hotel or Airbnb in Playa del Carmen. Certified therapists. From $1,700 MXN.' }, es: { title: 'Masaje Personalizado a Domicilio Playa del Carmen | Botica Spa', desc: 'Masaje personalizado a domicilio en Playa del Carmen. Tu terapeuta diseña la sesión según tus necesidades únicas.' } },
+    'revitalizing-facial': { en: { title: 'Revitalizing Facial Treatment Playa del Carmen | In-Home | Botica Spa', desc: "Professional organic facial treatment delivered to your villa or hotel in Playa del Carmen. Restore your skin's natural glow after a day at the beach. From $1,700 MXN." }, es: { title: 'Facial Revitalizante a Domicilio Playa del Carmen | Botica Spa', desc: 'Tratamiento facial orgánico a domicilio en Playa del Carmen. Restaura el brillo de tu piel después de un día en la playa.' } },
+  };
+
+  function getPageMeta(pathname: string): PageMeta {
+    if (STATIC_META[pathname]) return STATIC_META[pathname];
+
+    const enService = pathname.match(/^\/massages\/([^/]+)$/);
+    if (enService) {
+      const sm = SERVICE_META[enService[1]];
+      if (sm) return { title: sm.en.title, desc: sm.en.desc, enUrl: `${B}/massages/${enService[1]}`, esUrl: `${B}/es/masajes/${enService[1]}` };
+    }
+
+    const esService = pathname.match(/^\/es\/masajes\/([^/]+)$/);
+    if (esService) {
+      const sm = SERVICE_META[esService[1]];
+      if (sm) return { title: sm.es.title, desc: sm.es.desc, enUrl: `${B}/massages/${esService[1]}`, esUrl: `${B}/es/masajes/${esService[1]}` };
+    }
+
+    return STATIC_META['/'];
+  }
+
+  function injectMeta(html: string, pathname: string): string {
+    const meta = getPageMeta(pathname);
+    const isEs = pathname.startsWith('/es');
+    const lang = isEs ? 'es' : 'en';
+    const canonical = isEs ? meta.esUrl : meta.enUrl;
+    const hreflang = `\n    <link rel="canonical" href="${canonical}">\n    <link rel="alternate" hreflang="en" href="${meta.enUrl}">\n    <link rel="alternate" hreflang="es" href="${meta.esUrl}">\n    <link rel="alternate" hreflang="x-default" href="${meta.enUrl}">`;
+
+    return html
+      .replace(/(<html[^>]*lang=")[^"]*(")/i, `$1${lang}$2`)
+      .replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`)
+      .replace(/<meta name="description"[^>]*\/?>/, `<meta name="description" content="${meta.desc}">`)
+      .replace(/<link rel="canonical"[^>]*\/?>/, '')
+      .replace('</head>', `${hreflang}\n  </head>`);
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -525,6 +619,7 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');
+    const indexHtml = fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
     // Immutable cache for hashed assets (JS/CSS chunks), no-cache for HTML
     app.use(express.static(distPath, {
       maxAge: '1y',
@@ -537,9 +632,10 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
         }
       },
     }));
-    app.get('*', (_req, res) => {
+    app.get('*', (req, res) => {
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.send(injectMeta(indexHtml, req.path));
     });
   }
 

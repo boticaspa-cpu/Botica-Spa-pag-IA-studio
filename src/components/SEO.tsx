@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../LanguageContext';
+import { toLangPath } from './LangLink';
 
 interface SEOProps {
   title?: string;
@@ -11,8 +12,17 @@ interface SEOProps {
   aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
+const BASE = 'https://boticaspa.com';
+
 export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", faqs, breadcrumbs, aggregateRating }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Compute EN and ES canonical URLs
+  const enPath = url.replace(BASE, '');
+  const esPath = toLangPath(enPath, 'es');
+  const enUrl = `${BASE}${enPath}`;
+  const esUrl = `${BASE}${esPath}`;
+  const canonicalUrl = language === 'es' ? esUrl : enUrl;
 
   const defaultTitle = 'Massage Playa del Carmen | In-Home Spa | Botica Spa';
 
@@ -26,20 +36,23 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
       <meta property="og:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more.'} />
       <meta property="og:image" content="https://boticaspa.com/og-image.jpg" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
+      <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
       <meta name="twitter:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa.'} />
       <meta name="twitter:image" content="https://boticaspa.com/og-image.jpg" />
 
-      {/* Canonical */}
-      <link rel="canonical" href={url} />
+      {/* Canonical + hreflang */}
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={enUrl} />
+      <link rel="alternate" hrefLang="es" href={esUrl} />
+      <link rel="alternate" hrefLang="x-default" href={enUrl} />
 
       {/* FAQPage schema */}
       {faqs && faqs.length > 0 && (

@@ -1,5 +1,5 @@
-
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Language, translations } from './translations';
 
 interface LanguageContextType {
@@ -12,15 +12,12 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language] = useState<Language>('en');
-
-  const setLanguage = (_lang: Language) => {};
-  const toggleLanguage = () => {};
-
+  const { pathname } = useLocation();
+  const language: Language = pathname.startsWith('/es') ? 'es' : 'en';
   const t = translations[language];
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: () => {}, toggleLanguage: () => {}, t }}>
       {children}
     </LanguageContext.Provider>
   );

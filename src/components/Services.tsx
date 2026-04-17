@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { LangLink } from './LangLink';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { ArrowRight, Sparkles, Plus } from 'lucide-react';
 
 interface ServicesProps {
   onSelectTreatment: (id: string) => void;
+  limit?: number;
 }
 
-export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
+export const Services: React.FC<ServicesProps> = ({ onSelectTreatment, limit }) => {
   const { language } = useLanguage();
   const t = translations[language];
 
@@ -72,7 +73,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {services.map((service, index) => {
+          {(limit ? services.slice(0, limit) : services).map((service, index) => {
             const item = (t.services.items as any)[service.id];
             return (
               <motion.div
@@ -122,13 +123,13 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment }) => {
                       >
                         <ArrowRight className="w-6 h-6" />
                       </button>
-                      <Link
+                      <LangLink
                         to={`/massages/${service.slug}`}
                         aria-label={`Learn more about ${item.name}`}
                         className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"
                       >
                         <Plus className="w-5 h-5" />
-                      </Link>
+                      </LangLink>
                     </div>
                   </div>
                 </div>

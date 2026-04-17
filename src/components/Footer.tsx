@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Facebook } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
-import { Link } from 'react-router-dom';
+import { LangLink } from './LangLink';
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -47,14 +47,15 @@ export const Footer = () => {
           <div>
             <h3 className="text-xs uppercase tracking-widest font-semibold mb-6">{t.footer.quickLinks}</h3>
             <ul className="space-y-4 text-sm text-gray-500">
-              <li><Link to="/" className="hover:text-black transition-colors">{t.footer.home}</Link></li>
-              <li><Link to="/massages" className="hover:text-black transition-colors">{t.nav.treatments}</Link></li>
-              <li><Link to="/blog" className="hover:text-black transition-colors">{t.nav.blog}</Link></li>
-              <li><Link to="/massage-tulum" className="hover:text-black transition-colors">Massage in Tulum</Link></li>
-              <li><Link to="/massage-cancun" className="hover:text-black transition-colors">Massage in Cancún</Link></li>
-              <li><Link to="/massage-akumal" className="hover:text-black transition-colors">Massage in Akumal</Link></li>
-              <li><Link to="/massage-playacar" className="hover:text-black transition-colors">Massage in Playacar</Link></li>
-              <li><a href={t.social.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">{t.footer.contact}</a></li>
+              <li><LangLink to="/" className="hover:text-black transition-colors">{t.footer.home}</LangLink></li>
+              <li><LangLink to="/massages" className="hover:text-black transition-colors">{t.nav.treatments}</LangLink></li>
+              <li><LangLink to="/blog" className="hover:text-black transition-colors">{t.nav.blog}</LangLink></li>
+              <li><LangLink to="/about" className="hover:text-black transition-colors">About</LangLink></li>
+              <li><LangLink to="/massage-tulum" className="hover:text-black transition-colors">Massage in Tulum</LangLink></li>
+              <li><LangLink to="/massage-cancun" className="hover:text-black transition-colors">Massage in Cancún</LangLink></li>
+              <li><LangLink to="/massage-akumal" className="hover:text-black transition-colors">Massage in Akumal</LangLink></li>
+              <li><LangLink to="/massage-playacar" className="hover:text-black transition-colors">Massage in Playacar</LangLink></li>
+              <li><LangLink to="/contact" className="hover:text-black transition-colors">{t.footer.contact}</LangLink></li>
             </ul>
           </div>
           <div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
+import { LangLink } from '../components/LangLink';
 import { motion } from 'motion/react';
 import { Check, Clock, ArrowLeft, Sparkles } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
@@ -117,13 +118,13 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link
+            <LangLink
               to="/massages"
               className="inline-flex items-center gap-2 text-white/60 text-xs uppercase tracking-widest hover:text-white transition-colors mb-6"
             >
               <ArrowLeft className="w-3 h-3" />
               {language === 'en' ? 'All Treatments' : 'Todos los Tratamientos'}
-            </Link>
+            </LangLink>
             <div className="flex items-center gap-3 mb-3">
               <Sparkles className="w-4 h-4 text-[#C9B99A]" />
               <span className="text-xs uppercase tracking-[0.3em] text-[#C9B99A] font-bold">
@@ -284,12 +285,12 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
           <h2 className="text-3xl font-serif text-[#1A1A1A] mb-8">
             {language === 'en' ? 'Other Treatments' : 'Otros Tratamientos'}
           </h2>
-          <Link
+          <LangLink
             to="/massages"
             className="inline-flex items-center gap-3 bg-[#1A1A1A] text-white px-8 py-4 rounded-full text-sm uppercase tracking-widest hover:bg-[#2A2A2A] transition-colors"
           >
             {language === 'en' ? 'View All Rituals' : 'Ver Todos los Rituales'}
-          </Link>
+          </LangLink>
         </div>
       </section>
     </>

@@ -1,15 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <!-- Core pages -->
   <url>
     <loc>https://boticaspa.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages"/>
+  </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages"/>
+  </url>
+
+  <url>
+    <loc>https://boticaspa.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/about"/>
+  </url>
+  <url>
+    <loc>https://boticaspa.com/es/sobre-nosotros</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/about"/>
+  </url>
+
+  <url>
+    <loc>https://boticaspa.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/contact"/>
+  </url>
+  <url>
+    <loc>https://boticaspa.com/es/contacto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/contacto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/contact"/>
   </url>
 
   <!-- Individual service pages -->
@@ -17,31 +76,102 @@
     <loc>https://boticaspa.com/massages/relaxing-massage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/relaxing-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/relaxing-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/relaxing-massage"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/relaxing-massage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/relaxing-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/relaxing-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/relaxing-massage"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages/deep-tissue-massage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/deep-tissue-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/deep-tissue-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/deep-tissue-massage"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/deep-tissue-massage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/deep-tissue-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/deep-tissue-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/deep-tissue-massage"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages/four-hands-massage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/four-hands-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/four-hands-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/four-hands-massage"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/four-hands-massage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/four-hands-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/four-hands-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/four-hands-massage"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages/botica-signature</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/botica-signature"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/botica-signature"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/botica-signature"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/botica-signature</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/botica-signature"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/botica-signature"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/botica-signature"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages/personalized-massage</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/personalized-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/personalized-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/personalized-massage"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/personalized-massage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/personalized-massage"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/personalized-massage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/personalized-massage"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massages/revitalizing-facial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/revitalizing-facial"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/revitalizing-facial"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/revitalizing-facial"/>
+  </url>
+  <url>
+    <loc>https://boticaspa.com/es/masajes/revitalizing-facial</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massages/revitalizing-facial"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masajes/revitalizing-facial"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/revitalizing-facial"/>
   </url>
 
   <!-- Blog -->
@@ -49,36 +179,66 @@
     <loc>https://boticaspa.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/blog/wellness-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/wellness-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/wellness-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/wellness-guide"/>
   </url>
   <url>
     <loc>https://boticaspa.com/blog/organic-aromatherapy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/organic-aromatherapy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/organic-aromatherapy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/organic-aromatherapy"/>
   </url>
   <url>
     <loc>https://boticaspa.com/blog/traveler-recovery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/traveler-recovery"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/traveler-recovery"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/traveler-recovery"/>
   </url>
   <url>
     <loc>https://boticaspa.com/blog/top-villas-playa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/top-villas-playa"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/top-villas-playa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/top-villas-playa"/>
   </url>
   <url>
     <loc>https://boticaspa.com/blog/post-beach-skincare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/post-beach-skincare"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/post-beach-skincare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/post-beach-skincare"/>
   </url>
   <url>
     <loc>https://boticaspa.com/blog/airbnb-spa-prep</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/blog/airbnb-spa-prep"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/blog/airbnb-spa-prep"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/blog/airbnb-spa-prep"/>
   </url>
 
   <!-- City landing pages -->
@@ -86,20 +246,68 @@
     <loc>https://boticaspa.com/massage-tulum</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-tulum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-tulum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-tulum"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masaje-tulum</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-tulum"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-tulum"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-tulum"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massage-cancun</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-cancun"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-cancun"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-cancun"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masaje-cancun</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-cancun"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-cancun"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-cancun"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massage-akumal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-akumal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-akumal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-akumal"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masaje-akumal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-akumal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-akumal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-akumal"/>
+  </url>
+
   <url>
     <loc>https://boticaspa.com/massage-playacar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-playacar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-playacar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-playacar"/>
   </url>
+  <url>
+    <loc>https://boticaspa.com/es/masaje-playacar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-playacar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-playacar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-playacar"/>
+  </url>
+
 </urlset>

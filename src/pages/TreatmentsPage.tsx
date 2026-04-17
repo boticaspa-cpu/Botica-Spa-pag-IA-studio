@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { LangLink } from '../components/LangLink';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { Sparkles, ArrowRight } from 'lucide-react';
@@ -56,7 +56,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
   return (
     <>
       <SEO
-        title="Massage Services Playa del Carmen | In-Home Spa | Botica Spa"
+        title="Massage Playa del Carmen | All In-Home Treatments | Botica Spa"
         description="Choose from relaxing, deep tissue, four-hands, herbal and signature massages — delivered to your hotel, villa or Airbnb in Playa del Carmen."
         url="https://boticaspa.com/massages"
       />
@@ -79,8 +79,18 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-serif text-[#1A1A1A] leading-tight"
             >
-              {language === 'en' ? 'Full Treatment Rituals' : 'Rituales Completos de Tratamiento'}
+              {language === 'en' ? 'In-Home Massage Playa del Carmen' : 'Masaje a Domicilio Playa del Carmen'}
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg text-gray-500 mt-6 max-w-2xl leading-relaxed"
+            >
+              {language === 'en'
+                ? 'Book for same-day or advance delivery to your hotel, villa or Airbnb. We bring the table, linens, and organic oils — you just show up relaxed.'
+                : 'Reserva para entrega el mismo día o con anticipación en tu hotel, villa o Airbnb. Llevamos la camilla, ropa de cama y aceites orgánicos.'}
+            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,13 +132,13 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                             ${service.price.toLocaleString(undefined, { minimumFractionDigits: service.price % 1 !== 0 ? 2 : 0 })} {t.services.currency}
                           </span>
                         </div>
-                        <Link
+                        <LangLink
                           to={`/massages/${service.slug}`}
                           className="w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"
                           aria-label={`View details for ${item.name}`}
                         >
                           <ArrowRight className="w-5 h-5" />
-                        </Link>
+                        </LangLink>
                       </div>
 
                     </div>

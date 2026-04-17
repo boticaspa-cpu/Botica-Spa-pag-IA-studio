@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
 import { Promo } from '../components/Promo';
-import { About } from '../components/About';
 import { Gallery } from '../components/Gallery';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import { SEO } from '../components/SEO';
-import { Link } from 'react-router-dom';
+import { LangLink } from '../components/LangLink';
 import { ArrowRight, ChevronDown, MapPin, MessageCircle } from 'lucide-react';
 
 interface HomeProps {
@@ -87,29 +86,78 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
   return (
     <>
       <SEO
-        title="Massage Playa del Carmen | In-Home Spa | Botica Spa"
-        description="In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now."
+        title="In-Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa"
+        description="In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now."
         url="https://boticaspa.com/"
         faqs={FAQS}
         aggregateRating={reviewStats ? { ratingValue: reviewStats.rating, reviewCount: reviewStats.total } : undefined}
       />
       <main>
         <Hero onBookNow={onBookNow} />
-        <Services onSelectTreatment={onSelectTreatment} />
+        <Services onSelectTreatment={onSelectTreatment} limit={3} />
         
         {/* View All Treatments Link */}
         <section className="py-12 bg-[#F5F2ED] text-center">
-          <Link 
+          <LangLink
             to="/massages"
             className="inline-flex items-center gap-3 text-brand font-bold uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all group"
           >
             {language === 'en' ? 'View Full Treatment Menu' : 'Ver Menú Completo de Tratamientos'}
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </LangLink>
         </section>
 
         <Promo />
-        <About />
+        {/* About teaser — full content lives at /about */}
+        <section className="py-24 px-4 bg-[#F9F8F6]">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl"
+            >
+              <img
+                src="/spa-interior.webp"
+                alt="In-home massage session — Botica Spa therapist setting up at a Playa del Carmen villa"
+                width={600}
+                height={450}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <span className="text-xs uppercase tracking-[0.4em] text-gray-500">
+                {language === 'en' ? '5 Years in the Riviera Maya' : '5 Años en la Riviera Maya'}
+              </span>
+              <h2 className="text-4xl md:text-5xl font-serif font-light leading-tight">
+                {language === 'en' ? (
+                  <>Resort quality. <span className="italic">Your room.</span></>
+                ) : (
+                  <>Calidad de resort. <span className="italic">Tu cuarto.</span></>
+                )}
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                {language === 'en'
+                  ? 'Founded by Gina Agassini after years at luxury properties across the Riviera Maya. Every session brings the same organic oils, techniques, and care you\'d expect from a five-star spa — without leaving where you\'re staying.'
+                  : 'Fundada por Gina Agassini tras años en propiedades de lujo en la Riviera Maya. Cada sesión lleva los mismos aceites orgánicos, técnicas y cuidado que esperarías de un spa cinco estrellas — sin salir de donde te hospedas.'}
+              </p>
+              <LangLink
+                to="/about"
+                className="inline-flex items-center gap-3 text-brand font-bold uppercase tracking-[0.2em] text-xs hover:gap-5 transition-all group"
+              >
+                {language === 'en' ? 'Our Story' : 'Nuestra Historia'}
+                <ArrowRight className="w-4 h-4" />
+              </LangLink>
+            </motion.div>
+          </div>
+        </section>
         <Gallery />
 
         {/* Delivery Areas Section */}
@@ -182,7 +230,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                     transition={{ delay: i * 0.07 }}
                   >
                     {area.slug ? (
-                      <Link to={area.slug} className={cardClass}>{cardContent}</Link>
+                      <LangLink to={area.slug} className={cardClass}>{cardContent}</LangLink>
                     ) : (
                       <div className={cardClass}>{cardContent}</div>
                     )}
@@ -192,21 +240,30 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="text-center"
+              className="flex justify-center"
             >
               <a
                 href="https://wa.me/529842687428?text=Hi!%20I%27d%20like%20to%20check%20if%20you%20cover%20my%20area%20%F0%9F%8C%BF"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-sm text-gray-500 hover:text-[#1A1A1A] transition-colors"
+                className="group flex items-center gap-4 bg-white border border-gray-200 hover:border-[#25D366] hover:shadow-lg hover:shadow-[#25D366]/10 transition-all duration-300 rounded-2xl px-8 py-5"
               >
-                <MessageCircle className="w-4 h-4" />
-                Not sure if we cover your area? Message us on WhatsApp
-                <ArrowRight className="w-3 h-3" />
+                <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 group-hover:bg-[#25D366] flex items-center justify-center transition-colors duration-300 flex-shrink-0">
+                  <MessageCircle className="w-5 h-5 text-[#25D366] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs uppercase tracking-widest font-bold text-[#1A1A1A]">
+                    {language === 'en' ? 'Not in the list?' : '¿No está tu zona?'}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-0.5">
+                    {language === 'en' ? "Message us on WhatsApp — we'll confirm in minutes" : 'Escríbenos por WhatsApp — confirmamos en minutos'}
+                  </p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-2" />
               </a>
             </motion.div>
           </div>
