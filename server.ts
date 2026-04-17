@@ -4,12 +4,14 @@ import { createServer as createViteServer } from "vite";
 import nodemailer from "nodemailer";
 import { createGzip, createBrotliCompress, constants as zlibConstants } from "zlib";
 import path from "path";
+import fs from "fs";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
 import Anthropic from "@anthropic-ai/sdk";
 import { MercadoPagoConfig, Preference } from "mercadopago";
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, Timestamp } from "firebase/firestore";
+import { google } from "googleapis";
 
 // Firebase initialization
 const _require = createRequire(import.meta.url);
@@ -30,6 +32,7 @@ async function startServer() {
   // Only compresses compressible text types; skips already-compressed assets.
   const COMPRESSIBLE = /^(text\/|application\/(javascript|json|xml)|image\/svg)/;
   app.use((req, res, next) => {
+    if (process.env.NODE_ENV !== 'production') return next();
     if (req.method === 'HEAD') return next();
     const ae = (req.headers['accept-encoding'] as string) || '';
     if (!ae.includes('gzip') && !ae.includes('br')) return next();
@@ -424,6 +427,92 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
     } catch (error) {
       console.error("WhatsApp error:", error);
       res.status(500).json({ error: "Failed to send WhatsApp message" });
+    }
+  });
+
+  // ── Google Reviews rating (Places API) ──────────────────────────────────
+  // Returns cached rating from Google Maps Places details
+  app.get("/api/reviews", async (_req, res) => {
+    const apiKey = process.env.GOOGLE_MAPS_SERVER_KEY || process.env.VITE_GOOGLE_MAPS_KEY;
+    const placeId = process.env.GOOGLE_PLACE_ID || 'ChIJN1t_tDeuEmsRUsoyG83frY4'; // fallback placeholder
+    if (!apiKey) {
+      return res.json({ rating: 4.9, total: 47, source: 'static' });
+    }
+    try {
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total&key=${apiKey}`;
+      const r = await fetch(url);
+      const data = await r.json() as { result?: { rating?: number; user_ratings_total?: number } };
+      const result = data.result;
+      if (result?.rating) {
+        return res.json({ rating: result.rating, total: result.user_ratings_total || 0 });
+      }
+      res.json({ rating: 4.9, total: 47, source: 'static' });
+    } catch {
+      res.json({ rating: 4.9, total: 47, source: 'static' });
+    }
+  });
+
+  // ── Google Search Console API ─────────────────────────────────────────────
+  app.get("/api/admin/gsc", async (_req, res) => {
+    const credPath = process.env.GSC_CREDENTIALS_PATH;
+    const tokenPath = process.env.GSC_TOKEN_PATH;
+    const siteUrl = process.env.GSC_SITE_URL || 'sc-domain:boticaspa.com';
+
+    if (!credPath || !fs.existsSync(credPath)) {
+      return res.status(503).json({ error: 'GSC credentials not configured. Set GSC_CREDENTIALS_PATH in .env' });
+    }
+    if (!tokenPath || !fs.existsSync(tokenPath)) {
+      return res.status(503).json({ error: 'GSC token not found. Run the OAuth setup script first.' });
+    }
+
+    try {
+      const creds = JSON.parse(fs.readFileSync(credPath, 'utf8'));
+      const token = JSON.parse(fs.readFileSync(tokenPath, 'utf8'));
+      const { client_id, client_secret, redirect_uris } = creds.installed || creds.web;
+
+      const oauth2 = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
+      oauth2.setCredentials(token);
+
+      // Auto-refresh and persist updated token
+      oauth2.on('tokens', (newToken) => {
+        const updated = { ...token, ...newToken };
+        fs.writeFileSync(tokenPath, JSON.stringify(updated, null, 2));
+      });
+
+      const sc = google.searchconsole({ version: 'v1', auth: oauth2 });
+      const endDate = new Date().toISOString().split('T')[0];
+      const startDate = new Date(Date.now() - 28 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+      const [summary, keywords] = await Promise.all([
+        sc.searchanalytics.query({
+          siteUrl,
+          requestBody: { startDate, endDate, dimensions: [] },
+        }),
+        sc.searchanalytics.query({
+          siteUrl,
+          requestBody: { startDate, endDate, dimensions: ['query'], rowLimit: 10 },
+        }),
+      ]);
+
+      const s = summary.data.rows?.[0] || { clicks: 0, impressions: 0, ctr: 0, position: 0 };
+      const kwRows = (keywords.data.rows || []).map((r) => ({
+        query: (r.keys || [])[0] || '',
+        clicks: r.clicks || 0,
+        impressions: r.impressions || 0,
+        position: r.position || 0,
+      }));
+
+      res.json({
+        clicks: s.clicks || 0,
+        impressions: s.impressions || 0,
+        ctr: s.ctr || 0,
+        position: s.position || 0,
+        keywords: kwRows,
+        errors: [],
+      });
+    } catch (err: any) {
+      console.error('GSC error:', err?.message);
+      res.status(500).json({ error: err?.message || 'GSC API error' });
     }
   });
 

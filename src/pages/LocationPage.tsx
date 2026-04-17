@@ -248,7 +248,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
             transition={{ delay: 0.3 }}
             className="mt-12"
           >
-            <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4">
               {language === 'en' ? 'Also available in' : 'También disponible en'}
             </p>
             <div className="flex flex-wrap justify-center gap-3">

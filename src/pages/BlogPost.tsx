@@ -121,9 +121,9 @@ export function BlogPost() {
           className="mt-20 pt-12 border-t border-gray-100 flex justify-between items-center"
         >
           <div className="flex items-center gap-4">
-            <span className="text-[10px] uppercase tracking-widest font-bold text-gray-500">Share</span>
-            <button aria-label="Share this article" className="p-2 rounded-full hover:bg-gray-50 transition-colors">
-              <Share2 className="w-4 h-4 text-[#1A1A1A]" aria-hidden="true" />
+            <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Share</span>
+            <button className="p-2 rounded-full hover:bg-gray-50 transition-colors">
+              <Share2 className="w-4 h-4 text-[#1A1A1A]" />
             </button>
           </div>
           

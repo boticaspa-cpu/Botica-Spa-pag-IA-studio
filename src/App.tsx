@@ -6,7 +6,7 @@ import {
   Menu,
   X
 } from 'lucide-react';
-import { Routes, Route, Link, useLocation, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, Link, useLocation, BrowserRouter as Router, Navigate } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { translations } from './translations';
 import { Hero } from './components/Hero';
@@ -25,6 +25,11 @@ import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { PaymentSuccess } from './pages/PaymentSuccess';
 import { LocationPage } from './pages/LocationPage';
+import { AdminLogin } from './pages/admin/AdminLogin';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { AdminClientes } from './pages/admin/AdminClientes';
+import { AdminSEO } from './pages/admin/AdminSEO';
+import { ProtectedRoute } from './components/admin/ProtectedRoute';
 import { cn } from './lib/utils';
 
 function AppContent() {
@@ -260,12 +265,30 @@ function AppContent() {
   );
 }
 
+function AdminRouter() {
+  return (
+    <Routes>
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+      <Route path="/admin/clientes" element={<ProtectedRoute><AdminClientes /></ProtectedRoute>} />
+      <Route path="/admin/seo" element={<ProtectedRoute><AdminSEO /></ProtectedRoute>} />
+      <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+    </Routes>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <AppContent />
+      <AppRouterSwitch />
     </Router>
   );
+}
+
+function AppRouterSwitch() {
+  const location = useLocation();
+  if (location.pathname.startsWith('/admin')) return <AdminRouter />;
+  return <AppContent />;
 }
 
 export default App;
