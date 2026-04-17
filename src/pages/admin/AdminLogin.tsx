@@ -1,33 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 const ALLOWED_EMAILS = ['boticaspa@gmail.com'];
 
 export const AdminLogin: React.FC = () => {
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getRedirectResult(auth).then(result => {
-      if (result?.user) {
-        if (!ALLOWED_EMAILS.includes(result.user.email || '')) {
-          auth.signOut();
-          setError('Esta cuenta no tiene acceso al panel.');
-        } else {
-          navigate('/admin/dashboard');
-        }
-      }
-    }).catch(() => {
-      setError('Error al iniciar sesión');
-    }).finally(() => setLoading(false));
-  }, []);
-
-  const handleGoogle = () => {
+  const handleGoogle = async () => {
     setLoading(true);
-    signInWithRedirect(auth, new GoogleAuthProvider());
+    setError('');
+    try {
+      const result = await signInWithPopup(auth, new GoogleAuthProvider());
+      if (!ALLOWED_EMAILS.includes(result.user.email || '')) {
+        await auth.signOut();
+        setError('Esta cuenta no tiene acceso al panel.');
+      } else {
+        navigate('/admin/dashboard');
+      }
+    } catch {
+      setError('Error al iniciar sesión. Intenta de nuevo.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
