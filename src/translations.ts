@@ -10,7 +10,7 @@ export const translations = {
       bookNow: 'Book Now',
     },
     hero: {
-      title: 'The Art of In-Home',
+      title: 'The Art of In Home',
       titleItalic: 'Massage',
       subtitle: 'Premium wellness rituals delivered to your private sanctuary in Playa del Carmen. Experience the spa, redefined.',
       ctaBook: 'Book Your Session',
