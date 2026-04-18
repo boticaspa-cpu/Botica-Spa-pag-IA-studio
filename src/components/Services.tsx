@@ -16,19 +16,6 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment, limit }) 
 
   const services = [
     {
-      id: 'botica',
-      slug: 'botica-signature',
-      image: '/masaje-botica.webp',
-      price: t.services.items.botica.price90,
-    },
-    {
-      id: 'fourHands',
-      slug: 'four-hands-massage',
-      image: '/masaje-cuatro-manos.webp',
-      price: t.services.items.fourHands.price90,
-      highlight: true
-    },
-    {
       id: 'deepTissue',
       slug: 'deep-tissue-massage',
       image: '/masaje-profundo.webp',
