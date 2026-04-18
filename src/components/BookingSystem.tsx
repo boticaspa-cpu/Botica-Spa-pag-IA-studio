@@ -287,7 +287,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
             <div>
               <h2 className="text-2xl font-serif font-medium">{t.booking.title}</h2>
               <p className="text-sm text-gray-500 mt-1">
-                {step === 0 ? "Let's get started" : bookingMode === 'quick' ? `Pick your treatment` : `${t.booking.step} ${step} ${t.booking.of} 4`}
+                {step === 0 ? (language === 'en' ? "Let's get started" : 'Empecemos') : bookingMode === 'quick' ? (language === 'en' ? 'Pick your treatment' : 'Elige tu tratamiento') : `${t.booking.step} ${step} ${t.booking.of} 4`}
               </p>
             </div>
           </div>
@@ -305,8 +305,8 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
               {/* ─── Step 0 — Email capture ─── */}
               {step === 0 && (
                 <motion.div key="step0" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                  <h3 className="text-2xl font-serif mb-2">Book Your Massage</h3>
-                  <p className="text-sm text-gray-500 mb-6">Enter your email and we'll get you set up in seconds.</p>
+                  <h3 className="text-2xl font-serif mb-2">{language === 'en' ? 'Book Your Massage' : 'Reserva tu Masaje'}</h3>
+                  <p className="text-sm text-gray-500 mb-6">{language === 'en' ? "Enter your email and we'll get you set up in seconds." : 'Escribe tu email y te ayudamos en segundos.'}</p>
                   <div className="space-y-1 mb-6">
                     <label className="text-xs uppercase tracking-widest text-gray-500">Email</label>
                     <input
@@ -336,7 +336,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-brand-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       <MessageCircle className="w-5 h-5" />
-                      Book on WhatsApp — pick a service &amp; chat now
+                      {language === 'en' ? 'Book on WhatsApp — pick a service & chat now' : 'Reservar por WhatsApp — elige un servicio y chatea'}
                     </button>
                     <button
                       disabled={!formData.customerEmail}
@@ -352,10 +352,10 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gray-100 text-gray-700 rounded-2xl text-sm hover:bg-gray-200 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       <Calendar className="w-4 h-4" />
-                      Schedule in advance (5+ days) — pay deposit online
+                      {language === 'en' ? 'Schedule in advance (5+ days) — pay deposit online' : 'Reservar con anticipación (5+ días) — paga depósito en línea'}
                     </button>
                   </div>
-                  <p className="text-xs text-gray-500 mt-4 text-center">WhatsApp: instant reply · Advance: secure your date with a 30% deposit</p>
+                  <p className="text-xs text-gray-500 mt-4 text-center">{language === 'en' ? 'WhatsApp: instant reply · Advance: secure your date with a 30% deposit' : 'WhatsApp: respuesta inmediata · Anticipado: asegura tu fecha con 30% de depósito'}</p>
                 </motion.div>
               )}
 
@@ -365,7 +365,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                   <h3 className="text-lg font-medium mb-2 flex items-center gap-2">
                     <Users className="w-5 h-5 text-gray-500" /> {t.booking.step1Title}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-6">Each person can choose a different treatment and duration.</p>
+                  <p className="text-sm text-gray-500 mb-6">{language === 'en' ? 'Each person can choose a different treatment and duration.' : 'Cada persona puede elegir un tratamiento y duración diferente.'}</p>
 
                   <div className="space-y-4">
                     {guests.map((guest, gIdx) => {
@@ -385,11 +385,11 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                                 {gIdx + 1}
                               </div>
                               <div>
-                                <p className="font-medium text-sm">Guest {gIdx + 1}</p>
+                                <p className="font-medium text-sm">{language === 'en' ? `Guest ${gIdx + 1}` : `Persona ${gIdx + 1}`}</p>
                                 {isSelected ? (
                                   <p className="text-xs text-brand">{guest.serviceName} — {guest.duration} · ${guest.price} MXN</p>
                                 ) : (
-                                  <p className="text-xs text-gray-500">Tap to choose a treatment</p>
+                                  <p className="text-xs text-gray-500">{language === 'en' ? 'Tap to choose a treatment' : 'Toca para elegir un tratamiento'}</p>
                                 )}
                               </div>
                             </div>
@@ -445,7 +445,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     onClick={addGuest}
                     className="mt-4 w-full flex items-center justify-center gap-2 py-3 border border-dashed border-gray-300 rounded-2xl text-sm text-gray-500 hover:border-brand hover:text-brand transition-all"
                   >
-                    <Plus className="w-4 h-4" /> Add another person
+                    <Plus className="w-4 h-4" /> {language === 'en' ? 'Add another person' : 'Agregar otra persona'}
                   </button>
 
                   {/* Running total */}
@@ -468,7 +468,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                         className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-brand-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                       >
                         <MessageCircle className="w-5 h-5" />
-                        Open WhatsApp to confirm your booking
+                        {language === 'en' ? 'Open WhatsApp to confirm your booking' : 'Abrir WhatsApp para confirmar tu reserva'}
                       </button>
                     ) : (
                       <div className="flex justify-end">
@@ -727,11 +727,11 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                         <span className="font-serif text-xl text-[#1A1A1A]">${totalPrice} <span className="text-xs font-sans font-normal text-gray-500">MXN</span></span>
                       </div>
                       <div className="flex justify-between text-sm pt-1 border-t border-gray-200">
-                        <span className="text-amber-700 font-medium">30% Deposit {requiresDeposit ? '(pay now online)' : '(via WhatsApp)'}</span>
+                        <span className="text-amber-700 font-medium">{language === 'en' ? `30% Deposit ${requiresDeposit ? '(pay now online)' : '(via WhatsApp)'}` : `30% Depósito ${requiresDeposit ? '(paga ahora en línea)' : '(vía WhatsApp)'}`}</span>
                         <span className="text-amber-700 font-serif text-lg">${depositAmount} <span className="text-xs font-sans font-normal">MXN</span></span>
                       </div>
                       <div className="flex justify-between text-sm text-gray-500">
-                        <span>Balance on day of service</span>
+                        <span>{language === 'en' ? 'Balance on day of service' : 'Resto el día del servicio'}</span>
                         <span>${balanceDue} MXN</span>
                       </div>
                     </div>
@@ -739,11 +739,11 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
 
                   {requiresDeposit ? (
                     <p className="text-xs text-gray-500 text-center mb-6">
-                      After payment you'll be redirected to WhatsApp to complete your reservation with our team.
+                      {language === 'en' ? "After payment you'll be redirected to WhatsApp to complete your reservation with our team." : 'Después del pago te redirigiremos a WhatsApp para completar tu reserva con nuestro equipo.'}
                     </p>
                   ) : (
                     <p className="text-xs text-gray-500 text-center mb-6">
-                      You'll be connected to our team on WhatsApp to process your 30% deposit and confirm.
+                      {language === 'en' ? "You'll be connected to our team on WhatsApp to process your 30% deposit and confirm." : 'Te conectaremos con nuestro equipo por WhatsApp para procesar tu depósito del 30% y confirmar.'}
                     </p>
                   )}
 

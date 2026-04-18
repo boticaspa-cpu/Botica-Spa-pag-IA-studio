@@ -14,7 +14,7 @@ interface HomeProps {
   onBookNow: () => void;
 }
 
-const FAQS = [
+const FAQS_EN = [
   {
     q: "Is it safe to let a therapist into my villa or hotel room?",
     a: "Absolutely. All Botica Spa therapists are certified professionals with background checks and years of experience at luxury properties in the Riviera Maya. We've served guests at top resorts, private villas, and Airbnbs. Discretion and professionalism are at the core of everything we do."
@@ -65,8 +65,60 @@ const FAQS = [
   },
 ];
 
+const FAQS_ES = [
+  {
+    q: "¿Es seguro dejar entrar a una terapeuta a mi villa o habitación de hotel?",
+    a: "Sí. Todas las terapeutas de Botica Spa son profesionales certificadas con años de experiencia en propiedades de lujo en la Riviera Maya. Discreción y profesionalismo son parte de cada visita."
+  },
+  {
+    q: "¿Traen todo? ¿Necesito preparar algo?",
+    a: "Llevamos todo: camilla profesional, ropa de cama limpia, aceites orgánicos, aromaterapia y música. Solo necesitas un espacio de aproximadamente 2x3 metros. Nosotros montamos y recogemos todo."
+  },
+  {
+    q: "¿Qué pasa si mi hotel no permite proveedores externos?",
+    a: "La mayoría de los hoteles en la Riviera Maya reciben servicios de spa a domicilio. Si estás en un todo incluido grande, escríbenos por WhatsApp antes de reservar y confirmamos el acceso. Siempre encontramos la forma."
+  },
+  {
+    q: "¿Pueden dos o más personas recibir masaje al mismo tiempo?",
+    a: "Sí, y es una de nuestras solicitudes más frecuentes. Podemos enviar dos terapeutas para una sesión en pareja o grupo pequeño. Cada persona elige su propio servicio y coordinamos la llegada juntas."
+  },
+  {
+    q: "¿Con cuánta anticipación debo reservar?",
+    a: "Muchas veces podemos atenderte el mismo día o al día siguiente. Escríbenos por WhatsApp y confirmamos disponibilidad en minutos. Para garantizar tu lugar, especialmente en pareja o grupo, recomendamos reservar con 5+ días (el 30% de depósito lo asegura al instante)."
+  },
+  {
+    q: "¿Cuál es la política de cancelación y depósito?",
+    a: "Las reservas con 5+ días de anticipación requieren un depósito del 30%. Si cancelas con más de 48 horas de anticipación, te devolvemos el depósito completo. Cancelaciones dentro de las 48 horas pierden el depósito. Las reservas de la misma semana no requieren depósito, solo avísanos si cambian los planes."
+  },
+  {
+    q: "¿Qué zonas cubren?",
+    a: "Atendemos Playa del Carmen, Tulum, Cancún, Akumal, Puerto Morelos y la mayoría de las zonas intermedias. Si no ves tu ubicación en la lista, pregúntanos. Viajamos para grupos grandes."
+  },
+  {
+    q: "¿Qué pasa si la presión o técnica no es lo que esperaba?",
+    a: "Dinos en cuanto algo no esté bien. Nuestras terapeutas verifican durante la sesión y ajustan la presión, técnica y zonas de enfoque de inmediato. Tu comodidad es lo primero."
+  },
+  {
+    q: "¿Necesito dar propina?",
+    a: "No es obligatorio, pero siempre es bienvenida. Si tuviste una experiencia excelente, el 10-20% es lo habitual en México para servicios de spa a domicilio. Puedes dársela en efectivo directamente a tu terapeuta."
+  },
+  {
+    q: "¿Sus productos son seguros para piel sensible o alergias?",
+    a: "Usamos aceites orgánicos e hipoalergénicos como base. Si tienes alergias o sensibilidades específicas, indícalo al reservar y nos adaptamos. Nunca usamos químicos agresivos ni fragancias sintéticas."
+  },
+  {
+    q: "¿Puedo reservar si tengo una condición médica o lesión?",
+    a: "Muchas condiciones se benefician del masaje, pero algunas requieren técnicas modificadas. Menciona cualquier cirugía reciente, lesión, embarazo o condición crónica al reservar. Nuestras terapeutas están capacitadas para adaptar o informar honestamente si algún tratamiento no es adecuado para ti."
+  },
+  {
+    q: "¿Cómo pago?",
+    a: "Las reservas anticipadas: el 30% se paga de forma segura en línea (todas las tarjetas principales). El resto se paga el día del servicio, en efectivo o con tarjeta. Las reservas de la misma semana se confirman y pagan directamente por WhatsApp."
+  },
+];
+
 export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
   const { language, t } = useLanguage();
+  const faqs = language === 'en' ? FAQS_EN : FAQS_ES;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [googleReviews, setGoogleReviews] = useState<any[]>([]);
   const [reviewStats, setReviewStats] = useState<{ rating: number; total: number } | null>(null);
@@ -89,7 +141,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
         title="In-Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa"
         description="In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now."
         url="https://boticaspa.com/"
-        faqs={FAQS}
+        faqs={faqs}
         aggregateRating={reviewStats ? { ratingValue: reviewStats.rating, reviewCount: reviewStats.total } : undefined}
       />
       <main>
@@ -386,7 +438,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 transition={{ delay: 0.1 }}
                 className="text-4xl font-serif font-light"
               >
-                Before You Book
+                {language === 'en' ? 'Before You Book' : 'Antes de reservar'}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -395,11 +447,11 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 transition={{ delay: 0.2 }}
                 className="text-gray-400 text-sm mt-4"
               >
-                Everything you need to know before your first in-home session.
+                {language === 'en' ? 'Everything you need to know before your first in-home session.' : 'Todo lo que necesitas saber antes de tu primera sesión a domicilio.'}
               </motion.p>
             </div>
             <div className="divide-y divide-gray-200">
-              {FAQS.map((faq, i) => (
+              {faqs.map((faq, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
