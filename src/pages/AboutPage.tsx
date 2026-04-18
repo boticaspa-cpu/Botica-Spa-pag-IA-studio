@@ -7,7 +7,7 @@ export const AboutPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="About Botica Spa | Gina Agassini & Our Story | In-Home Spa Playa del Carmen"
+        title="About Botica Spa | Gina Agassini & Our Story | In Home Spa Playa del Carmen"
         description="Meet Gina Agassini, founder of Botica Spa. Born from years of luxury resort experience in the Riviera Maya, built around one belief: the best massage happens in your own space."
         url="https://boticaspa.com/about"
       />

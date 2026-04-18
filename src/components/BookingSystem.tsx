@@ -17,7 +17,7 @@ interface GuestService {
 
 function buildWhatsAppUrl(booking: any, depositPaid?: number) {
   const guestLines = (booking.guests as GuestService[]).map(
-    (g, i) => `   Guest ${i + 1}: ${g.serviceName} — ${g.duration} ($${g.price} MXN)`
+    (g, i) => `   Guest ${i + 1}: ${g.serviceName}, ${g.duration} ($${g.price} MXN)`
   );
 
   const lines = [
@@ -47,7 +47,7 @@ function buildWhatsAppUrl(booking: any, depositPaid?: number) {
 
 function buildQuickWhatsAppUrl(guests: GuestService[], email: string) {
   const guestLines = guests.map(
-    (g, i) => `   Guest ${i + 1}: ${g.serviceName} — ${g.duration} ($${g.price} MXN)`
+    (g, i) => `   Guest ${i + 1}: ${g.serviceName}, ${g.duration} ($${g.price} MXN)`
   );
   const total = guests.reduce((sum, g) => sum + g.price, 0);
   const lines = [
@@ -336,7 +336,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-2xl font-medium text-sm shadow-lg hover:bg-brand-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       <MessageCircle className="w-5 h-5" />
-                      {language === 'en' ? 'Book on WhatsApp — pick a service & chat now' : 'Reservar por WhatsApp — elige un servicio y chatea'}
+                      {language === 'en' ? 'Book on WhatsApp. Pick a service and chat now' : 'Reservar por WhatsApp. Elige un servicio y chatea'}
                     </button>
                     <button
                       disabled={!formData.customerEmail}
@@ -352,7 +352,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                       className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gray-100 text-gray-700 rounded-2xl text-sm hover:bg-gray-200 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                     >
                       <Calendar className="w-4 h-4" />
-                      {language === 'en' ? 'Schedule in advance (5+ days) — pay deposit online' : 'Reservar con anticipación (5+ días) — paga depósito en línea'}
+                      {language === 'en' ? 'Schedule in advance (5+ days). Pay deposit online' : 'Reservar con anticipación (5+ días). Paga depósito en línea'}
                     </button>
                   </div>
                   <p className="text-xs text-gray-500 mt-4 text-center">{language === 'en' ? 'WhatsApp: instant reply · Advance: secure your date with a 30% deposit' : 'WhatsApp: respuesta inmediata · Anticipado: asegura tu fecha con 30% de depósito'}</p>
@@ -387,7 +387,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                               <div>
                                 <p className="font-medium text-sm">{language === 'en' ? `Guest ${gIdx + 1}` : `Persona ${gIdx + 1}`}</p>
                                 {isSelected ? (
-                                  <p className="text-xs text-brand">{guest.serviceName} — {guest.duration} · ${guest.price} MXN</p>
+                                  <p className="text-xs text-brand">{guest.serviceName} · {guest.duration} · ${guest.price} MXN</p>
                                 ) : (
                                   <p className="text-xs text-gray-500">{language === 'en' ? 'Tap to choose a treatment' : 'Toca para elegir un tratamiento'}</p>
                                 )}
@@ -525,12 +525,12 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     {requiresDeposit ? (
                       <div className="mt-4 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-700 flex items-start gap-2">
                         <CreditCard className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                        <span>Advance booking — pay your <strong>30% deposit online</strong> to confirm instantly.</span>
+                        <span>Advance booking. Pay your <strong>30% deposit online</strong> to confirm instantly.</span>
                       </div>
                     ) : (
                       <div className="mt-4 bg-green-50 border border-green-200 rounded-xl px-4 py-3 text-sm text-green-700 flex items-start gap-2">
                         <MessageCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                        <span>Last-minute booking — our team will process your <strong>30% deposit via WhatsApp</strong> to confirm.</span>
+                        <span>Last minute booking. Our team will process your <strong>30% deposit via WhatsApp</strong> to confirm.</span>
                       </div>
                     )}
                   </div>
@@ -588,7 +588,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                     {formData.time ? (
                       <p className="text-center mt-4 text-lg font-serif text-brand">{formData.time}</p>
                     ) : (
-                      <p className="text-center mt-4 text-sm text-red-400">Selected time has passed — please choose another</p>
+                      <p className="text-center mt-4 text-sm text-red-400">Selected time has passed. Please choose another.</p>
                     )}
                   </div>
 
@@ -759,7 +759,7 @@ export const BookingSystem = ({ isOpen, onClose, initialServiceId }: { isOpen: b
                         className="flex items-center gap-2 px-8 py-4 bg-brand text-white rounded-full font-medium uppercase tracking-widest text-sm shadow-xl hover:scale-105 transition-all disabled:opacity-50"
                       >
                         <CreditCard className="w-4 h-4" />
-                        {loading ? 'Redirecting…' : `Pay 30% deposit — $${depositAmount} MXN`}
+                        {loading ? 'Redirecting…' : `Pay 30% deposit: $${depositAmount} MXN`}
                       </button>
                     ) : (
                       <button

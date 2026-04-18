@@ -23,7 +23,7 @@ const serviceConfig: Record<string, {
   'relaxing-massage': {
     key: 'relaxing',
     image: '/masaje-relajante.webp',
-    titleEn: 'Relaxing Massage in Playa del Carmen | In-Home Spa | Botica Spa',
+    titleEn: 'Relaxing Massage in Playa del Carmen | In Home Spa | Botica Spa',
     descEn: 'Book a professional relaxing massage at your hotel, villa or Airbnb in Playa del Carmen. Certified therapists, organic oils, delivered to your door. From $1,700 MXN.',
     titleEs: 'Masaje Relajante a Domicilio en Playa del Carmen | Botica Spa',
     descEs: 'Reserva un masaje relajante profesional en tu hotel, villa o Airbnb en Playa del Carmen. Terapeutas certificadas, aceites orgánicos, a domicilio.',
@@ -31,7 +31,7 @@ const serviceConfig: Record<string, {
   'deep-tissue-massage': {
     key: 'deepTissue',
     image: '/masaje-profundo.webp',
-    titleEn: 'Deep Tissue Massage Playa del Carmen | In-Home | Botica Spa',
+    titleEn: 'Deep Tissue Massage Playa del Carmen | In Home | Botica Spa',
     descEn: 'Expert deep tissue massage delivered to your villa, hotel or Airbnb in Playa del Carmen. Release chronic tension with certified therapists. From $1,700 MXN.',
     titleEs: 'Masaje de Tejido Profundo a Domicilio Playa del Carmen | Botica Spa',
     descEs: 'Masaje de tejido profundo a domicilio en Playa del Carmen. Libera la tensión crónica con terapeutas certificadas.',
@@ -47,15 +47,15 @@ const serviceConfig: Record<string, {
   'botica-signature': {
     key: 'botica',
     image: '/masaje-botica.webp',
-    titleEn: 'Botica Signature Massage Playa del Carmen | Luxury In-Home Spa',
-    descEn: 'Our exclusive signature ritual blending Swedish, Deep Tissue and Aromatherapy. The ultimate in-home spa experience in Playa del Carmen. From $1,700 MXN.',
+    titleEn: 'Botica Signature Massage Playa del Carmen | Luxury In Home Spa',
+    descEn: 'Our exclusive signature ritual blending Swedish, Deep Tissue and Aromatherapy. The ultimate in home spa experience in Playa del Carmen. From $1,700 MXN.',
     titleEs: 'Masaje Botica Signature Playa del Carmen | Spa a Domicilio de Lujo',
     descEs: 'Nuestro ritual exclusivo que combina sueco, tejido profundo y aromaterapia. La experiencia de spa a domicilio más completa en Playa del Carmen.',
   },
   'personalized-massage': {
     key: 'personalized',
     image: '/spa-detalle.webp',
-    titleEn: 'Personalized Massage Playa del Carmen | Custom In-Home Therapy | Botica Spa',
+    titleEn: 'Personalized Massage Playa del Carmen | Custom In Home Therapy | Botica Spa',
     descEn: 'A custom-tailored massage designed for your unique needs, delivered to your hotel or Airbnb in Playa del Carmen. Certified therapists. From $1,700 MXN.',
     titleEs: 'Masaje Personalizado a Domicilio Playa del Carmen | Botica Spa',
     descEs: 'Masaje personalizado a domicilio en Playa del Carmen. Tu terapeuta diseña la sesión según tus necesidades únicas.',
@@ -63,7 +63,7 @@ const serviceConfig: Record<string, {
   'revitalizing-facial': {
     key: 'facial',
     image: '/masaje-cuatro-manos.webp',
-    titleEn: 'Revitalizing Facial Treatment Playa del Carmen | In-Home | Botica Spa',
+    titleEn: 'Revitalizing Facial Treatment Playa del Carmen | In Home | Botica Spa',
     descEn: 'Professional organic facial treatment delivered to your villa or hotel in Playa del Carmen. Restore your skin\'s natural glow after a day at the beach. $1,700 MXN.',
     titleEs: 'Facial Revitalizante a Domicilio Playa del Carmen | Botica Spa',
     descEs: 'Tratamiento facial orgánico a domicilio en Playa del Carmen. Restaura el brillo de tu piel después de un día en la playa.',
@@ -107,7 +107,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
       <section className="relative h-[60vh] min-h-[420px] flex items-end overflow-hidden">
         <img
           src={config.image}
-          alt={`${item.name} in Playa del Carmen — in-home massage by Botica Spa`}
+          alt={`${item.name} in Playa del Carmen. In home massage by Botica Spa`}
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
@@ -217,8 +217,8 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
                 </h3>
                 <p className="text-[#1A1A1A]/70 text-sm leading-relaxed">
                   {language === 'en'
-                    ? 'We are based in Playa del Carmen and serve all hotels, villas, and Airbnbs in the area. We also travel to Tulum, Cancún, Akumal, and Puerto Morelos — a travel fee applies outside of Playa del Carmen.'
-                    : 'Estamos basados en Playa del Carmen y atendemos todos los hoteles, villas y Airbnbs de la zona. También viajamos a Tulum, Cancún, Akumal y Puerto Morelos — aplica cargo de traslado fuera de Playa del Carmen.'}
+                    ? 'We are based in Playa del Carmen and serve all hotels, villas, and Airbnbs in the area. We also travel to Tulum, Cancún, Akumal, and Puerto Morelos. A travel fee applies outside of Playa del Carmen.'
+                    : 'Estamos basados en Playa del Carmen y atendemos todos los hoteles, villas y Airbnbs de la zona. También viajamos a Tulum, Cancún, Akumal y Puerto Morelos. Aplica cargo de traslado fuera de Playa del Carmen.'}
                 </p>
               </motion.div>
             </div>

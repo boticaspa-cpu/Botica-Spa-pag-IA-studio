@@ -226,7 +226,7 @@ Ready to book the best in home massage in Playa del Carmen? Message us on WhatsA
           image: '/blog-aromaterapia-organica-botica-spa.webp',
           content: `When you arrive in Playa del Carmen and start looking for a massage, you will quickly face a choice: book the spa at your hotel, or have a certified therapist come to you. Both options have real advantages, but after hundreds of sessions delivered across the Riviera Maya, we have a clear view of when each makes sense.
 
-Hotel spas in Playa del Carmen are well-designed spaces with dedicated ambiance — the lighting, the scent, the decor is all curated for relaxation. The best ones employ skilled therapists and use quality products. The trade-offs are price (hotel spa treatments typically cost 40 to 60 percent more than equivalent mobile services), availability (peak-season slots book out fast), and the post-session experience of having to return to your room immediately after.
+Hotel spas in Playa del Carmen are well-designed spaces with dedicated ambiance: the lighting, the scent, the decor is all curated for relaxation. The best ones employ skilled therapists and use quality products. The trade-offs are price (hotel spa treatments typically cost 40 to 60 percent more than equivalent mobile services), availability (peak-season slots book out fast), and the post-session experience of having to return to your room immediately after.
 
 In-home massage services like Botica Spa solve the post-session problem entirely. After your therapist finishes, you are already exactly where you want to be: horizontal, in your own space, with nowhere to be. There is no robe walk, no elevator, no checkout desk. Your body stays in the parasympathetic state your nervous system worked hard to reach.
 
@@ -254,7 +254,7 @@ When should you book? Ideally within the first 24 to 48 hours of arrival in Play
 
 We bring everything to your hotel, Airbnb, or villa in Playa del Carmen: professional table, therapeutic-grade oils, and a muscle relief balm for post-session application. You do not need to go anywhere or prepare anything beyond clearing a 2x3 meter space.
 
-Deep tissue massage in Playa del Carmen with Botica Spa starts at $1,700 MXN for 60 minutes, $2,100 MXN for 90 minutes, and $2,500 MXN for 120 minutes. Book directly on WhatsApp and we can often confirm same-day or next-day availability.`
+Deep tissue massage in Playa del Carmen with Botica Spa starts at $1,700 MXN for 60 minutes, $2,100 MXN for 90 minutes, and $2,500 MXN for 120 minutes. Book directly on WhatsApp and we can often confirm same day or next day availability.`
         },
         {
           id: 'top-villas-playa',

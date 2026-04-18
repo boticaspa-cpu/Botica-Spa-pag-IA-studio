@@ -87,7 +87,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectTreatment, limit }) 
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/5">
                   <img
                     src={service.image}
-                    alt={`${item.name} — in-home massage service by Botica Spa Playa del Carmen`}
+                    alt={`${item.name}. In home massage service by Botica Spa Playa del Carmen`}
                     width={480}
                     height={600}
                     loading="lazy"

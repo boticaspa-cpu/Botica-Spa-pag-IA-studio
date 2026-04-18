@@ -57,7 +57,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
     <>
       <SEO
         title="Massage Playa del Carmen | All In Home Treatments | Botica Spa"
-        description="Choose from relaxing, deep tissue, four-hands, herbal and signature massages — delivered to your hotel, villa or Airbnb in Playa del Carmen."
+        description="Choose from relaxing, deep tissue, four-hands, herbal and signature massages. Delivered to your hotel, villa or Airbnb in Playa del Carmen."
         url="https://boticaspa.com/massages"
       />
       <main className="pt-32 pb-24 bg-[#F5F2ED]">
@@ -88,7 +88,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
               className="text-lg text-gray-500 mt-6 max-w-2xl leading-relaxed"
             >
               {language === 'en'
-                ? 'Book for same-day or advance delivery to your hotel, villa or Airbnb. We bring the table, linens, and organic oils. You just show up relaxed.'
+                ? 'Book for same day or advance delivery to your hotel, villa or Airbnb. We bring the table, linens, and organic oils. You just show up relaxed.'
                 : 'Reserva para entrega el mismo día o con anticipación en tu hotel, villa o Airbnb. Llevamos la camilla, ropa de cama y aceites orgánicos.'}
             </motion.p>
           </div>

@@ -33,7 +33,7 @@ const FAQS_EN = [
   },
   {
     q: "How far in advance do I need to book?",
-    a: "We can often accommodate same-day or next-day bookings. Just message us on WhatsApp and we'll confirm availability within minutes. For a guaranteed slot, especially for couples or groups, we recommend booking 5+ days ahead (a 30% deposit secures it instantly online)."
+    a: "We can often accommodate same day or next day bookings. Just message us on WhatsApp and we'll confirm availability within minutes. For a guaranteed slot, especially for couples or groups, we recommend booking 5+ days ahead (a 30% deposit secures it instantly online)."
   },
   {
     q: "What is the cancellation and deposit policy?",
@@ -49,7 +49,7 @@ const FAQS_EN = [
   },
   {
     q: "Do I need to tip?",
-    a: "Tips are never expected but always appreciated. If you had a wonderful experience, 10–20% is customary in Mexico for in-home spa services. You can tip cash directly to your therapist after the session."
+    a: "Tips are never expected but always appreciated. If you had a wonderful experience, 10 to 20% is customary in Mexico for in home spa services. You can tip cash directly to your therapist after the session."
   },
   {
     q: "Are your products safe for sensitive skin or allergies?",
@@ -138,7 +138,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
   return (
     <>
       <SEO
-        title="In-Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa"
+        title="In Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa"
         description="In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now."
         url="https://boticaspa.com/"
         faqs={faqs}
@@ -456,7 +456,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 transition={{ delay: 0.2 }}
                 className="text-gray-400 text-sm mt-4"
               >
-                {language === 'en' ? 'Everything you need to know before your first in-home session.' : 'Todo lo que necesitas saber antes de tu primera sesión a domicilio.'}
+                {language === 'en' ? 'Everything you need to know before your first in home session.' : 'Todo lo que necesitas saber antes de tu primera sesión a domicilio.'}
               </motion.p>
             </div>
             <div className="divide-y divide-gray-200">

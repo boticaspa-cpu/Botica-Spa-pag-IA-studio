@@ -3,12 +3,12 @@ import { motion } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 
 const GALLERY_IMAGES = [
-  { src: '/galeria-1.webp', alt: 'In-home massage session Playa del Carmen — Botica Spa therapist at work' },
-  { src: '/galeria-2.webp', alt: 'Luxury in-home spa setup at a Playa del Carmen villa' },
-  { src: '/galeria-3.webp', alt: 'Relaxing massage treatment delivered to hotel room — Botica Spa' },
+  { src: '/galeria-1.webp', alt: 'In home massage session Playa del Carmen. Botica Spa therapist at work' },
+  { src: '/galeria-2.webp', alt: 'Luxury in home spa setup at a Playa del Carmen villa' },
+  { src: '/galeria-3.webp', alt: 'Relaxing massage treatment delivered to hotel room. Botica Spa' },
   { src: '/galeria-4.webp', alt: 'Four-hands massage experience in Playa del Carmen by Botica Spa' },
-  { src: '/galeria-5.webp', alt: 'Mobile spa aromatherapy oils and tools — Botica Spa Riviera Maya' },
-  { src: '/galeria-6.webp', alt: 'Professional massage table setup in Airbnb — Botica Spa in-home service' },
+  { src: '/galeria-5.webp', alt: 'Mobile spa aromatherapy oils and tools. Botica Spa Riviera Maya' },
+  { src: '/galeria-6.webp', alt: 'Professional massage table setup in Airbnb. Botica Spa in home service' },
 ];
 
 export const Gallery = () => {

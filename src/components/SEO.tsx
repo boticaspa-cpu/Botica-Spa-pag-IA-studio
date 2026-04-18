@@ -24,7 +24,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
   const esUrl = `${BASE}${esPath}`;
   const canonicalUrl = language === 'es' ? esUrl : enUrl;
 
-  const defaultTitle = 'Massage Playa del Carmen | In-Home Spa | Botica Spa';
+  const defaultTitle = 'Massage Playa del Carmen | In Home Spa | Botica Spa';
 
   const defaultDescription = 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now.';
 
@@ -32,19 +32,19 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
     <Helmet>
       <title>{title || defaultTitle}</title>
       <meta name="description" content={description || defaultDescription} />
-      <meta name="keywords" content="massage playa del carmen, in-home massage playa del carmen, four hands massage playa del carmen, deep tissue massage playa del carmen, spa playa del carmen, relaxing massage playa del carmen, massage hotel playa del carmen, massage airbnb playa del carmen, facial playa del carmen, mobile spa playa del carmen" />
+      <meta name="keywords" content="massage playa del carmen, in home massage playa del carmen, four hands massage playa del carmen, deep tissue massage playa del carmen, spa playa del carmen, relaxing massage playa del carmen, massage hotel playa del carmen, massage airbnb playa del carmen, facial playa del carmen, mobile spa playa del carmen" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
+      <meta property="og:title" content={title || 'Massage Playa del Carmen | In Home Spa | Botica Spa'} />
       <meta property="og:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more.'} />
       <meta property="og:image" content="https://boticaspa.com/og-image.jpg" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={canonicalUrl} />
-      <meta name="twitter:title" content={title || 'Massage Playa del Carmen | In-Home Spa | Botica Spa'} />
+      <meta name="twitter:title" content={title || 'Massage Playa del Carmen | In Home Spa | Botica Spa'} />
       <meta name="twitter:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa.'} />
       <meta name="twitter:image" content="https://boticaspa.com/og-image.jpg" />
 
@@ -99,7 +99,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
           "@id": "https://boticaspa.com",
           "url": "https://boticaspa.com",
           "telephone": t.social.phone,
-          "serviceType": "Mobile Massage / In-Home Spa Service",
+          "serviceType": "Mobile Massage / In Home Spa Service",
           "areaServed": [
             { "@type": "City", "name": "Playa del Carmen" },
             { "@type": "City", "name": "Playacar" },

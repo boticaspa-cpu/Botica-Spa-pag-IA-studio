@@ -86,7 +86,7 @@ export const Promo: React.FC = () => {
               >
                 <img
                   src="/masaje-cuatro-manos.webp"
-                  alt="Four-hands massage promo — two therapists, double the relaxation"
+                  alt="Four-hands massage promo. Two therapists, double the relaxation"
                   width={600}
                   height={600}
                   loading="lazy"

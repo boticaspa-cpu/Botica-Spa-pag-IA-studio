@@ -21,10 +21,10 @@ export const ContactPage: React.FC = () => {
     <>
       <SEO
         title={isEn
-          ? 'Contact Botica Spa | Book Your In-Home Massage Playa del Carmen'
+          ? 'Contact Botica Spa | Book Your In Home Massage Playa del Carmen'
           : 'Contacto Botica Spa | Reserva tu Masaje a Domicilio Playa del Carmen'}
         description={isEn
-          ? 'Contact Botica Spa to book your in-home massage in Playa del Carmen. Reach us via WhatsApp, email or phone. We serve Playa del Carmen, Tulum, Cancún and the Riviera Maya.'
+          ? 'Contact Botica Spa to book your in home massage in Playa del Carmen. Reach us via WhatsApp, email or phone. We serve Playa del Carmen, Tulum, Cancún and the Riviera Maya.'
           : 'Contacta a Botica Spa para reservar tu masaje a domicilio en Playa del Carmen. Escríbenos por WhatsApp, email o teléfono. Servicio en toda la Riviera Maya.'}
         url="https://boticaspa.com/contact"
       />
@@ -47,8 +47,8 @@ export const ContactPage: React.FC = () => {
             className="text-lg text-gray-500 max-w-xl mb-16"
           >
             {isEn
-              ? 'The fastest way to book is WhatsApp — we reply in minutes. You can also reach us by email or phone.'
-              : 'La forma más rápida de reservar es por WhatsApp — respondemos en minutos. También puedes escribirnos por email o llamarnos.'}
+              ? 'The fastest way to book is WhatsApp. We reply in minutes. You can also reach us by email or phone.'
+              : 'La forma más rápida de reservar es por WhatsApp. Respondemos en minutos. También puedes escribirnos por email o llamarnos.'}
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -70,7 +70,7 @@ export const ContactPage: React.FC = () => {
                 <p className="text-xs uppercase tracking-[0.3em] text-white/50 mb-1">WhatsApp</p>
                 <p className="text-2xl font-serif">+52 984 268 7428</p>
                 <p className="text-white/60 text-sm mt-1">
-                  {isEn ? 'Tap to open WhatsApp — we reply in minutes' : 'Toca para abrir WhatsApp — respondemos en minutos'}
+                  {isEn ? 'Tap to open WhatsApp. We reply in minutes.' : 'Toca para abrir WhatsApp. Respondemos en minutos.'}
                 </p>
               </div>
             </motion.a>
