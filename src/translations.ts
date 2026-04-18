@@ -135,7 +135,7 @@ export const translations = {
           location: "Google Review"
         },
         {
-          text: "The attention to detail is amazing. The oils smell divine and the pressure was perfect. Best in-home spa in Playa.",
+          text: "The attention to detail is amazing. The oils smell divine and the pressure was perfect. Best in home spa in Playa.",
           author: "Sofia Rodriguez",
           location: "Google Review"
         }
@@ -153,10 +153,10 @@ export const translations = {
       send: 'Send',
       minimize: 'Minimize',
       maximize: 'Chat with Tina',
-      welcome: "Hi! I'm Tina 🌿 I'm here to tell you everything about our in-home spa rituals. What can I help you with today?",
+      welcome: "Hi! I'm Tina 🌿 I'm here to tell you everything about our in home spa rituals. What can I help you with today?",
     },
     footer: {
-      desc: 'Premium in-home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
+      desc: 'Premium in home massage services in Playa del Carmen. Bringing the sanctuary of a world-class spa to your private space.',
       quickLinks: 'Quick Links',
       home: 'Home',
       treatments: 'Massages',
@@ -200,15 +200,15 @@ export const translations = {
       posts: [
         {
           id: 'wellness-guide',
-          title: 'Best In-Home Massage in Playa del Carmen (2026 Guide)',
-          excerpt: 'Everything you need to know to book the best in-home massage in Playa del Carmen: how to choose the right treatment and what to expect on the day.',
+          title: 'Best In Home Massage in Playa del Carmen (2026 Guide)',
+          excerpt: 'Everything you need to know to book the best in home massage in Playa del Carmen: how to choose the right treatment and what to expect on the day.',
           date: 'March 15, 2026',
           image: '/blog-wellness-guide-playa-del-carmen.webp',
           content: `If you are searching for a massage in Playa del Carmen, you already know the area has no shortage of options: hotel spas, street-side massage huts, and mobile services all compete for your attention. But not all massage experiences are equal, and the difference between a mediocre session and a genuinely transformative one comes down to three things: therapist quality, product quality, and setting.
 
 Botica Spa was built around a simple idea: you should not have to leave your villa, hotel, or Airbnb to experience world-class bodywork. We bring certified therapists, a professional massage table, fresh linens, and premium organic oils directly to your door anywhere in Playa del Carmen, typically within 24 hours of booking.
 
-What makes an in-home massage in Playa del Carmen better than a spa visit? The answer is comfort and continuity. After a one-hour or 90-minute session, your body is in a deeply relaxed state. When you are already in your own space, that state carries forward. You can shower, rest, nap, or simply stay horizontal. At a hotel spa, you have to get dressed, navigate hallways, and transition back to reality immediately.
+What makes an in home massage in Playa del Carmen better than a spa visit? The answer is comfort and continuity. After a one-hour or 90-minute session, your body is in a deeply relaxed state. When you are already in your own space, that state carries forward. You can shower, rest, nap, or simply stay horizontal. At a hotel spa, you have to get dressed, navigate hallways, and transition back to reality immediately.
 
 We serve all neighborhoods and accommodation types in Playa del Carmen: the 5th Avenue corridor, Playacar Phase 1 and Phase 2, Mamitas Beach area, Colosio, Villas del Sol, and beyond. If you are staying somewhere we have not listed, send us a message on WhatsApp and we'll almost certainly cover your area.
 
@@ -216,12 +216,12 @@ Our most requested treatments in Playa del Carmen are the Relaxing Massage (perf
 
 Pricing starts at $1,700 MXN for a 60-minute session. We require a 30% deposit for bookings made 5 or more days in advance; same-week bookings are confirmed directly by WhatsApp with no deposit required.
 
-Ready to book the best in-home massage in Playa del Carmen? Message us on WhatsApp and we will confirm your slot within minutes.`
+Ready to book the best in home massage in Playa del Carmen? Message us on WhatsApp and we will confirm your slot within minutes.`
         },
         {
           id: 'organic-aromatherapy',
-          title: 'In-Home Massage vs. Hotel Spa in Playa del Carmen: An Honest Comparison',
-          excerpt: 'Thinking about booking a hotel spa vs. an in-home massage in Playa del Carmen? Here is the honest breakdown of both options.',
+          title: 'In Home Massage vs. Hotel Spa in Playa del Carmen: An Honest Comparison',
+          excerpt: 'Thinking about booking a hotel spa vs. an in home massage in Playa del Carmen? Here is the honest breakdown of both options.',
           date: 'March 10, 2026',
           image: '/blog-aromaterapia-organica-botica-spa.webp',
           content: `When you arrive in Playa del Carmen and start looking for a massage, you will quickly face a choice: book the spa at your hotel, or have a certified therapist come to you. Both options have real advantages, but after hundreds of sessions delivered across the Riviera Maya, we have a clear view of when each makes sense.
@@ -230,11 +230,11 @@ Hotel spas in Playa del Carmen are well-designed spaces with dedicated ambiance 
 
 In-home massage services like Botica Spa solve the post-session problem entirely. After your therapist finishes, you are already exactly where you want to be: horizontal, in your own space, with nowhere to be. There is no robe walk, no elevator, no checkout desk. Your body stays in the parasympathetic state your nervous system worked hard to reach.
 
-Where hotel spas have a legitimate edge: facilities. If you want a sauna, steam room, cold plunge, or jacuzzi as part of your experience, a full spa facility wins. An in-home service cannot replicate that infrastructure.
+Where hotel spas have a legitimate edge: facilities. If you want a sauna, steam room, cold plunge, or jacuzzi as part of your experience, a full spa facility wins. An in home service cannot replicate that infrastructure.
 
 For pure bodywork quality, however, mobile services are not a compromise. Botica Spa therapists are certified professionals who have worked at top resorts across the Riviera Maya. We use the same organic oils and therapeutic techniques you'd find in a five-star spa, and we bring everything: professional massage table, fresh linens, aromatherapy, and ambient sound.
 
-The honest answer: if your goal is an excellent massage in Playa del Carmen and the freedom to fully relax afterward without moving, an in-home service is the better choice for most travelers. If you want a full spa day with sauna access, book the hotel spa.
+The honest answer: if your goal is an excellent massage in Playa del Carmen and the freedom to fully relax afterward without moving, an in home service is the better choice for most travelers. If you want a full spa day with sauna access, book the hotel spa.
 
 We serve hotels, Airbnbs, and private villas throughout Playa del Carmen. Message us on WhatsApp to check availability.`
         },
@@ -276,19 +276,19 @@ It is consistently our most talked-about treatment. Book via WhatsApp or online.
         },
         {
           id: 'post-beach-skincare',
-          title: 'In-Home Massage in Cancún: Which Hotels, Villas & Airbnbs We Serve',
-          excerpt: 'Looking for an in-home massage in Cancún? Botica Spa travels from Playa del Carmen to serve hotels, private villas, and Airbnbs across the Cancún area.',
+          title: 'In Home Massage in Cancún: Which Hotels, Villas & Airbnbs We Serve',
+          excerpt: 'Looking for an in home massage in Cancún? Botica Spa travels from Playa del Carmen to serve hotels, private villas, and Airbnbs across the Cancún area.',
           date: 'February 25, 2026',
           image: '/blog-facial-revitalizante-post-playa.webp',
-          content: `Cancún is one of the most visited destinations in the world, and yet booking a quality in-home massage there can be surprisingly difficult. Hotel spas fill up fast during peak season, and finding a certified mobile therapist who can actually deliver a professional experience (proper table, premium oils, genuine training) takes more research than most visitors have time for.
+          content: `Cancún is one of the most visited destinations in the world, and yet booking a quality in home massage there can be surprisingly difficult. Hotel spas fill up fast during peak season, and finding a certified mobile therapist who can actually deliver a professional experience (proper table, premium oils, genuine training) takes more research than most visitors have time for.
 
 Botica Spa is based in Playa del Carmen, roughly 65 kilometers south of Cancún, and we regularly travel north to serve guests throughout the Cancún corridor. We cover the Hotel Zone (Zona Hotelera), downtown Cancún (El Centro), Puerto Cancún, and surrounding residential and villa areas.
 
-What does an in-home massage in Cancún with Botica Spa look like? We arrive with a professional folding massage table, fresh linens, organic aromatherapy oils, and ambient sound. Setup takes about 10 minutes, the session runs for your chosen duration (60, 90, or 120 minutes depending on treatment), and breakdown takes another 10 minutes. Your job is simply to be there and relax.
+What does an in home massage in Cancún with Botica Spa look like? We arrive with a professional folding massage table, fresh linens, organic aromatherapy oils, and ambient sound. Setup takes about 10 minutes, the session runs for your chosen duration (60, 90, or 120 minutes depending on treatment), and breakdown takes another 10 minutes. Your job is simply to be there and relax.
 
 A travel fee applies for Cancún bookings given the distance from our base in Playa del Carmen. The exact fee depends on your location within Cancún. Message us on WhatsApp with your hotel or address and we'll give you an exact quote before you commit to anything.
 
-For groups, couples, or back-to-back sessions (common with family or friend groups staying in Cancún villas), we can coordinate multiple therapists to arrive together. This is actually where in-home massage shines most clearly: a spa visit requires each person to book individually and travel separately, while a mobile service brings the full experience to one location simultaneously.
+For groups, couples, or back-to-back sessions (common with family or friend groups staying in Cancún villas), we can coordinate multiple therapists to arrive together. This is actually where in home massage shines most clearly: a spa visit requires each person to book individually and travel separately, while a mobile service brings the full experience to one location simultaneously.
 
 Available treatments in Cancún include: Relaxing Massage, Deep Tissue Massage, Botica Signature, Personalized Massage, Four-Hands Massage, and Revitalizing Facial. All prices are in MXN. Message us on WhatsApp to confirm your dates.`
         },
@@ -298,7 +298,7 @@ Available treatments in Cancún include: Relaxing Massage, Deep Tissue Massage, 
           excerpt: 'Booking a massage at your Airbnb in Tulum is easier than you think. Here is everything you need to know: finding a certified therapist and what to prepare.',
           date: 'February 20, 2026',
           image: '/blog-preparar-airbnb-masaje-profesional.webp',
-          content: `Tulum has one of the highest concentrations of wellness-focused travelers in Mexico, and in-home massage at Airbnbs and private villas has become one of the most requested services in the area. But the quality gap between providers is enormous: from unlicensed practitioners with a bottle of coconut oil to certified therapists with years of resort experience.
+          content: `Tulum has one of the highest concentrations of wellness-focused travelers in Mexico, and in home massage at Airbnbs and private villas has become one of the most requested services in the area. But the quality gap between providers is enormous: from unlicensed practitioners with a bottle of coconut oil to certified therapists with years of resort experience.
 
 This guide covers everything you need to know to book a massage at your Airbnb in Tulum safely, affordably, and with confidence.
 

@@ -56,7 +56,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
   return (
     <>
       <SEO
-        title="Massage Playa del Carmen | All In-Home Treatments | Botica Spa"
+        title="Massage Playa del Carmen | All In Home Treatments | Botica Spa"
         description="Choose from relaxing, deep tissue, four-hands, herbal and signature massages — delivered to your hotel, villa or Airbnb in Playa del Carmen."
         url="https://boticaspa.com/massages"
       />
@@ -79,7 +79,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-serif text-[#1A1A1A] leading-tight"
             >
-              {language === 'en' ? 'In-Home Massage Playa del Carmen' : 'Masaje a Domicilio Playa del Carmen'}
+              {language === 'en' ? 'In Home Massage Playa del Carmen' : 'Masaje a Domicilio Playa del Carmen'}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
               className="text-lg text-gray-500 mt-6 max-w-2xl leading-relaxed"
             >
               {language === 'en'
-                ? 'Book for same-day or advance delivery to your hotel, villa or Airbnb. We bring the table, linens, and organic oils — you just show up relaxed.'
+                ? 'Book for same-day or advance delivery to your hotel, villa or Airbnb. We bring the table, linens, and organic oils. You just show up relaxed.'
                 : 'Reserva para entrega el mismo día o con anticipación en tu hotel, villa o Airbnb. Llevamos la camilla, ropa de cama y aceites orgánicos.'}
             </motion.p>
           </div>
@@ -107,7 +107,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onSelectTreatmen
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-2xl shadow-black/5">
                     <img
                       src={service.image}
-                      alt={`${item.name} in Playa del Carmen — in-home spa by Botica Spa`}
+                      alt={`${item.name} in Playa del Carmen. In home spa by Botica Spa`}
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       loading="lazy"
                     />

@@ -35,7 +35,7 @@ export function PaymentSuccess() {
       const guestLines = Array.isArray(booking.guests)
         ? booking.guests.map(
             (g: { serviceName: string; duration: string }, i: number) =>
-              `   Invitado ${i + 1}: ${g.serviceName} — ${g.duration}`
+              `   Invitado ${i + 1}: ${g.serviceName}, ${g.duration}`
           )
         : [];
 

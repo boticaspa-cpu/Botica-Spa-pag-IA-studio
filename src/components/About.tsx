@@ -16,7 +16,7 @@ export const About = () => {
           <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
             <img
               src="/spa-interior.webp"
-              alt="In-home massage session — Botica Spa therapist setting up at a Playa del Carmen villa"
+              alt="In home massage session. Botica Spa therapist setting up at a Playa del Carmen villa"
               width={800}
               height={1000}
               loading="lazy"
