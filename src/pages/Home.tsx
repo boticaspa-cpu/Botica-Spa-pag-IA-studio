@@ -171,7 +171,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
             >
               <img
                 src="/spa-interior.webp"
-                alt="In-home massage session — Botica Spa therapist setting up at a Playa del Carmen villa"
+                alt="In home massage session. Botica Spa therapist setting up at a Playa del Carmen villa"
                 width={600}
                 height={450}
                 loading="lazy"
@@ -192,7 +192,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 {language === 'en' ? (
                   <>Resort quality. <span className="italic">Your room.</span></>
                 ) : (
-                  <>Calidad de resort. <span className="italic">Tu cuarto.</span></>
+                  <>Calidad de resort. <span className="italic">Tu espacio.</span></>
                 )}
               </h2>
               <p className="text-gray-600 leading-relaxed">
@@ -222,7 +222,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 viewport={{ once: true }}
                 className="text-xs uppercase tracking-[0.4em] text-[#5A5A40] mb-4 block font-bold"
               >
-                Where We Go
+                {language === 'en' ? 'Where We Go' : 'Dónde llegamos'}
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -231,7 +231,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 transition={{ delay: 0.1 }}
                 className="text-4xl md:text-5xl font-serif font-light"
               >
-                We Deliver to Your Door
+                {language === 'en' ? 'We Deliver to Your Door' : 'Llevamos el spa a tu puerta'}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -240,19 +240,28 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                 transition={{ delay: 0.2 }}
                 className="text-gray-400 text-sm mt-4 max-w-md mx-auto"
               >
-                Across the Riviera Maya — hotels, villas, Airbnbs. We bring everything.
+                {language === 'en'
+                  ? 'Across the Riviera Maya: hotels, villas, Airbnbs. We bring everything.'
+                  : 'En toda la Riviera Maya: hoteles, villas y Airbnbs. Llevamos todo.'}
               </motion.p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-              {[
+              {(language === 'en' ? [
                 { city: 'Playa del Carmen', note: 'Primary service area', fee: 'No travel fee', primary: true, slug: null },
                 { city: 'Playacar', note: 'Phase 1 & Phase 2', fee: 'No travel fee', primary: true, slug: '/massage-playacar' },
                 { city: 'Tulum', note: 'Available daily', fee: 'Travel fee applies', primary: false, slug: '/massage-tulum' },
                 { city: 'Cancún', note: 'Hotel Zone & downtown', fee: 'Travel fee applies', primary: false, slug: '/massage-cancun' },
                 { city: 'Akumal', note: 'Akumal Bay & surrounding', fee: 'Travel fee may apply', primary: false, slug: '/massage-akumal' },
                 { city: 'Puerto Morelos', note: 'Ask us on WhatsApp', fee: 'Travel fee applies', primary: false, slug: null },
-              ].map((area, i) => {
+              ] : [
+                { city: 'Playa del Carmen', note: 'Zona principal', fee: 'Sin cargo por traslado', primary: true, slug: null },
+                { city: 'Playacar', note: 'Fase 1 y Fase 2', fee: 'Sin cargo por traslado', primary: true, slug: '/massage-playacar' },
+                { city: 'Tulum', note: 'Disponible todos los días', fee: 'Cargo por traslado', primary: false, slug: '/massage-tulum' },
+                { city: 'Cancún', note: 'Zona Hotelera y centro', fee: 'Cargo por traslado', primary: false, slug: '/massage-cancun' },
+                { city: 'Akumal', note: 'Bahía Akumal y alrededores', fee: 'Cargo por traslado posible', primary: false, slug: '/massage-akumal' },
+                { city: 'Puerto Morelos', note: 'Pregúntanos por WhatsApp', fee: 'Cargo por traslado', primary: false, slug: null },
+              ]).map((area, i) => {
                 const cardContent = (
                   <>
                     <div className="flex items-start justify-between">
@@ -262,7 +271,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                       </div>
                       {area.primary && (
                         <span className="text-[9px] uppercase tracking-widest font-bold text-[#5A5A40] bg-[#5A5A40]/10 px-2 py-1 rounded-full">
-                          Primary
+                          {language === 'en' ? 'Primary' : 'Principal'}
                         </span>
                       )}
                     </div>
