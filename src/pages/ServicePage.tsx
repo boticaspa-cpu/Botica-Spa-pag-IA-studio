@@ -39,8 +39,8 @@ const serviceConfig: Record<string, {
   'four-hands-massage': {
     key: 'fourHands',
     image: '/masaje-cuatro-manos.webp',
-    titleEn: 'Four-Hands Massage Playa del Carmen | Two Therapists | Botica Spa',
-    descEn: 'Experience a luxury four-hands massage at your villa or hotel in Playa del Carmen. Two certified therapists in perfect synchronicity. From $3,900 MXN.',
+    titleEn: 'Four Hands Massage Playa del Carmen | Two Therapists | Botica Spa',
+    descEn: 'Experience a luxury four hands massage at your villa or hotel in Playa del Carmen. Two certified therapists in perfect synchronicity. From $3,900 MXN.',
     titleEs: 'Masaje a Cuatro Manos en Playa del Carmen | Botica Spa',
     descEs: 'Masaje a cuatro manos a domicilio en Playa del Carmen. Dos terapeutas certificadas en perfecta sincronía.',
   },

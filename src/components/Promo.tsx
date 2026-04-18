@@ -62,7 +62,7 @@ export const Promo: React.FC = () => {
 
               <motion.a
                 href={`https://wa.me/529842687428?text=${encodeURIComponent(language === 'en'
-                  ? "Hi! I'd like to claim the Monthly Special 🌿\n\n2 Four-Hands Massages for $7,399 MXN\n\nCould you help me book this offer? Thank you!"
+                  ? "Hi! I'd like to claim the Monthly Special 🌿\n\n2 Four Hands Massages for $7,399 MXN\n\nCould you help me book this offer? Thank you!"
                   : "¡Hola! Me gustaría reclamar el Especial del Mes 🌿\n\n2 Masajes a Cuatro Manos por $7,399 MXN\n\n¿Me pueden ayudar a reservar esta oferta? ¡Gracias!")}`}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -139,7 +139,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
     <>
       <SEO
         title="In Home Spa Playa del Carmen | Massage Delivered to Your Hotel | Botica Spa"
-        description="In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now."
+        description="In-home spa in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four hands & more. Book now."
         url="https://boticaspa.com/"
         faqs={faqs}
         aggregateRating={reviewStats ? { ratingValue: reviewStats.rating, reviewCount: reviewStats.total } : undefined}

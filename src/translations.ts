@@ -21,7 +21,7 @@ export const translations = {
       badge: 'Who We Are',
       title: 'Botica Spa',
       titleItalic: 'Comes to You.',
-      description: 'Botica Spa is a premium mobile massage service based in Playa del Carmen. Founded by Gina Agassini, we bring resort-quality bodywork directly to your hotel, villa, or Airbnb. No commute, no waiting rooms, no compromise.',
+      description: 'Botica Spa is a premium mobile massage service based in Playa del Carmen. Founded by Gina Agassini, we bring resort quality bodywork directly to your hotel, villa, or Airbnb. No commute, no waiting rooms, no compromise.',
       feature1Title: 'Founded by Gina Agassini',
       feature1Desc: 'With years of experience at luxury resorts across the Riviera Maya, Gina built Botica Spa around one belief: the best massage experience happens in your own space.',
       feature2Title: 'Resort Quality, Your Location',
@@ -89,7 +89,7 @@ export const translations = {
           includesList: ['Professional massage table', 'Choice of aromatherapy', 'Personalized consultation']
         },
         fourHands: {
-          name: 'Four-Hands Massage',
+          name: 'Four Hands Massage',
           desc: 'The ultimate indulgence: two therapists working in perfect synchronicity for total immersion.',
           details: 'A unique experience where two therapists work together in a choreographed sequence, making it impossible for the brain to track, leading to a state of total surrender.',
           price90: 3900,
@@ -102,7 +102,7 @@ export const translations = {
       badge: 'Limited Time Offer',
       title: 'Monthly Special',
       description: 'Experience the ultimate luxury with a companion or treat yourself twice.',
-      offer: '2 Four-Hands Massages',
+      offer: '2 Four Hands Massages',
       price: '$7,399 MXN',
       cta: 'Claim Offer',
     },
@@ -212,7 +212,7 @@ What makes an in home massage in Playa del Carmen better than a spa visit? The a
 
 We serve all neighborhoods and accommodation types in Playa del Carmen: the 5th Avenue corridor, Playacar Phase 1 and Phase 2, Mamitas Beach area, Colosio, Villas del Sol, and beyond. If you are staying somewhere we have not listed, send us a message on WhatsApp and we'll almost certainly cover your area.
 
-Our most requested treatments in Playa del Carmen are the Relaxing Massage (perfect for first-timers or pure decompression), the Deep Tissue Massage (ideal if you have been sitting on planes or carrying tension from travel), and the Four-Hands Massage (two therapists in perfect sync, the closest thing to sensory overload in the best possible way).
+Our most requested treatments in Playa del Carmen are the Relaxing Massage (perfect for first-timers or pure decompression), the Deep Tissue Massage (ideal if you have been sitting on planes or carrying tension from travel), and the Four Hands Massage (two therapists in perfect sync, the closest thing to sensory overload in the best possible way).
 
 Pricing starts at $1,700 MXN for a 60-minute session. We require a 30% deposit for bookings made 5 or more days in advance; same-week bookings are confirmed directly by WhatsApp with no deposit required.
 
@@ -258,19 +258,19 @@ Deep tissue massage in Playa del Carmen with Botica Spa starts at $1,700 MXN for
         },
         {
           id: 'top-villas-playa',
-          title: 'Four-Hands Massage in Playa del Carmen: What It Is and Why You Need It',
-          excerpt: 'A four-hands massage in Playa del Carmen is the most immersive spa experience available. Here is exactly what happens, and why it works so well.',
+          title: 'Four Hands Massage in Playa del Carmen: What It Is and Why You Need It',
+          excerpt: 'A four hands massage in Playa del Carmen is the most immersive spa experience available. Here is exactly what happens, and why it works so well.',
           date: 'March 1, 2026',
           image: '/blog-villas-playa-del-carmen-spa.webp',
-          content: `A four-hands massage is exactly what the name implies: two therapists working on your body simultaneously, moving in coordinated sequences designed to confuse the analytical brain and trigger a depth of relaxation that a single therapist simply cannot reach alone.
+          content: `A four hands massage is exactly what the name implies: two therapists working on your body simultaneously, moving in coordinated sequences designed to confuse the analytical brain and trigger a depth of relaxation that a single therapist simply cannot reach alone.
 
 Here is the neurological reason it works: your brain is wired to track touch. During a standard massage, your nervous system follows the therapist\'s movements, anticipating what comes next. With two therapists working in mirror sequences, the brain cannot keep up. It stops trying to track, stops anticipating, and surrenders. The result is a faster and deeper drop into the parasympathetic state, what practitioners sometimes call the "theta state" of deep relaxation.
 
-Botica Spa\'s four-hands massage in Playa del Carmen is performed by two certified therapists who train together specifically for synchronized work. They move in choreographed patterns, mirroring each other from head to toe and alternating between long flowing strokes and targeted pressure, creating a seamless, almost hypnotic experience.
+Botica Spa\'s four hands massage in Playa del Carmen is performed by two certified therapists who train together specifically for synchronized work. They move in choreographed patterns, mirroring each other from head to toe and alternating between long flowing strokes and targeted pressure, creating a seamless, almost hypnotic experience.
 
-Who is it for? The four-hands massage is ideal for people who typically have a hard time "switching off" during a massage. High-stress professionals, frequent travelers, people whose minds tend to wander. The four-hands technique bypasses the analytical mind more effectively than any single-therapist modality. It is also simply the most indulgent option available, and a natural choice for a special occasion or a gift.
+Who is it for? The four hands massage is ideal for people who typically have a hard time "switching off" during a massage. High-stress professionals, frequent travelers, people whose minds tend to wander. The four hands technique bypasses the analytical mind more effectively than any single-therapist modality. It is also simply the most indulgent option available, and a natural choice for a special occasion or a gift.
 
-Our four-hands massage in Playa del Carmen is available in 90 minutes ($3,900 MXN) and is delivered to your hotel room, villa, or Airbnb. We coordinate two therapists to arrive together with a full professional setup.
+Our four hands massage in Playa del Carmen is available in 90 minutes ($3,900 MXN) and is delivered to your hotel room, villa, or Airbnb. We coordinate two therapists to arrive together with a full professional setup.
 
 It is consistently our most talked-about treatment. Book via WhatsApp or online. Deposit required for advance bookings.`
         },
@@ -290,7 +290,7 @@ A travel fee applies for Cancún bookings given the distance from our base in Pl
 
 For groups, couples, or back-to-back sessions (common with family or friend groups staying in Cancún villas), we can coordinate multiple therapists to arrive together. This is actually where in home massage shines most clearly: a spa visit requires each person to book individually and travel separately, while a mobile service brings the full experience to one location simultaneously.
 
-Available treatments in Cancún include: Relaxing Massage, Deep Tissue Massage, Botica Signature, Personalized Massage, Four-Hands Massage, and Revitalizing Facial. All prices are in MXN. Message us on WhatsApp to confirm your dates.`
+Available treatments in Cancún include: Relaxing Massage, Deep Tissue Massage, Botica Signature, Personalized Massage, Four Hands Massage, and Revitalizing Facial. All prices are in MXN. Message us on WhatsApp to confirm your dates.`
         },
         {
           id: 'airbnb-spa-prep',

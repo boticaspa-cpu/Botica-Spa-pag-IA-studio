@@ -26,7 +26,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
 
   const defaultTitle = 'Massage Playa del Carmen | In Home Spa | Botica Spa';
 
-  const defaultDescription = 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more. Book now.';
+  const defaultDescription = 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four hands & more. Book now.';
 
   return (
     <Helmet>
@@ -38,7 +38,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={title || 'Massage Playa del Carmen | In Home Spa | Botica Spa'} />
-      <meta property="og:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four-hands & more.'} />
+      <meta property="og:description" content={description || 'In-home massage in Playa del Carmen. We bring certified therapists to your hotel, Airbnb, or villa. Relaxing, deep tissue, four hands & more.'} />
       <meta property="og:image" content="https://boticaspa.com/og-image.jpg" />
 
       {/* Twitter */}
@@ -155,7 +155,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
-                  "name": "Four-Hands Massage",
+                  "name": "Four Hands Massage",
                   "description": "Two therapists working in perfect synchronicity for total immersion."
                 }
               },
