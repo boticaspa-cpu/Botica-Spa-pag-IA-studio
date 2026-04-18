@@ -462,7 +462,7 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
       }));
       const payload = {
         rating: result?.rating ?? 4.9,
-        total: result?.user_ratings_total ?? 47,
+        total: result?.user_ratings_total ?? 246,
         reviews,
       };
       _reviewsCache = { data: payload, ts: Date.now() };

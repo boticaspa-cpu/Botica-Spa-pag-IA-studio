@@ -15,6 +15,63 @@ interface HomeProps {
   onBookNow: () => void;
 }
 
+function ReviewCarousel({ items }: { items: any[] }) {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    const timer = setInterval(() => setCurrent(c => (c + 1) % items.length), 5000);
+    return () => clearInterval(timer);
+  }, [items.length]);
+
+  const item = items[current];
+  if (!item) return null;
+
+  return (
+    <div className="relative max-w-2xl mx-auto">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.4 }}
+          className="flex flex-col items-center text-center space-y-6 px-4"
+        >
+          <div className="flex gap-1 text-amber-400">
+            {[...Array(item.rating ?? 5)].map((_, i) => (
+              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <p className="text-xl md:text-2xl text-gray-600 italic leading-relaxed font-serif font-light">
+            "{item.text}"
+          </p>
+          <div className="flex flex-col items-center gap-2 pt-2">
+            {item.photo && (
+              <img src={item.photo} alt={item.author} className="w-12 h-12 rounded-full object-cover" referrerPolicy="no-referrer" />
+            )}
+            <p className="font-medium uppercase tracking-[0.2em] text-xs text-gray-900">{item.author}</p>
+            <p className="text-[10px] text-gray-400 uppercase tracking-widest">{item.time ?? item.location}</p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {items.length > 1 && (
+        <div className="flex justify-center gap-2 mt-10">
+          {items.map((_: any, i: number) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-all ${i === current ? 'bg-gray-800 w-4' : 'bg-gray-300'}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
   const { language, t } = useLanguage();
@@ -270,36 +327,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
               </motion.div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {(googleReviews.length > 0 ? googleReviews : t.testimonials.items).map((item: any, index: number) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className="flex flex-col items-center text-center space-y-6"
-                >
-                  <div className="flex gap-1 text-amber-400">
-                    {[...Array(item.rating ?? 5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-lg text-gray-600 italic leading-relaxed">
-                    "{item.text}"
-                  </p>
-                  <div className="pt-4 flex flex-col items-center gap-2">
-                    {item.photo && (
-                      <img src={item.photo} alt={item.author} className="w-10 h-10 rounded-full object-cover" referrerPolicy="no-referrer" />
-                    )}
-                    <p className="font-medium uppercase tracking-[0.2em] text-xs text-gray-900">{item.author}</p>
-                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest">{item.time ?? item.location}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <ReviewCarousel items={googleReviews.length > 0 ? googleReviews : t.testimonials.items} />
 
             <motion.div 
               initial={{ opacity: 0 }}
