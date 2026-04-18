@@ -7,6 +7,7 @@ interface SEOProps {
   title?: string;
   description?: string;
   url?: string;
+  noindex?: boolean;
   faqs?: { q: string; a: string }[];
   breadcrumbs?: { name: string; url: string }[];
   aggregateRating?: { ratingValue: number; reviewCount: number };
@@ -14,7 +15,7 @@ interface SEOProps {
 
 const BASE = 'https://boticaspa.com';
 
-export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", faqs, breadcrumbs, aggregateRating }) => {
+export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://boticaspa.com/", noindex, faqs, breadcrumbs, aggregateRating }) => {
   const { t, language } = useLanguage();
 
   // Compute EN and ES canonical URLs
@@ -32,6 +33,7 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
     <Helmet>
       <title>{title || defaultTitle}</title>
       <meta name="description" content={description || defaultDescription} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <meta name="keywords" content="massage playa del carmen, in home massage playa del carmen, four hands massage playa del carmen, deep tissue massage playa del carmen, spa playa del carmen, relaxing massage playa del carmen, massage hotel playa del carmen, massage airbnb playa del carmen, facial playa del carmen, mobile spa playa del carmen" />
       
       {/* Open Graph / Facebook */}
@@ -103,10 +105,9 @@ export const SEO: React.FC<SEOProps> = ({ title, description, url = "https://bot
           "areaServed": [
             { "@type": "City", "name": "Playa del Carmen" },
             { "@type": "City", "name": "Playacar" },
-            { "@type": "City", "name": "Tulum" },
-            { "@type": "City", "name": "Cancún" },
-            { "@type": "City", "name": "Akumal" },
-            { "@type": "City", "name": "Puerto Morelos" }
+            { "@type": "City", "name": "Puerto Aventuras" },
+            { "@type": "City", "name": "Puerto Morelos" },
+            { "@type": "City", "name": "Akumal" }
           ],
           "address": {
             "@type": "PostalAddress",

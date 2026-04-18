@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { LangLink } from '../components/LangLink';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
@@ -14,39 +15,63 @@ interface CityConfig {
   h1En: string;
   introEn: string;
   notesEn: string;
+  titleEs: string;
+  descEs: string;
+  h1Es: string;
+  introEs: string;
+  notesEs: string;
   whatsappMsg: string;
+  whatsappMsgEs: string;
 }
 
 const cityConfigs: Record<string, CityConfig> = {
-  tulum: {
-    name: 'Tulum',
+  'puerto-aventuras': {
+    name: 'Puerto Aventuras',
     heroImage: '/spa-interior.webp',
-    titleEn: 'Massage Tulum | In Home Spa at Your Villa or Hotel | Botica Spa',
-    descEn: 'In-home massage in Tulum. We bring certified therapists to your villa, hotel or Airbnb. Relaxing, deep tissue, four hands & more. Book on WhatsApp.',
-    h1En: 'Massage in Tulum',
-    introEn: 'Botica Spa brings certified therapists and a full professional setup (massage table, organic oils, aromatherapy) directly to your Tulum villa, boutique hotel, or Airbnb. No need to leave your oasis.',
-    notesEn: 'We travel from Playa del Carmen to Tulum. A small travel fee applies depending on your location. Ask us on WhatsApp before booking.',
-    whatsappMsg: "Hi! I'd like to book an in home massage in Tulum 🌿 Could you help me?",
+    titleEn: 'Massage Puerto Aventuras | In Home Spa at Your Villa or Hotel | Botica Spa',
+    descEn: 'In-home massage in Puerto Aventuras. Certified therapists delivered to your villa, condo or hotel. Relaxing, deep tissue, four hands & more. Book on WhatsApp.',
+    h1En: 'Massage in Puerto Aventuras',
+    introEn: 'Botica Spa brings certified therapists and a full professional setup (massage table, organic oils, aromatherapy) directly to your Puerto Aventuras villa, condo, or hotel. Just minutes south of Playa del Carmen.',
+    notesEn: 'Puerto Aventuras is close to our base in Playa del Carmen. A small travel fee may apply depending on your exact location. Ask us on WhatsApp before booking.',
+    titleEs: 'Masaje a Domicilio Puerto Aventuras | Spa en tu Villa u Hotel | Botica Spa',
+    descEs: 'Masaje a domicilio en Puerto Aventuras. Terapeutas certificadas a tu villa, condominio u hotel. Relajante, tejido profundo, cuatro manos y más. Reserva por WhatsApp.',
+    h1Es: 'Masaje a Domicilio en Puerto Aventuras',
+    introEs: 'Botica Spa lleva terapeutas certificadas y equipo profesional completo (camilla, aceites orgánicos, aromaterapia) directamente a tu villa, condominio u hotel en Puerto Aventuras. A pocos minutos al sur de Playa del Carmen.',
+    notesEs: 'Puerto Aventuras está cerca de nuestra base en Playa del Carmen. Puede aplicar un pequeño cargo de traslado según tu ubicación exacta. Pregúntanos por WhatsApp antes de reservar.',
+    whatsappMsg: "Hi! I'd like to book an in home massage in Puerto Aventuras 🌿 Could you help me?",
+    whatsappMsgEs: '¡Hola! Me gustaría reservar un masaje a domicilio en Puerto Aventuras 🌿 ¿Me pueden ayudar?',
   },
-  cancun: {
-    name: 'Cancún',
+  'puerto-morelos': {
+    name: 'Puerto Morelos',
     heroImage: '/masaje-relajante.webp',
-    titleEn: 'Massage Cancún | In Home Spa at Your Hotel or Villa | Botica Spa',
-    descEn: 'In-home massage in Cancún. Certified therapists delivered to your hotel, Airbnb, or villa. Relaxing, deep tissue, four hands & more. Book now.',
-    h1En: 'Massage in Cancún',
-    introEn: 'Botica Spa brings the spa to you (certified therapists, professional table, organic oils) at your Cancún hotel, vacation rental, or private villa. Perfect for groups, couples, and solo travelers.',
-    notesEn: 'We travel from Playa del Carmen to Cancún. A travel fee applies. Confirm your zone on WhatsApp before booking.',
-    whatsappMsg: "Hi! I'd like to book an in home massage in Cancún 🌿 Could you help me?",
+    titleEn: 'Massage Puerto Morelos | In Home Spa at Your Hotel or Villa | Botica Spa',
+    descEn: 'In-home massage in Puerto Morelos. Certified therapists delivered to your boutique hotel, Airbnb, or villa. Relaxing, deep tissue, four hands & more. Book now.',
+    h1En: 'Massage in Puerto Morelos',
+    introEn: 'Botica Spa brings the spa to you (certified therapists, professional table, organic oils) at your Puerto Morelos hotel, vacation rental, or private villa. Perfect for couples, groups, and solo travelers seeking quiet beachside relaxation.',
+    notesEn: 'Puerto Morelos is north of Playa del Carmen, between PDC and Cancún. A travel fee applies. Confirm your location on WhatsApp before booking.',
+    titleEs: 'Masaje a Domicilio Puerto Morelos | Spa en tu Hotel o Villa | Botica Spa',
+    descEs: 'Masaje a domicilio en Puerto Morelos. Terapeutas certificadas a tu hotel boutique, Airbnb o villa. Relajante, tejido profundo, cuatro manos y más. Reserva ahora.',
+    h1Es: 'Masaje a Domicilio en Puerto Morelos',
+    introEs: 'Botica Spa lleva el spa a ti (terapeutas certificadas, camilla profesional, aceites orgánicos) a tu hotel, renta vacacional o villa en Puerto Morelos. Perfecto para parejas, grupos y viajeros que buscan relajación junto al mar.',
+    notesEs: 'Puerto Morelos está al norte de Playa del Carmen, entre PDC y Cancún. Aplica cargo de traslado. Confirma tu ubicación por WhatsApp antes de reservar.',
+    whatsappMsg: "Hi! I'd like to book an in home massage in Puerto Morelos 🌿 Could you help me?",
+    whatsappMsgEs: '¡Hola! Me gustaría reservar un masaje a domicilio en Puerto Morelos 🌿 ¿Me pueden ayudar?',
   },
   akumal: {
     name: 'Akumal',
     heroImage: '/galeria-1.webp',
-    titleEn: 'Massage Akumal | In Home Spa | Botica Spa',
+    titleEn: 'Massage Akumal | In Home Spa at Your Villa or Hotel | Botica Spa',
     descEn: 'In-home massage in Akumal. We bring certified therapists to your villa or hotel in Akumal Bay. Relaxing, deep tissue, four hands & more.',
     h1En: 'Massage in Akumal',
     introEn: 'Enjoy a professional in home massage at your Akumal villa or hotel. Botica Spa brings everything you need for a luxury spa experience: organic oils, massage table, fresh linens. No need to leave your beachfront retreat.',
     notesEn: 'Akumal is within our service area. Travel fee may apply depending on your location. Ask us on WhatsApp.',
+    titleEs: 'Masaje a Domicilio Akumal | Spa en tu Villa u Hotel | Botica Spa',
+    descEs: 'Masaje a domicilio en Akumal. Llevamos terapeutas certificadas a tu villa u hotel en Bahía Akumal. Relajante, tejido profundo, cuatro manos y más.',
+    h1Es: 'Masaje a Domicilio en Akumal',
+    introEs: 'Disfruta un masaje profesional a domicilio en tu villa u hotel en Akumal. Botica Spa lleva todo lo necesario para una experiencia de spa de lujo: aceites orgánicos, camilla, ropa de cama. Sin salir de tu retiro frente al mar.',
+    notesEs: 'Akumal está dentro de nuestra zona de servicio. Puede aplicar cargo de traslado según tu ubicación. Pregúntanos por WhatsApp.',
     whatsappMsg: "Hi! I'd like to book an in home massage in Akumal 🌿 Could you help me?",
+    whatsappMsgEs: '¡Hola! Me gustaría reservar un masaje a domicilio en Akumal 🌿 ¿Me pueden ayudar?',
   },
   playacar: {
     name: 'Playacar',
@@ -56,7 +81,13 @@ const cityConfigs: Record<string, CityConfig> = {
     h1En: 'Massage in Playacar',
     introEn: 'Botica Spa serves villas and hotels throughout Playacar Phase 1 and Phase 2. Our therapists arrive with everything (table, linens, organic oils) and handle full setup and breakdown so your only job is to relax.',
     notesEn: 'Playacar is within our primary service area. No travel fee for most Playacar locations.',
+    titleEs: 'Masaje a Domicilio Playacar | Spa en tu Villa | Botica Spa',
+    descEs: 'Masaje a domicilio en Playacar. Terapeutas certificadas a tu villa u hotel en Playacar Fase 1 y 2. Relajante, tejido profundo, cuatro manos y más.',
+    h1Es: 'Masaje a Domicilio en Playacar',
+    introEs: 'Botica Spa atiende villas y hoteles en toda Playacar Fase 1 y Fase 2. Nuestras terapeutas llegan con todo (camilla, ropa de cama, aceites orgánicos) y se encargan de la instalación y desmontaje. Tu único trabajo es relajarte.',
+    notesEs: 'Playacar está dentro de nuestra zona principal de servicio. Sin cargo de traslado para la mayoría de ubicaciones en Playacar.',
     whatsappMsg: "Hi! I'd like to book an in home massage in Playacar 🌿 Could you help me?",
+    whatsappMsgEs: '¡Hola! Me gustaría reservar un masaje a domicilio en Playacar 🌿 ¿Me pueden ayudar?',
   },
 };
 
@@ -71,30 +102,57 @@ const allServices = [
 
 interface LocationPageProps {
   city: string;
-  onBookNow: () => void;
 }
 
-export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) => {
+export const LocationPage: React.FC<LocationPageProps> = ({ city }) => {
   const { language } = useLanguage();
   const t = translations[language];
   const config = cityConfigs[city];
 
   if (!config) return null;
 
-  const whatsappUrl = `https://wa.me/529842687428?text=${encodeURIComponent(config.whatsappMsg)}`;
+  const isEs = language === 'es';
+  const whatsappUrl = `https://wa.me/529842687428?text=${encodeURIComponent(isEs ? config.whatsappMsgEs : config.whatsappMsg)}`;
   const slug = `massage-${city}`;
+  const seoTitle = isEs ? config.titleEs : config.titleEn;
+  const seoDesc = isEs ? config.descEs : config.descEn;
 
   return (
     <>
       <SEO
-        title={config.titleEn}
-        description={config.descEn}
+        title={seoTitle}
+        description={seoDesc}
         url={`https://boticaspa.com/${slug}`}
         breadcrumbs={[
           { name: 'Home', url: 'https://boticaspa.com/' },
           { name: `${config.name} Massage`, url: `https://boticaspa.com/${slug}` },
         ]}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": ["HealthAndBeautyBusiness", "LocalBusiness"],
+          "name": `Botica Spa — ${isEs ? 'Masaje a Domicilio' : 'In Home Massage'} ${config.name}`,
+          "description": seoDesc,
+          "url": `https://boticaspa.com/${slug}`,
+          "telephone": "+529842687428",
+          "image": "https://boticaspa.com/logo.png",
+          "areaServed": { "@type": "City", "name": config.name },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Playa del Carmen",
+            "addressRegion": "Quintana Roo",
+            "addressCountry": "MX"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "08:00",
+            "closes": "21:00"
+          },
+          "sameAs": ["https://boticaspa.com"]
+        })}</script>
+      </Helmet>
 
       {/* Hero */}
       <section className="relative h-[65vh] min-h-[480px] flex items-end overflow-hidden">
@@ -117,12 +175,12 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-4">
-              {config.h1En}
+              {isEs ? config.h1Es : config.h1En}
             </h1>
             <p className="text-white/70 text-lg max-w-xl leading-relaxed">
-              {config.introEn}
+              {isEs ? config.introEs : config.introEn}
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -130,14 +188,8 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
                 className="inline-flex items-center gap-3 bg-white text-[#1A1A1A] px-8 py-4 rounded-full font-medium text-sm uppercase tracking-widest hover:bg-[#F5F2ED] transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                Book on WhatsApp
+                {isEs ? 'Reservar por WhatsApp' : 'Book on WhatsApp'}
               </a>
-              <button
-                onClick={onBookNow}
-                className="inline-flex items-center gap-3 border border-white/30 text-white px-8 py-4 rounded-full font-medium text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
-              >
-                Book & Pay Online
-              </button>
             </div>
           </motion.div>
         </div>
@@ -227,7 +279,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
               {language === 'en' ? 'We Come to You' : 'Vamos a Ti'}
             </h3>
             <p className="text-[#1A1A1A]/60 text-sm leading-relaxed mb-8 max-w-md mx-auto">
-              {config.notesEn}
+              {isEs ? config.notesEs : config.notesEn}
             </p>
             <a
               href={whatsappUrl}

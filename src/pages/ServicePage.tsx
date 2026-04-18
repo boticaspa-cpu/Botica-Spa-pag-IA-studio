@@ -132,7 +132,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ onBookNow }) => {
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl font-serif text-white leading-tight">
-              {item.name}
+              {item.name}{' '}
+              <span className="italic font-light text-white/80">
+                {language === 'en' ? 'in Playa del Carmen' : 'en Playa del Carmen'}
+              </span>
             </h1>
             <p className="mt-4 text-white/70 text-lg max-w-xl leading-relaxed">
               {item.desc}

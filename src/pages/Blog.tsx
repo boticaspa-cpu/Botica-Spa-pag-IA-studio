@@ -12,7 +12,7 @@ export function Blog() {
     <div className="pt-32 pb-24">
       <SEO
         title="Wellness Blog | Spa Tips & Guides | Botica Spa Riviera Maya"
-        description="Expert tips on in home wellness, massage therapy, aromatherapy, and spa preparation for your stay in Playa del Carmen, Tulum, and Cancún."
+        description="Expert tips on in home wellness, massage therapy, aromatherapy, and spa preparation for your stay in Playa del Carmen, Puerto Aventuras, Puerto Morelos, and the Riviera Maya."
         url="https://boticaspa.com/blog"
       />
       <div className="max-w-7xl mx-auto px-8">

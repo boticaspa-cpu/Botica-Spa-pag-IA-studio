@@ -28,6 +28,7 @@ import { PaymentSuccess } from './pages/PaymentSuccess';
 import { LocationPage } from './pages/LocationPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { FAQPage } from './pages/FAQPage';
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin').then(m => ({ default: m.AdminLogin })));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const AdminClientes = lazy(() => import('./pages/admin/AdminClientes').then(m => ({ default: m.AdminClientes })));
@@ -250,10 +251,10 @@ function AppContent() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/booking/success" element={<PaymentSuccess />} />
-        <Route path="/massage-tulum" element={<LocationPage city="tulum" onBookNow={handleBook} />} />
-        <Route path="/massage-cancun" element={<LocationPage city="cancun" onBookNow={handleBook} />} />
-        <Route path="/massage-akumal" element={<LocationPage city="akumal" onBookNow={handleBook} />} />
-        <Route path="/massage-playacar" element={<LocationPage city="playacar" onBookNow={handleBook} />} />
+        <Route path="/massage-puerto-aventuras" element={<LocationPage city="puerto-aventuras" />} />
+        <Route path="/massage-puerto-morelos" element={<LocationPage city="puerto-morelos" />} />
+        <Route path="/massage-akumal" element={<LocationPage city="akumal" />} />
+        <Route path="/massage-playacar" element={<LocationPage city="playacar" />} />
         {/* Spanish routes */}
         <Route path="/es/" element={<Home onSelectTreatment={handleSelectTreatment} onBookNow={handleBook} />} />
         <Route path="/es/masajes" element={<TreatmentsPage onSelectTreatment={handleSelectTreatment} />} />
@@ -262,12 +263,14 @@ function AppContent() {
         <Route path="/es/blog/:id" element={<BlogPost />} />
         <Route path="/es/sobre-nosotros" element={<AboutPage />} />
         <Route path="/es/booking/success" element={<PaymentSuccess />} />
-        <Route path="/es/masaje-tulum" element={<LocationPage city="tulum" onBookNow={handleBook} />} />
-        <Route path="/es/masaje-cancun" element={<LocationPage city="cancun" onBookNow={handleBook} />} />
-        <Route path="/es/masaje-akumal" element={<LocationPage city="akumal" onBookNow={handleBook} />} />
-        <Route path="/es/masaje-playacar" element={<LocationPage city="playacar" onBookNow={handleBook} />} />
+        <Route path="/es/masaje-puerto-aventuras" element={<LocationPage city="puerto-aventuras" />} />
+        <Route path="/es/masaje-puerto-morelos" element={<LocationPage city="puerto-morelos" />} />
+        <Route path="/es/masaje-akumal" element={<LocationPage city="akumal" />} />
+        <Route path="/es/masaje-playacar" element={<LocationPage city="playacar" />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/es/contacto" element={<ContactPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/es/preguntas-frecuentes" element={<FAQPage />} />
       </Routes>
 
       <Footer />

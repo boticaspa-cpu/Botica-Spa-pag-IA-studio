@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const WHATSAPP_NUMBER = '529842687428';
 
@@ -67,6 +68,13 @@ export function PaymentSuccess() {
   }, [searchParams, navigate]);
 
   return (
+    <>
+    <SEO
+      title="Booking Confirmed | Botica Spa"
+      description="Your deposit has been received. Redirecting to WhatsApp to confirm your in-home massage booking."
+      url="https://boticaspa.com/booking/success"
+      noindex={true}
+    />
     <div className="min-h-screen bg-[#F9F8F6] flex items-center justify-center p-8">
       <div className="text-center max-w-md">
         <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-6" />
@@ -78,5 +86,6 @@ export function PaymentSuccess() {
         </div>
       </div>
     </div>
+    </>
   );
 }

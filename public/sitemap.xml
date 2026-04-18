@@ -174,6 +174,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massages/revitalizing-facial"/>
   </url>
 
+  <!-- FAQ -->
+  <url>
+    <loc>https://boticaspa.com/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/preguntas-frecuentes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/faq"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://boticaspa.com/es/preguntas-frecuentes</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/preguntas-frecuentes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/faq"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Blog -->
   <url>
     <loc>https://boticaspa.com/blog</loc>
@@ -243,37 +261,37 @@
 
   <!-- City landing pages -->
   <url>
-    <loc>https://boticaspa.com/massage-tulum</loc>
+    <loc>https://boticaspa.com/massage-puerto-aventuras</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-tulum"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-tulum"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-tulum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-puerto-aventuras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-puerto-aventuras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-puerto-aventuras"/>
   </url>
   <url>
-    <loc>https://boticaspa.com/es/masaje-tulum</loc>
+    <loc>https://boticaspa.com/es/masaje-puerto-aventuras</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-tulum"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-tulum"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-tulum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-puerto-aventuras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-puerto-aventuras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-puerto-aventuras"/>
   </url>
 
   <url>
-    <loc>https://boticaspa.com/massage-cancun</loc>
+    <loc>https://boticaspa.com/massage-puerto-morelos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-cancun"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-cancun"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-cancun"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-puerto-morelos"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-puerto-morelos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-puerto-morelos"/>
   </url>
   <url>
-    <loc>https://boticaspa.com/es/masaje-cancun</loc>
+    <loc>https://boticaspa.com/es/masaje-puerto-morelos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-cancun"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-cancun"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-cancun"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boticaspa.com/massage-puerto-morelos"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://boticaspa.com/es/masaje-puerto-morelos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boticaspa.com/massage-puerto-morelos"/>
   </url>
 
   <url>

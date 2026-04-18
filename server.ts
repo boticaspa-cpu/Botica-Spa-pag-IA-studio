@@ -438,11 +438,17 @@ No recolectes datos de reserva tú misma. Siempre manda al WhatsApp para reserva
       return res.json(_reviewsCache.data);
     }
     const apiKey = process.env.GOOGLE_MAPS_SERVER_KEY || process.env.VITE_GOOGLE_MAPS_KEY;
-    const placeId = process.env.GOOGLE_PLACE_ID;
-    if (!apiKey || !placeId) {
+    if (!apiKey) {
       return res.json({ rating: 4.9, total: 47, reviews: [], source: 'static' });
     }
     try {
+      // Text Search — encuentra el negocio por nombre, sin necesitar Place ID hardcodeado
+      const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=Botica+Spa+Playa+del+Carmen&key=${apiKey}`;
+      const searchRes = await fetch(searchUrl);
+      const searchData = await searchRes.json() as { results?: { place_id: string }[] };
+      const placeId = searchData.results?.[0]?.place_id;
+      if (!placeId) return res.json({ rating: 4.9, total: 47, reviews: [], source: 'static' });
+
       const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=rating,user_ratings_total,reviews&language=en&key=${apiKey}`;
       const r = await fetch(url);
       const data = await r.json() as { result?: { rating?: number; user_ratings_total?: number; reviews?: any[] } };

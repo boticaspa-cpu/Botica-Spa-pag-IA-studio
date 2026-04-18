@@ -2,13 +2,15 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { About } from '../components/About';
 import { SEO } from '../components/SEO';
+import { useLanguage } from '../LanguageContext';
 
 export const AboutPage: React.FC = () => {
+  const { language } = useLanguage();
   return (
     <>
       <SEO
         title="About Botica Spa | Gina Agassini & Our Story | In Home Spa Playa del Carmen"
-        description="Meet Gina Agassini, founder of Botica Spa. Born from years of luxury resort experience in the Riviera Maya, built around one belief: the best massage happens in your own space."
+        description="Meet Gina Agassini, founder of Botica Spa. Born from years at luxury hotels in the Riviera Maya — Grand Velas, Azul Fives, and Mayakoba, built around one belief: the best massage happens in your own space."
         url="https://boticaspa.com/about"
       />
       <main className="pt-32 pb-0 bg-[#F5F2ED]">
@@ -18,8 +20,10 @@ export const AboutPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-serif text-[#1A1A1A] leading-tight max-w-3xl"
           >
-            Our{' '}
-            <span className="italic font-light">Story</span>
+            {language === 'en' ? 'Botica Spa' : 'Botica Spa'}{' '}
+            <span className="italic font-light">
+              {language === 'en' ? 'Playa del Carmen' : 'Playa del Carmen'}
+            </span>
           </motion.h1>
         </div>
         <About />

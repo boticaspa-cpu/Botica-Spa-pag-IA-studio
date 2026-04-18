@@ -51,8 +51,8 @@ export const Footer = () => {
               <li><LangLink to="/massages" className="hover:text-black transition-colors">{t.nav.treatments}</LangLink></li>
               <li><LangLink to="/blog" className="hover:text-black transition-colors">{t.nav.blog}</LangLink></li>
               <li><LangLink to="/about" className="hover:text-black transition-colors">About</LangLink></li>
-              <li><LangLink to="/massage-tulum" className="hover:text-black transition-colors">Massage in Tulum</LangLink></li>
-              <li><LangLink to="/massage-cancun" className="hover:text-black transition-colors">Massage in Cancún</LangLink></li>
+              <li><LangLink to="/massage-puerto-aventuras" className="hover:text-black transition-colors">Massage in Puerto Aventuras</LangLink></li>
+              <li><LangLink to="/massage-puerto-morelos" className="hover:text-black transition-colors">Massage in Puerto Morelos</LangLink></li>
               <li><LangLink to="/massage-akumal" className="hover:text-black transition-colors">Massage in Akumal</LangLink></li>
               <li><LangLink to="/massage-playacar" className="hover:text-black transition-colors">Massage in Playacar</LangLink></li>
               <li><LangLink to="/contact" className="hover:text-black transition-colors">{t.footer.contact}</LangLink></li>

@@ -11,10 +11,9 @@ export const ContactPage: React.FC = () => {
   const areas = [
     { name: 'Playa del Carmen', fee: isEn ? 'No travel fee' : 'Sin cargo de traslado', primary: true },
     { name: 'Playacar', fee: isEn ? 'No travel fee' : 'Sin cargo de traslado', primary: true },
-    { name: 'Tulum', fee: isEn ? 'Travel fee applies' : 'Cargo de traslado', primary: false },
-    { name: 'Cancún', fee: isEn ? 'Travel fee applies' : 'Cargo de traslado', primary: false },
-    { name: 'Akumal', fee: isEn ? 'Travel fee may apply' : 'Cargo de traslado', primary: false },
-    { name: 'Puerto Morelos', fee: isEn ? 'Ask via WhatsApp' : 'Consultar por WhatsApp', primary: false },
+    { name: 'Puerto Aventuras', fee: isEn ? 'Travel fee may apply' : 'Cargo de traslado posible', primary: false },
+    { name: 'Puerto Morelos', fee: isEn ? 'Travel fee applies' : 'Cargo de traslado', primary: false },
+    { name: 'Akumal', fee: isEn ? 'Travel fee may apply' : 'Cargo de traslado posible', primary: false },
   ];
 
   return (
@@ -36,8 +35,8 @@ export const ContactPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-serif text-[#1A1A1A] leading-tight mb-4"
           >
-            {isEn ? 'Contact' : 'Contacto'}{' '}
-            <span className="italic font-light">{isEn ? 'Us' : 'Botica Spa'}</span>
+            {isEn ? 'Book a Massage' : 'Reserva tu Masaje'}{' '}
+            <span className="italic font-light">{isEn ? 'in Playa del Carmen' : 'en Playa del Carmen'}</span>
           </motion.h1>
 
           <motion.p

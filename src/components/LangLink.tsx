@@ -3,15 +3,16 @@ import { Link, LinkProps } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext';
 
 export const ES_PATHS: Record<string, string> = {
-  '/':                    '/es/',
-  '/massages':            '/es/masajes',
-  '/about':               '/es/sobre-nosotros',
-  '/blog':                '/es/blog',
-  '/massage-tulum':       '/es/masaje-tulum',
-  '/massage-cancun':      '/es/masaje-cancun',
-  '/massage-akumal':      '/es/masaje-akumal',
-  '/massage-playacar':    '/es/masaje-playacar',
-  '/contact':             '/es/contacto',
+  '/':                             '/es/',
+  '/massages':                     '/es/masajes',
+  '/about':                        '/es/sobre-nosotros',
+  '/blog':                         '/es/blog',
+  '/massage-puerto-aventuras':     '/es/masaje-puerto-aventuras',
+  '/massage-puerto-morelos':       '/es/masaje-puerto-morelos',
+  '/massage-akumal':               '/es/masaje-akumal',
+  '/massage-playacar':             '/es/masaje-playacar',
+  '/contact':                      '/es/contacto',
+  '/faq':                          '/es/preguntas-frecuentes',
 };
 
 export function toLangPath(path: string, language: string): string {
