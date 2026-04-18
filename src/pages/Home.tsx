@@ -17,35 +17,35 @@ interface HomeProps {
 const FAQS = [
   {
     q: "Is it safe to let a therapist into my villa or hotel room?",
-    a: "Absolutely. All Botica Spa therapists are certified professionals with background checks and years of experience at luxury properties in the Riviera Maya. We've served guests at top resorts, private villas, and Airbnbs — discretion and professionalism are at the core of everything we do."
+    a: "Absolutely. All Botica Spa therapists are certified professionals with background checks and years of experience at luxury properties in the Riviera Maya. We've served guests at top resorts, private villas, and Airbnbs. Discretion and professionalism are at the core of everything we do."
   },
   {
     q: "Do you bring everything? Do I need to set anything up?",
-    a: "We bring it all — professional massage table, fresh linens, organic oils, aromatherapy, and ambient music. All you need is a space roughly 2×3 meters. We handle setup and breakdown completely; you don't lift a finger."
+    a: "We bring everything: professional massage table, fresh linens, organic oils, aromatherapy, and ambient music. All you need is a space roughly 2x3 meters. We handle setup and breakdown completely, you don't lift a finger."
   },
   {
     q: "What if my hotel doesn't allow outside vendors?",
-    a: "Most hotels in the Riviera Maya welcome in-room spa services, especially in Airbnbs and private villas. If you're at a large all-inclusive resort, send us a message on WhatsApp before booking and we'll confirm access — we've navigated this many times and always find a solution."
+    a: "Most hotels in the Riviera Maya welcome in-room spa services, especially in Airbnbs and private villas. If you're at a large all-inclusive resort, send us a message on WhatsApp before booking and we'll confirm access. We've navigated this many times and always find a solution."
   },
   {
     q: "Can two (or more) people get massages at the same time?",
-    a: "Yes — and it's one of our most popular requests. We can send two therapists for a couple's session or a small group. Each person books their own service (different treatments and durations are totally fine), and we coordinate to arrive together."
+    a: "Yes, and it's one of our most popular requests. We can send two therapists for a couple's session or a small group. Each person books their own service (different treatments and durations are totally fine), and we coordinate to arrive together."
   },
   {
     q: "How far in advance do I need to book?",
-    a: "We can often accommodate same-day or next-day bookings — just message us on WhatsApp and we'll confirm availability within minutes. For a guaranteed slot, especially for couples or groups, we recommend booking 5+ days ahead (a 30% deposit secures it instantly online)."
+    a: "We can often accommodate same-day or next-day bookings. Just message us on WhatsApp and we'll confirm availability within minutes. For a guaranteed slot, especially for couples or groups, we recommend booking 5+ days ahead (a 30% deposit secures it instantly online)."
   },
   {
     q: "What is the cancellation and deposit policy?",
-    a: "For advance bookings (5+ days out), we require a 30% deposit to confirm your reservation. If you cancel more than 48 hours before your session, we refund the deposit in full. Cancellations within 48 hours forfeit the deposit. Same-week bookings confirmed via WhatsApp have no deposit — just let us know if plans change."
+    a: "For advance bookings (5+ days out), we require a 30% deposit to confirm your reservation. If you cancel more than 48 hours before your session, we refund the deposit in full. Cancellations within 48 hours forfeit the deposit. Same-week bookings confirmed via WhatsApp have no deposit, just let us know if plans change."
   },
   {
     q: "What areas do you cover?",
-    a: "We serve Playa del Carmen, Tulum, Cancún, Akumal, Puerto Morelos, and most areas in between. If you're somewhere not listed, just ask — we travel for larger groups."
+    a: "We serve Playa del Carmen, Tulum, Cancún, Akumal, Puerto Morelos, and most areas in between. If you're somewhere not listed, just ask. We travel for larger groups."
   },
   {
     q: "What if the pressure or technique isn't what I expected?",
-    a: "Tell us the moment something isn't right. Our therapists check in throughout the session and adjust pressure, technique, and focus areas immediately. Your comfort is not optional — it's the whole point."
+    a: "Tell us the moment something isn't right. Our therapists check in throughout the session and adjust pressure, technique, and focus areas immediately. Your comfort is not optional, it's the whole point."
   },
   {
     q: "Do I need to tip?",
@@ -57,7 +57,7 @@ const FAQS = [
   },
   {
     q: "Can I book if I have a medical condition or injury?",
-    a: "Many conditions benefit from massage — but some require modified techniques or contraindications. Please mention any recent surgeries, injuries, pregnancy, or chronic conditions when booking. Our therapists are trained to adapt or advise honestly if a particular treatment isn't right for you."
+    a: "Many conditions benefit from massage, but some require modified techniques or contraindications. Please mention any recent surgeries, injuries, pregnancy, or chronic conditions when booking. Our therapists are trained to adapt or advise honestly if a particular treatment isn't right for you."
   },
   {
     q: "How do I pay?",
@@ -145,8 +145,8 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 {language === 'en'
-                  ? 'Founded by Gina Agassini after years at luxury properties across the Riviera Maya. Every session brings the same organic oils, techniques, and care you\'d expect from a five-star spa — without leaving where you\'re staying.'
-                  : 'Fundada por Gina Agassini tras años en propiedades de lujo en la Riviera Maya. Cada sesión lleva los mismos aceites orgánicos, técnicas y cuidado que esperarías de un spa cinco estrellas — sin salir de donde te hospedas.'}
+                  ? 'Founded by Gina Agassini after years at luxury properties across the Riviera Maya. Every session brings the same organic oils, techniques, and care you\'d expect from a five-star spa. Without leaving where you\'re staying.'
+                  : 'Fundada por Gina Agassini tras años en propiedades de lujo en la Riviera Maya. Cada sesión lleva los mismos aceites orgánicos, técnicas y cuidado que esperarías de un spa cinco estrellas. Sin salir de donde te hospedas.'}
               </p>
               <LangLink
                 to="/about"
@@ -260,7 +260,7 @@ export const Home: React.FC<HomeProps> = ({ onSelectTreatment, onBookNow }) => {
                     {language === 'en' ? 'Not in the list?' : '¿No está tu zona?'}
                   </p>
                   <p className="text-sm text-gray-500 mt-0.5">
-                    {language === 'en' ? "Message us on WhatsApp — we'll confirm in minutes" : 'Escríbenos por WhatsApp — confirmamos en minutos'}
+                    {language === 'en' ? "Message us on WhatsApp, we'll confirm in minutes" : 'Escríbenos por WhatsApp, confirmamos en minutos'}
                   </p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 ml-2" />
