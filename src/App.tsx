@@ -94,7 +94,7 @@ function AppContent() {
         "fixed top-0 left-0 right-0 z-40 px-8 py-6 flex justify-between items-center transition-all duration-500",
         location.pathname === '/' ? "bg-gradient-to-b from-black/20 to-transparent" : "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100"
       )}>
-        <Link to="/" className="flex items-center gap-3">
+        <LangLink to="/" className="flex items-center gap-3">
           <img
             src="/logo.png"
             alt="Botica Spa Logo"
@@ -102,7 +102,7 @@ function AppContent() {
             height={48}
             className={cn("w-12 h-12 object-contain transition-all", location.pathname === '/' ? "brightness-0 invert" : "")}
           />
-        </Link>
+        </LangLink>
         <div className={cn(
           "hidden md:flex items-center gap-8 text-xs uppercase tracking-widest transition-colors",
           location.pathname === '/' ? "text-white/80" : "text-[#1A1A1A]/60"
@@ -178,7 +178,7 @@ function AppContent() {
             className="fixed inset-0 z-50 bg-white flex flex-col"
           >
             <div className="px-8 py-6 flex justify-between items-center border-b border-gray-100">
-              <Link to="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
+              <LangLink to="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
                 <img
                   src="/logo.png"
                   alt="Botica Spa Logo"
@@ -186,7 +186,7 @@ function AppContent() {
                   height={40}
                   className="w-10 h-10 object-contain"
                 />
-              </Link>
+              </LangLink>
               <button
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close menu"

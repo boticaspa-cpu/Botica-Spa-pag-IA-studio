@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { LangLink } from '../components/LangLink';
 import { useLanguage } from '../LanguageContext';
 import { translations } from '../translations';
 import { SEO } from '../components/SEO';
@@ -196,13 +196,13 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
                             ${price?.toLocaleString()} {t.services.currency}
                           </span>
                         </div>
-                        <Link
+                        <LangLink
                           to={`/massages/${service.slug}`}
                           className="w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl flex items-center justify-center hover:bg-white hover:text-[#1A1A1A] transition-all duration-300"
                           aria-label={`View details for ${item.name}`}
                         >
                           <ArrowRight className="w-4 h-4" />
-                        </Link>
+                        </LangLink>
                       </div>
                     </div>
                   </div>
@@ -255,20 +255,20 @@ export const LocationPage: React.FC<LocationPageProps> = ({ city, onBookNow }) =
               {Object.entries(cityConfigs)
                 .filter(([key]) => key !== city)
                 .map(([key, cfg]) => (
-                  <Link
+                  <LangLink
                     key={key}
                     to={`/massage-${key}`}
                     className="px-5 py-2 border border-gray-200 rounded-full text-xs uppercase tracking-widest text-gray-500 hover:border-[#5A5A40] hover:text-[#5A5A40] transition-colors"
                   >
                     {cfg.name}
-                  </Link>
+                  </LangLink>
                 ))}
-              <Link
+              <LangLink
                 to="/massages"
                 className="px-5 py-2 border border-gray-200 rounded-full text-xs uppercase tracking-widest text-gray-500 hover:border-[#5A5A40] hover:text-[#5A5A40] transition-colors"
               >
                 Playa del Carmen
-              </Link>
+              </LangLink>
             </div>
           </motion.div>
         </div>
